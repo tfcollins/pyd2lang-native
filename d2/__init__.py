@@ -7,9 +7,9 @@ import platform
 loc = os.path.dirname(os.path.abspath(__file__))
 # Windows
 if platform.system() == 'Windows':
-    lib_path = os.path.join(loc, 'resources', 'd2lib.dll')
+    lib_path = os.path.join(loc, 'resources', 'd2lib.lib')
 elif platform.system() == 'Linux':
-    lib_path = os.path.join(loc, 'resources', 'libd2lib.so')
+    lib_path = os.path.join(loc, 'resources', 'd2lib.so')
 else:
     lib_path = os.path.join(loc, 'resources', 'd2lib.dylib')
 
