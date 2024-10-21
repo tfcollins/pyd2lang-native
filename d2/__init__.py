@@ -7,11 +7,11 @@ import platform
 loc = os.path.dirname(os.path.abspath(__file__))
 # Windows
 if platform.system() == 'Windows':
-    lib_path = os.path.join(loc, 'd2lib.dll')
+    lib_path = os.path.join(loc, 'resources', 'd2lib.dll')
 elif platform.system() == 'Linux':
-    lib_path = os.path.join(loc, 'libd2lib.so')
+    lib_path = os.path.join(loc, 'resources', 'libd2lib.so')
 else:
-    lib_path = os.path.join(loc, 'd2lib.dylib')
+    lib_path = os.path.join(loc, 'resources', 'd2lib.dylib')
 
 if not os.path.exists(lib_path):
     raise FileNotFoundError(f"Could not find {lib_path}")
