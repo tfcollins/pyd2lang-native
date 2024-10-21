@@ -5,7 +5,7 @@ import (
 
 	"context"
 	// "io/ioutil"
-	"log/slog"
+	//"log/slog"
 
 	"oss.terrastruct.com/d2/d2graph"
 	// "oss.terrastruct.com/d2/d2layouts/d2dagrelayout"
@@ -20,7 +20,7 @@ import (
 //export runme
 func runme(namePtr *C.char) *C.char {
 
-	slog.Info("runme")
+	//slog.Info("runme")
 	graph := C.GoString(namePtr)
 	//   log.Println(graph)
 
