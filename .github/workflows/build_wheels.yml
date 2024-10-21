@@ -32,6 +32,17 @@ jobs:
           cd lib
           go mod tidy
           go build -buildmode=c-shared -o d2lib.${{ matrix.os.ext }} d2lib.go
+          cd ..
+
+      - name: Move library to resources folder
+        run: |
+          mkdir -p d2/resources
+          mv lib/d2lib.${{ matrix.os.ext }} d2/resources/d2lib.${{ matrix.os.ext }}
+
+      - name: Test library
+        run: |
+          pip install -r requirements_test.txt
+          python -m pytest -vs
 
       # - name: Build wheels
       #   run: python -m cibuildwheel --output-dir wheelhouse
