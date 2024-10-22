@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=40.6.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyd2lang-native"
+version = "0.0.1"
+description = "Python bindings to d2lang"
+authors = [{ name = "Travis F. Collins", email = "travis.collins@analog.com" }]
+license = { text = "MPL-2.0" }
+readme = "README.md"
+requires-python = ">=3.7"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["d2*"]
+exclude = ["test*"]
+namespaces = true
+
+[tool.setuptools]
+py-modules = ["d2"]
+
+[tool.setuptools.package-data]
+adijif = ["d2resources/*"]
