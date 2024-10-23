@@ -21,4 +21,4 @@ namespaces = true
 py-modules = ["d2"]
 
 [tool.setuptools.package-data]
-adijif = ["d2resources/*"]
+d2 = ["d2/resources/*"]

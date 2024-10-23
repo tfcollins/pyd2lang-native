@@ -13,7 +13,7 @@ jobs:
         # os: [{ubuntu-latest: , windows-latest, macos-13, macos-14]
         os: [{machine: ubuntu-latest, ext: so},
           {machine: windows-latest, ext: lib},
-          {machine: macos-13, ext: dylib},
+          # {machine: macos-13, ext: dylib},
           {machine: macos-14, ext: dylib}]
 
     steps:
@@ -24,8 +24,8 @@ jobs:
         with:
           go-version: 1.23
 
-      - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.21.3
+      # - name: Install cibuildwheel
+      #   run: python -m pip install cibuildwheel==2.21.3
 
       - name: Build d2lang library
         run: |
@@ -38,16 +38,55 @@ jobs:
         run: |
           mkdir -p d2/resources
           mv lib/d2lib.${{ matrix.os.ext }} d2/resources/d2lib.${{ matrix.os.ext }}
+          mkdir libs
+          cp d2/resources/d2lib.${{ matrix.os.ext }} libs/
 
       - name: Test library
         run: |
           pip install -r requirements_test.txt
           python -m pytest -vs
 
-      - name: Build wheels
-        run: python -m cibuildwheel --output-dir wheelhouse
+      # - name: Build wheels
+      #   run: python -m cibuildwheel --output-dir wheelhouse
 
       - uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
-          path: ./wheelhouse/*.whl
+          name: d2lib-${{ matrix.os }}
+          path: ./libs/*
+
+  unified-package:
+    # Download all the wheels from the previous job
+    name: Unified package
+    needs: build_wheels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: | 
+          d2lib-ubuntu-latest
+          d2lib-windows-latest
+          d2lib-macos-14
+
+      - name: Organize built libraries
+        run: |
+          mkdir -p d2/resources
+          ls *
+          ls */libs
+          cp d2lib-ubuntu-latest/libs/d2lib.so d2/resources/d2lib.so
+          cp d2lib-windows-latest/libs/d2lib.lib d2/resources/d2lib.lib
+          cp d2lib-macos-14/libs/d2lib.dylib d2/resources/d2lib.dylib
+
+      - name: Build package
+        run: |
+          pip install build
+          python -m build
+          ls dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: d2lib
+          path: ./dist/*
