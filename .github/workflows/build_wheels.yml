@@ -66,10 +66,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: | 
-            d2lib-ubuntu-latest
-            d2lib-windows-latest
-            d2lib-macos-14
+          path: "."
 
       - name: Organize built libraries
         run: |
