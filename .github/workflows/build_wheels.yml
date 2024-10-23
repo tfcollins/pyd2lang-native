@@ -51,7 +51,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: d2lib-${{ matrix.os }}
+          name: d2lib-${{ matrix.os.machine }}
           path: ./libs/*
 
   unified-package:
