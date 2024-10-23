@@ -72,9 +72,9 @@ jobs:
         run: |
           mkdir -p d2/resources
           ls *
-          cp d2lib-ubuntu-latest/libs/d2lib.so d2/resources/d2lib.so
-          cp d2lib-windows-latest/libs/d2lib.lib d2/resources/d2lib.lib
-          cp d2lib-macos-14/libs/d2lib.dylib d2/resources/d2lib.dylib
+          cp d2lib-ubuntu-latest/d2lib.so d2/resources/d2lib.so
+          cp d2lib-windows-latest/d2lib.lib d2/resources/d2lib.lib
+          cp d2lib-macos-14/d2lib.dylib d2/resources/d2lib.dylib
 
       - name: Build package
         run: |
