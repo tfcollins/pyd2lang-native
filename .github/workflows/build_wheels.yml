@@ -55,6 +55,8 @@ jobs:
           path: ./libs/*
 
   unified-package:
+    permissions:
+      contents: write
     # Download all the wheels from the previous job
     name: Unified package
     needs: build_wheels
