@@ -1,0 +1,10 @@
+include README.md
+include LICENSE
+#include setup.py
+recursive-include d2 *
+#recursive-include docs *
+prune test/*
+prune test
+prune *.pyc
+prune __pycache__
+prune d2/__pycache__
