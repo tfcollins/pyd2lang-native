@@ -13,7 +13,7 @@ arch = platform.machine().lower()
 
 library_name = "d2lib"
 if os_name == "windows":
-    library_ext = ".dll"
+    library_ext = ".lib"
     plat_name = f"win_{arch}"
 elif os_name == "linux":
     library_ext = ".so"

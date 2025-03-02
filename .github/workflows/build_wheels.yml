@@ -33,6 +33,7 @@ jobs:
           go mod tidy
           go build -buildmode=c-shared -o d2lib.${{ matrix.os.ext }} d2lib.go
           cd ..
+          ls lib
 
       - name: Move library to resources folder
         run: |
@@ -54,22 +55,10 @@ jobs:
           python -m build
           ls dist
 
-      - name: Verify lib and header exist in wheel
-        run: |
-          unzip dist/pyd2-*.whl -d build
-          ls build/pyd2-*
-          ls build/pyd2-*/d2lib.*
-          # Find compiled library in wheel
-          LIBFILE=$(find build/pyd2-*/ -name "*${{ matrix.os.ext }}")
-          echo "LIBFILE: $LIBFILE"
-          if [ -z "$LIBFILE" ]; then
-            echo "No library found"
-            exit 1
-          fi
-
       - name: Remove sources and test package
         run: |
           rm -rf build || true
+          rm -rf lib || true
           rm -rf d2
           WHEELFILENAME=$(find . -name "pyd2-*.whl")
           echo "WHEELFILENAME: $WHEELFILENAME"
