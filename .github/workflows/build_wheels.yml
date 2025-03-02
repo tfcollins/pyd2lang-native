@@ -54,6 +54,13 @@ jobs:
           python -m build
           ls dist
 
+      - name: Remove sources and test package
+        run: |
+          rm -rf build || true
+          rm -rf d2
+          pip install dist/pyd2-*.whl
+          python -m pytest -vs
+
       - uses: actions/upload-artifact@v4
         with:
           name: d2lib-${{ matrix.os.machine }}
