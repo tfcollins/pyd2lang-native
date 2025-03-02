@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=40.6.0", "wheel"]
+requires = ["setuptools>=40.6.0", "wheel", "toml"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,6 +9,7 @@ description = "Python bindings to d2lang"
 authors = [{ name = "Travis F. Collins", email = "travis.collins@analog.com" }]
 license = { text = "MPL-2.0" }
 readme = "README.md"
+dynamic = ["classifiers"]
 requires-python = ">=3.7"
 
 [tool.setuptools.packages.find]

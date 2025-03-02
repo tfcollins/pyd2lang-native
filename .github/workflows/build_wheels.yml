@@ -39,7 +39,6 @@ jobs:
           mkdir -p d2/resources
           mv lib/d2lib.${{ matrix.os.ext }} d2/resources/d2lib.${{ matrix.os.ext }}
           mkdir libs
-          cp d2/resources/d2lib.${{ matrix.os.ext }} libs/
 
       - name: Test library
         run: |
@@ -48,35 +47,6 @@ jobs:
 
       # - name: Build wheels
       #   run: python -m cibuildwheel --output-dir wheelhouse
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: d2lib-${{ matrix.os.machine }}
-          path: ./libs/*
-
-  unified-package:
-    permissions:
-      contents: write
-    # Download all the wheels from the previous job
-    name: Unified package
-    needs: build_wheels
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-
-      - uses: actions/download-artifact@v4
-        with:
-          path: "."
-
-      - name: Organize built libraries
-        run: |
-          mkdir -p d2/resources
-          ls *
-          cp d2lib-ubuntu-latest/d2lib.so d2/resources/d2lib.so
-          cp d2lib-windows-latest/d2lib.lib d2/resources/d2lib.lib
-          cp d2lib-macos-14/d2lib.dylib d2/resources/d2lib.dylib
 
       - name: Build package
         run: |
