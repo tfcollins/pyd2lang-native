@@ -62,10 +62,6 @@ jobs:
           rm -rf d2
           WHEELFILENAME=$(find . -name "pyd2*.whl")
           echo "WHEELFILENAME: $WHEELFILENAME"
-          if [ -z "$WHEELFILENAME" ]; then
-            echo "No wheel found"
-            exit 1
-          fi
           pip install $WHEELFILENAME
           python -m pytest -vs
 
