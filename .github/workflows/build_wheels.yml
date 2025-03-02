@@ -38,7 +38,7 @@ jobs:
         run: |
           mkdir -p d2/resources
           mv lib/d2lib.${{ matrix.os.ext }} d2/resources/d2lib.${{ matrix.os.ext }}
-          mkdir libs
+          mv lib/d2lib.h d2/resources/d2lib.h
 
       - name: Test library
         run: |
@@ -54,11 +54,30 @@ jobs:
           python -m build
           ls dist
 
+      - name: Verify lib and header exist in wheel
+        run: |
+          unzip dist/pyd2-*.whl -d build
+          ls build/pyd2-*
+          ls build/pyd2-*/d2lib.*
+          # Find compiled library in wheel
+          LIBFILE=$(find build/pyd2-*/ -name "*${{ matrix.os.ext }}")
+          echo "LIBFILE: $LIBFILE"
+          if [ -z "$LIBFILE" ]; then
+            echo "No library found"
+            exit 1
+          fi
+
       - name: Remove sources and test package
         run: |
           rm -rf build || true
           rm -rf d2
-          pip install dist/pyd2-*.whl
+          WHEELFILENAME=$(find . -name "pyd2-*.whl")
+          echo "WHEELFILENAME: $WHEELFILENAME"
+          if [ -z "$WHEELFILENAME" ]; then
+            echo "No wheel found"
+            exit 1
+          fi
+          pip install $WHEELFILENAME
           python -m pytest -vs
 
       - uses: actions/upload-artifact@v4

@@ -26,6 +26,14 @@ else:
 
 library_filename = f"{library_name}{library_ext}"
 
+this_folder = os.path.dirname(os.path.abspath(__file__))
+library_path = os.path.join(this_folder, "d2", "resources", library_filename)
+if not os.path.exists(library_path):
+    raise FileNotFoundError(f"Library file not found: {library_path}")
+
+headers_path = os.path.join(this_folder, "d2", "resources", "d2lib.h")
+if not os.path.exists(headers_path):
+    raise FileNotFoundError(f"Headers file not found: {headers_path}")
 
 class bdist_wheel(_bdist_wheel):
     def finalize_options(self):
@@ -39,7 +47,12 @@ setup(
         f"Operating System :: {os_name}",
         f"Architecture :: {arch}",
     ],
-    package_data={"d2": [os.path.join("resources", library_filename)]},
+    package_data={
+        "d2": [
+            os.path.join("resources", library_filename),
+            os.path.join("resources", "d2lib.h"),
+        ]
+    },
     include_package_data=True,
     cmdclass={"bdist_wheel": bdist_wheel},
 )
