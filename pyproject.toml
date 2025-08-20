@@ -4,12 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyd2lang-native"
-version = "0.0.1"
+dynamic = ["version", "readme"]
 description = "Python bindings to d2lang"
 authors = [{ name = "Travis F. Collins", email = "travis.collins@analog.com" }]
-license = { text = "MPL-2.0" }
-readme = "README.md"
+license-files = ["LICENSE", "D2_LICENSE.txt"]
 requires-python = ">=3.7"
+
+
+[tool.setuptools.dynamic]
+version = {attr = "d2.__version__"}
+readme = {file = "README.md", content-type = "text/markdown"}
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -19,6 +23,11 @@ namespaces = true
 
 [tool.setuptools]
 py-modules = ["d2"]
+zip-safe = false
 
 [tool.setuptools.package-data]
-d2 = ["d2/resources/*"]
+d2 = [
+	"resources/*.so",
+	"resources/*.dll",
+	"resources/*.dylib"
+]
