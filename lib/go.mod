@@ -3,12 +3,12 @@ module d2lib
 go 1.23.2
 
 require (
+	cdr.dev/slog v1.4.2
 	oss.terrastruct.com/d2 v0.6.6
 	oss.terrastruct.com/util-go v0.0.0-20241005222610-44c011a04896
 )
 
 require (
-	cdr.dev/slog v1.4.2 // indirect
 	github.com/PuerkitoBio/goquery v1.10.0 // indirect
 	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/alecthomas/chroma/v2 v2.14.0 // indirect
