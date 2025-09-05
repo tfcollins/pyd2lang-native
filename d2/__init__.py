@@ -7,7 +7,7 @@ import platform
 __version__ = "0.0.2"
 
 loc = os.path.dirname(os.path.abspath(__file__))
-# Windows
+
 if platform.system() == 'Windows':
     lib_path = os.path.join(loc, 'resources', 'd2lib.lib')
 elif platform.system() == 'Linux':
@@ -15,8 +15,14 @@ elif platform.system() == 'Linux':
 else:
     lib_path = os.path.join(loc, 'resources', 'd2lib.dylib')
 
+folder_path = os.path.join(loc, 'resources')
+
 if not os.path.exists(lib_path):
-    raise FileNotFoundError(f"Could not find {lib_path}")
+    if platform.system() == 'Windows':
+            # Try different extension
+            lib_path = os.path.join(loc, 'resources', 'd2lib.dll')
+    if not os.path.exists(lib_path):
+        raise FileNotFoundError(f"Could not find {lib_path}")
 
 library = ctypes.cdll.LoadLibrary(lib_path)
 

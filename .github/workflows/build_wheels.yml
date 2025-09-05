@@ -4,64 +4,66 @@ on: [push, pull_request]
 
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os.machine }}
-    runs-on: ${{ matrix.os.machine }}
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        # macos-13 is an intel runner, macos-14 is apple silicon
-        # os: [{ubuntu-latest: , windows-latest, macos-13, macos-14]
-        os: [{machine: ubuntu-latest, ext: so},
-          {machine: windows-latest, ext: lib},
-          # {machine: macos-13, ext: dylib},
-          {machine: macos-14, ext: dylib}]
+        os: [ubuntu-latest, ubuntu-24.04-arm, windows-latest, macos-13, macos-14]
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.9
       - uses: actions/setup-go@v2
         with:
           go-version: 1.23
 
-      # - name: Install cibuildwheel
-      #   run: python -m pip install cibuildwheel==2.21.3
+      - name: Install cibuildwheel
+        run: python -m pip install cibuildwheel==2.21.3
 
-      - name: Build d2lang library
-        run: |
-          cd lib
-          go mod tidy
-          go build -buildmode=c-shared -o d2lib.${{ matrix.os.ext }} d2lib.go
-          cd ..
-
-      - name: Move library to resources folder
-        shell: bash
-        run: |
-          mkdir -p d2/resources
-          mv lib/d2lib.${{ matrix.os.ext }} d2/resources/d2lib.${{ matrix.os.ext }}
-          mkdir libs
-          cp d2/resources/d2lib.${{ matrix.os.ext }} libs/
-          rm -rf libs
-
-      - name: Test library
-        run: |
-          pip install -r requirements_test.txt
-          python -m pytest -vs
-
-      - name: Build Wheel
-        run: |
-          python -m pip install build wheel setuptools
-          python -m build --wheel
+      - name: Build wheels
+        run: python -m cibuildwheel --output-dir wheelhouse
+        env:
+          CIBW_BUILD_VERBOSITY: 1
+          CIBW_BEFORE_BUILD: |
+            curl -L https://go.dev/dl/go1.21.5.linux-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz | tar -C /usr/local -xz &&
+            export PATH=$PATH:/usr/local/go/bin &&
+            ls /usr/local/go/bin &&
+            cd lib && /usr/local/go/bin/go mod tidy && 
+            /usr/local/go/bin/go build -buildmode=c-shared -o d2lib.{platform} d2lib.go && cd .. && 
+            mkdir -p d2/resources && cp lib/d2lib.{platform} d2/resources/ && 
+            pip install -r requirements_test.txt
+          CIBW_BEFORE_BUILD_LINUX: |
+            curl -L https://go.dev/dl/go1.21.5.linux-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz | tar -C /usr/local -xz &&
+            export PATH=$PATH:/usr/local/go/bin &&
+            ls /usr/local/go/bin &&
+            cd lib && /usr/local/go/bin/go mod tidy && 
+            /usr/local/go/bin/go build -buildmode=c-shared -o d2lib.so d2lib.go && cd .. &&
+            mkdir -p d2/resources && cp lib/d2lib.so d2/resources/ &&
+            rm -rf lib/d2lib.so &&
+            pip install -r requirements_test.txt
+          CIBW_BEFORE_BUILD_WINDOWS: |
+            cd lib & build.bat & cd .. & pip install -r requirements_test.txt
+          CIBW_BEFORE_BUILD_MACOS: |
+            cd lib && go mod tidy && go build -buildmode=c-shared -o d2lib.dylib d2lib.go && cd .. &&
+            mkdir -p d2/resources && cp lib/d2lib.dylib d2/resources/ &&
+            pip install -r requirements_test.txt
+          CIBW_TEST_COMMAND: python -m pytest {project} -vs
+          CIBW_TEST_REQUIRES: pytest
+          CIBW_BUILD: cp39-* cp310-* cp311-* cp312-*
+          CIBW_SKIP: "*-win32 *-manylinux_i686 *-musllinux*"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: pyd2native-wheel-${{ matrix.os.machine }}
-          path: ./dist/*.whl
+          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+          path: ./wheelhouse/*.whl
 
   upload:
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pyd2lang-native
     permissions:
+      id-token: write
       contents: write
     # Download all the wheels from the previous job
     name: Upload wheels
@@ -71,14 +73,15 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: "."
+          pattern: cibw-wheels-*
+          merge-multiple: true
 
       - name: Check artifacts
         run: |
           ls -lh .
-          ls -lh *
-          ls -lh */*
+          ls -lh *.whl
           mkdir dist
-          cp */*.whl dist/
+          cp *.whl dist/
           ls -lh ./dist/*.whl
 
       - name: Post development build to GH releases page

@@ -28,6 +28,7 @@ zip-safe = false
 [tool.setuptools.package-data]
 d2 = [
 	"resources/*.so",
+	"resources/*.lib",
 	"resources/*.dll",
 	"resources/*.dylib"
 ]
