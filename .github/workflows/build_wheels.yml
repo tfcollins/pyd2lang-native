@@ -59,7 +59,11 @@ jobs:
           path: ./wheelhouse/*.whl
 
   upload:
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pyd2lang-native
     permissions:
+      id-token: write
       contents: write
     # Download all the wheels from the previous job
     name: Upload wheels
