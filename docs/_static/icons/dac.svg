@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80">
+  <rect x="2" y="2" width="116" height="76" rx="4" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- Digital staircase input (left side) -->
+  <path d="M 12 58 L 18 58 L 18 50 L 24 50 L 24 42 L 30 42 L 30 46 L 36 46 L 36 54 L 42 54 L 42 42 L 48 42" fill="none" stroke="#0067B9" stroke-width="1.5"/>
+  <!-- Arrow -->
+  <path d="M 51 50 L 61 50" fill="none" stroke="#231F20" stroke-width="1.5"/>
+  <polygon points="59,47 64,50 59,53" fill="#231F20"/>
+  <!-- Analog sine wave output (right side) -->
+  <path d="M 66 50 Q 76 30, 86 50 Q 96 70, 106 50" fill="none" stroke="#0067B9" stroke-width="1.5"/>
+  <!-- Label -->
+  <text x="60" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#231F20">DAC</text>
+</svg>
