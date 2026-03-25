@@ -1,0 +1,120 @@
+name: Check d2lang updates
+
+on:
+  schedule:
+    - cron: "0 9 * * 1" # Every Monday at 9:00 UTC
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-update:
+    name: Check for new d2lang release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+
+      - name: Get current d2 version
+        id: current
+        run: |
+          version=$(grep 'oss.terrastruct.com/d2 ' lib/go.mod | awk '{print $2}')
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Current d2 version: $version"
+
+      - name: Get latest d2 release
+        id: latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag=$(gh api repos/terrastruct/d2/releases/latest --jq '.tag_name')
+          echo "version=$tag" >> "$GITHUB_OUTPUT"
+          echo "Latest d2 release: $tag"
+
+      - name: Compare versions
+        id: compare
+        run: |
+          if [ "${{ steps.current.outputs.version }}" = "${{ steps.latest.outputs.version }}" ]; then
+            echo "up_to_date=true" >> "$GITHUB_OUTPUT"
+            echo "Already on latest version"
+          else
+            echo "up_to_date=false" >> "$GITHUB_OUTPUT"
+            echo "Update available: ${{ steps.current.outputs.version }} → ${{ steps.latest.outputs.version }}"
+          fi
+
+      - name: Check for existing PR
+        if: steps.compare.outputs.up_to_date == 'false'
+        id: existing_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pr=$(gh pr list --head "deps/d2-${{ steps.latest.outputs.version }}" --json number --jq '.[0].number // empty')
+          if [ -n "$pr" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "PR #$pr already exists for this version"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update d2 dependency
+        if: steps.compare.outputs.up_to_date == 'false' && steps.existing_pr.outputs.exists == 'false'
+        run: |
+          cd lib
+          go get oss.terrastruct.com/d2@${{ steps.latest.outputs.version }}
+          go mod tidy
+
+      - name: Build shared library
+        if: steps.compare.outputs.up_to_date == 'false' && steps.existing_pr.outputs.exists == 'false'
+        run: |
+          cd lib
+          go build -buildmode=c-shared -o d2lib.so d2lib.go
+          mkdir -p ../d2/resources
+          cp d2lib.so ../d2/resources/
+
+      - name: Run tests
+        if: steps.compare.outputs.up_to_date == 'false' && steps.existing_pr.outputs.exists == 'false'
+        run: |
+          pip install pytest -e .
+          pytest test/ -v
+
+      - name: Create PR branch and open PR
+        if: steps.compare.outputs.up_to_date == 'false' && steps.existing_pr.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          branch="deps/d2-${{ steps.latest.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add lib/go.mod lib/go.sum
+          git commit -m "Update d2lang to ${{ steps.latest.outputs.version }}"
+          git push origin "$branch"
+
+          gh pr create \
+            --title "Update d2lang to ${{ steps.latest.outputs.version }}" \
+            --body "$(cat <<'EOF'
+          ## Summary
+
+          Automated dependency update for d2lang.
+
+          - **Current version:** ${{ steps.current.outputs.version }}
+          - **New version:** ${{ steps.latest.outputs.version }}
+          - **Release notes:** https://github.com/terrastruct/d2/releases/tag/${{ steps.latest.outputs.version }}
+
+          ## Verification
+
+          - [x] `go mod tidy` completed successfully
+          - [x] Shared library built without errors
+          - [x] Test suite passed
+
+          _This PR was created automatically by the weekly d2lang update check._
+          EOF
+          )" \
+            --assignee tfcollins \
+            --head "$branch" \
+            --base main
