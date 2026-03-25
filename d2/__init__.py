@@ -6,7 +6,7 @@ import ctypes
 import os
 import platform
 
-__version__ = "0.0.4"
+__version__ = "0.1.0"
 
 loc = os.path.dirname(os.path.abspath(__file__))
 
