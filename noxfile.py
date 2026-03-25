@@ -108,3 +108,16 @@ def act(session: nox.Session) -> None:
             *args,
             external=True,
         )
+
+
+@nox.session
+def release(session: nox.Session) -> None:
+    """Create a release: bump version, tag, and push.
+
+    Usage:
+        nox -s release                    # Patch bump (0.0.4 → 0.0.5)
+        nox -s release -- minor           # Minor bump (0.0.4 → 0.1.0)
+        nox -s release -- major           # Major bump (0.0.4 → 1.0.0)
+    """
+    bump = session.posargs[0] if session.posargs else "patch"
+    session.run("bash", "scripts/release.sh", bump, external=True)
