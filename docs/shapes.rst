@@ -1,7 +1,7 @@
 ADI Shapes
 ==========
 
-The library provides 27 component shapes based on standard EE schematic symbols.
+The library provides 32 component shapes based on standard EE schematic symbols.
 Each shape is a D2 class applied with ``class: <name>``.
 
 .. image:: _static/all-components.svg
@@ -141,6 +141,50 @@ Frequency Synthesis
           :width: 80
      - Clock generator. Rectangle with square wave symbol.
      - AD9520, AD9528, HMC7044
+
+PLL Sub-Components
+------------------
+
+Individual building blocks for detailed PLL loop diagrams.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 15 35 35
+
+   * - Class
+     - Icon
+     - Description
+     - Example Parts
+   * - ``pfd``
+     - .. image:: _static/icons/pfd.svg
+          :width: 80
+     - Phase-Frequency Detector. Compares REF and feedback phases,
+       outputs UP/DN pulses.
+     - Integrated in ADF4351, ADF4159, HMC830
+   * - ``charge-pump``
+     - .. image:: _static/icons/charge-pump.svg
+          :width: 80
+     - Charge pump. Converts PFD UP/DN pulses to current output
+       with matched source/sink current sources.
+     - Integrated in ADF4351, HMC830
+   * - ``loop-filter``
+     - .. image:: _static/icons/loop-filter.svg
+          :width: 80
+     - Loop filter. RC network (second-order shown) that filters
+       charge pump output to produce VCO tuning voltage.
+     - Passive RC, active op-amp implementations
+   * - ``vco``
+     - .. image:: _static/icons/vco.svg
+          :width: 54
+     - Voltage-Controlled Oscillator. Circle with sine wave and
+       Vtune input arrow.
+     - HMC586, HMC733, integrated in ADF4351
+   * - ``divider``
+     - .. image:: _static/icons/divider.svg
+          :width: 64
+     - Frequency divider (÷N). Divides output frequency for
+       PLL feedback path.
+     - Integrated in ADF4351, HMC439, HMC862A
 
 Signal Routing
 --------------

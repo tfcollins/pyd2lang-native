@@ -65,6 +65,11 @@ ADI_COMPONENTS = [
     "gpio",
     "i2c",
     "aurora",
+    "pfd",
+    "charge-pump",
+    "loop-filter",
+    "vco",
+    "divider",
 ]
 
 # ADI theme class names for reference
