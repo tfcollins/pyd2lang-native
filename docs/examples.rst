@@ -16,6 +16,10 @@ Compile a simple D2 diagram to SVG:
    with open("output.svg", "w") as f:
        f.write(svg)
 
+.. image:: _static/example-basic.svg
+   :alt: Basic diagram
+   :align: center
+
 Signal Chain
 ------------
 
@@ -44,6 +48,10 @@ A typical ADI signal chain with sensor, conditioning, and digitization:
    """
 
    svg = d2.compile(code, adi=True)
+
+.. image:: _static/example-signal-chain.svg
+   :alt: Signal chain example
+   :align: center
 
 Nested Subsystems
 -----------------
@@ -79,6 +87,10 @@ Group components into named subsystem containers:
    """
 
    svg = d2.compile(code, adi=True)
+
+.. image:: _static/example-nested.svg
+   :alt: Nested subsystems example
+   :align: center
 
 RF Receiver
 -----------
@@ -119,6 +131,10 @@ An RF receiver front end with LO generation:
 
    svg = d2.compile(code, adi=True)
 
+.. image:: _static/example-rf-receiver.svg
+   :alt: RF receiver example
+   :align: center
+
 Dark Theme
 ----------
 
@@ -135,6 +151,10 @@ Use the dark variant for dark-background contexts:
    """
 
    svg = d2.compile(code, adi=True, theme="dark")
+
+.. image:: _static/example-dark.svg
+   :alt: Dark theme example
+   :align: center
 
 Error Handling
 --------------
