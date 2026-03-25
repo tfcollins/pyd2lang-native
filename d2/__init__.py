@@ -1,5 +1,7 @@
 """Bindings for the D2 Compiler"""
 
+from __future__ import annotations
+
 import ctypes
 import os
 import platform
