@@ -1,19 +1,32 @@
+import importlib.util
 import os
+import re
 import sys
 
-sys.path.insert(0, os.path.abspath(".."))
+# Extract version from d2/__init__.py without importing the module
+# (importing requires the native .so which isn't available in docs CI)
+_version_file = os.path.join(os.path.abspath(".."), "d2", "__init__.py")
+_version = "0.0.0"
+with open(_version_file) as f:
+    for line in f:
+        m = re.match(r'^__version__\s*=\s*["\']([^"\']+)["\']', line)
+        if m:
+            _version = m.group(1)
+            break
 
-import d2
+# Only add d2 to sys.path if the native library is loadable
+if importlib.util.find_spec("d2") or os.path.exists(
+    os.path.join(os.path.abspath(".."), "d2", "resources")
+):
+    sys.path.insert(0, os.path.abspath(".."))
 
 project = "pyd2lang-native"
 copyright = "2024, Travis F. Collins"
 author = "Travis F. Collins"
-version = d2.__version__
-release = d2.__version__
+version = _version
+release = _version
 
 extensions = [
-    "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
 ]
