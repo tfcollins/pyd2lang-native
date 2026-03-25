@@ -1,7 +1,7 @@
 ADI Shapes
 ==========
 
-The library provides 21 component shapes based on standard EE schematic symbols.
+The library provides 27 component shapes based on standard EE schematic symbols.
 Each shape is a D2 class applied with ``class: <name>``.
 
 .. image:: _static/all-components.svg
@@ -39,14 +39,16 @@ Data Converters
    * - ``adc``
      - .. image:: _static/icons/adc.svg
           :width: 80
-     - Analog-to-Digital Converter. Rectangle with analog input waveform,
-       arrow, and digital staircase output.
+     - Analog-to-Digital Converter. Five-sided shape (rectangle + triangle
+       pointing right) with analog input waveform, arrow, and digital
+       staircase output.
      - AD7606, AD9680, AD4020
    * - ``dac``
      - .. image:: _static/icons/dac.svg
           :width: 80
-     - Digital-to-Analog Converter. Rectangle with digital staircase input,
-       arrow, and analog output waveform.
+     - Digital-to-Analog Converter. Five-sided shape (triangle pointing left +
+       rectangle) with digital staircase input, arrow, and analog output
+       waveform.
      - AD5686, AD9144, AD1955
 
 Amplifiers & Drivers
@@ -222,3 +224,62 @@ Digital & Sensing
      - Digital isolator. Rectangle split by dashed isolation barrier
        with signal arrows passing through.
      - ADuM1201, ADuM4160, ADuM3160
+
+Beamforming
+-----------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 15 35 35
+
+   * - Class
+     - Icon
+     - Description
+     - Example Parts
+   * - ``beamformer``
+     - .. image:: _static/icons/beamformer.svg
+          :width: 80
+     - Beamformer IC. Array of antenna elements converging into a beam
+       pattern with radiation lines.
+     - ADAR1000, ADAR3002, ADMV4828
+
+FPGA IP & Interfaces
+--------------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 15 35 35
+
+   * - Class
+     - Icon
+     - Description
+     - Example Parts
+   * - ``axi-interconnect``
+     - .. image:: _static/icons/axi-interconnect.svg
+          :width: 80
+     - AXI interconnect / crossbar. Grid of bus lines with junction dots
+       representing the switch matrix.
+     - Xilinx AXI Interconnect IP, Intel Avalon
+   * - ``spi``
+     - .. image:: _static/icons/spi.svg
+          :width: 80
+     - SPI bus interface. Four labeled signal lines (SCLK, MOSI, MISO, CS)
+       with directional arrows.
+     - Xilinx AXI Quad SPI, custom SPI controllers
+   * - ``gpio``
+     - .. image:: _static/icons/gpio.svg
+          :width: 80
+     - GPIO bank. Grid of I/O pin indicators with bidirectional arrows.
+     - Xilinx AXI GPIO, MCP23017
+   * - ``i2c``
+     - .. image:: _static/icons/i2c.svg
+          :width: 80
+     - I²C bus interface. Two-wire bus (SCL/SDA) with pull-up resistors,
+       device tap, and bidirectional arrows.
+     - Xilinx AXI IIC, custom I2C controllers
+   * - ``aurora``
+     - .. image:: _static/icons/aurora.svg
+          :width: 80
+     - Aurora high-speed serial link. TX/RX lanes with differential pair
+       indicators for multi-gigabit interconnect.
+     - Xilinx Aurora 8B/10B, Aurora 64B/66B

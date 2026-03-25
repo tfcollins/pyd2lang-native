@@ -59,6 +59,12 @@ ADI_COMPONENTS = [
     "driver",
     "isolator",
     "attenuator",
+    "beamformer",
+    "axi-interconnect",
+    "spi",
+    "gpio",
+    "i2c",
+    "aurora",
 ]
 
 # ADI theme class names for reference
