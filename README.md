@@ -1,4 +1,6 @@
-# pyd2lang-native
+<p align="center">
+  <img src="docs/_static/logo.svg" alt="pyd2lang-native" width="400">
+</p>
 
 [![Build](https://github.com/tfcollins/pyd2lang-native/actions/workflows/build_wheels.yml/badge.svg)](https://github.com/tfcollins/pyd2lang-native/actions/workflows/build_wheels.yml)
 [![Docs](https://github.com/tfcollins/pyd2lang-native/actions/workflows/docs.yml/badge.svg)](https://github.com/tfcollins/pyd2lang-native/actions/workflows/docs.yml)

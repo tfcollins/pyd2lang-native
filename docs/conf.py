@@ -36,6 +36,7 @@ exclude_patterns = ["_build"]
 
 html_theme = "furo"
 html_title = "pyd2lang-native"
+html_logo = "_static/logo.svg"
 
 html_theme_options = {
     "light_css_variables": {
