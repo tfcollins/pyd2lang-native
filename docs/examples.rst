@@ -49,6 +49,9 @@ A typical ADI signal chain with sensor, conditioning, and digitization:
 
    svg = d2.compile(code, library="adi")
 
+   with open("signal-chain.svg", "w") as f:
+       f.write(svg)
+
 .. image:: _static/example-signal-chain.svg
    :alt: Signal chain example
    :align: center
@@ -87,6 +90,9 @@ Group components into named subsystem containers:
    """
 
    svg = d2.compile(code, library="adi")
+
+   with open("nested.svg", "w") as f:
+       f.write(svg)
 
 .. image:: _static/example-nested.svg
    :alt: Nested subsystems example
@@ -131,6 +137,9 @@ An RF receiver front end with LO generation:
 
    svg = d2.compile(code, library="adi")
 
+   with open("rf-receiver.svg", "w") as f:
+       f.write(svg)
+
 .. image:: _static/example-rf-receiver.svg
    :alt: RF receiver example
    :align: center
@@ -151,6 +160,9 @@ Use the dark variant for dark-background contexts:
    """
 
    svg = d2.compile(code, library="adi", theme="dark")
+
+   with open("dark-adi.svg", "w") as f:
+       f.write(svg)
 
 .. image:: _static/example-dark.svg
    :alt: Dark theme example
@@ -228,6 +240,13 @@ An AI agent pipeline with seed instructions, auditing, and scoring:
 
    svg = d2.compile(code, library="sw")
 
+   with open("agent-pipeline.svg", "w") as f:
+       f.write(svg)
+
+.. image:: _static/example-sw-agent-pipeline.svg
+   :alt: SW agent pipeline example
+   :align: center
+
 SW: Workflow Comparison
 -----------------------
 
@@ -259,6 +278,13 @@ Side-by-side workflow comparison with color-coded steps:
    """
 
    svg = d2.compile(code, library="sw")
+
+   with open("workflow.svg", "w") as f:
+       f.write(svg)
+
+.. image:: _static/example-sw-workflow.svg
+   :alt: SW workflow comparison example
+   :align: center
 
 SW: Microservice Architecture
 -----------------------------
@@ -293,6 +319,13 @@ A typical backend architecture:
 
    svg = d2.compile(code, library="sw")
 
+   with open("microservice.svg", "w") as f:
+       f.write(svg)
+
+.. image:: _static/example-sw-microservice.svg
+   :alt: SW microservice architecture example
+   :align: center
+
 SW: Dark Theme
 --------------
 
@@ -310,3 +343,10 @@ Use the dark variant for dark-background contexts:
    """
 
    svg = d2.compile(code, library="sw", theme="dark")
+
+   with open("dark.svg", "w") as f:
+       f.write(svg)
+
+.. image:: _static/example-sw-dark.svg
+   :alt: SW dark theme example
+   :align: center
