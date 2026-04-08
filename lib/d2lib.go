@@ -27,6 +27,15 @@ var adiThemeDark string
 //go:embed adi/adi-components.d2
 var adiComponents string
 
+//go:embed sw/sw-theme.d2
+var swThemeLight string
+
+//go:embed sw/sw-theme-dark.d2
+var swThemeDark string
+
+//go:embed sw/sw-components.d2
+var swComponents string
+
 //export runme
 func runme(namePtr *C.char) *C.char {
 
@@ -66,7 +75,13 @@ func runme(namePtr *C.char) *C.char {
 
 //export runmeAdi
 func runmeAdi(namePtr *C.char, themeModePtr *C.char) *C.char {
-	userCode := C.GoString(namePtr)
+	return runmeLib(namePtr, C.CString("adi"), themeModePtr)
+}
+
+//export runmeLib
+func runmeLib(codePtr *C.char, libraryPtr *C.char, themeModePtr *C.char) *C.char {
+	userCode := C.GoString(codePtr)
+	library := C.GoString(libraryPtr)
 	themeMode := "light"
 	if themeModePtr != nil {
 		tm := C.GoString(themeModePtr)
@@ -75,14 +90,29 @@ func runmeAdi(namePtr *C.char, themeModePtr *C.char) *C.char {
 		}
 	}
 
-	// Select theme based on mode
-	theme := adiThemeLight
-	if themeMode == "dark" {
-		theme = adiThemeDark
+	// Select theme and components based on library name
+	var theme, components string
+	switch library {
+	case "adi":
+		if themeMode == "dark" {
+			theme = adiThemeDark
+		} else {
+			theme = adiThemeLight
+		}
+		components = adiComponents
+	case "sw":
+		if themeMode == "dark" {
+			theme = swThemeDark
+		} else {
+			theme = swThemeLight
+		}
+		components = swComponents
+	default:
+		return C.CString("Error: unknown library '" + library + "', expected 'adi' or 'sw'")
 	}
 
-	// Prepend ADI library (theme + components) to user code
-	combined := theme + "\n" + adiComponents + "\n" + userCode
+	// Prepend library (theme + components) to user code
+	combined := theme + "\n" + components + "\n" + userCode
 
 	ruler, _ := textmeasure.NewRuler()
 	layoutResolver := func(engine string) (d2graph.LayoutGraph, error) {

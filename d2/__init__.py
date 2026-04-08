@@ -5,6 +5,7 @@ from __future__ import annotations
 import ctypes
 import os
 import platform
+import warnings
 
 __version__ = "0.1.0"
 
@@ -35,6 +36,10 @@ _runme.restype = ctypes.c_char_p
 _runme_adi = library.runmeAdi
 _runme_adi.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
 _runme_adi.restype = ctypes.c_char_p
+
+_runme_lib = library.runmeLib
+_runme_lib.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p]
+_runme_lib.restype = ctypes.c_char_p
 
 # ADI component class names for reference
 ADI_COMPONENTS = [
@@ -116,27 +121,119 @@ ADI_THEME_CLASSES = [
     "adi-note",
 ]
 
+# SW (software/AI) component class names for reference
+SW_COMPONENTS = [
+    "sw-action",
+    "sw-agent",
+    "sw-api",
+    "sw-branch",
+    "sw-browser",
+    "sw-cache",
+    "sw-cloud",
+    "sw-config",
+    "sw-container-svc",
+    "sw-database",
+    "sw-dataset",
+    "sw-document",
+    "sw-eval",
+    "sw-function",
+    "sw-gateway",
+    "sw-log",
+    "sw-loop",
+    "sw-message",
+    "sw-metric",
+    "sw-mobile",
+    "sw-model",
+    "sw-pipeline",
+    "sw-prompt",
+    "sw-queue",
+    "sw-score",
+    "sw-server",
+    "sw-storage",
+    "sw-team",
+    "sw-terminal",
+    "sw-tool",
+    "sw-user",
+    "sw-webhook",
+]
 
-def compile(code: str, adi: bool = False, theme: str = "light") -> str | None:
+# SW theme class names for reference
+SW_THEME_CLASSES = [
+    "sw-container",
+    "sw-container-cream",
+    "sw-container-green",
+    "sw-container-amber",
+    "sw-container-red",
+    "sw-container-white",
+    "sw-step-blue",
+    "sw-step-green",
+    "sw-step-amber",
+    "sw-step-white",
+    "sw-title",
+    "sw-subtitle",
+    "sw-note",
+    "sw-flow",
+    "sw-flow-data",
+    "sw-flow-control",
+    "sw-flow-async",
+    "sw-flow-error",
+    "sw-flow-success",
+    "sw-flow-feedback",
+    "sw-flow-light",
+]
+
+_VALID_LIBRARIES = {"adi", "sw"}
+
+
+def compile(
+    code: str,
+    library: str | None = None,
+    theme: str = "light",
+    adi: bool = False,
+) -> str | None:
     """Compile D2 diagram code to SVG.
 
     Args:
         code: D2 diagram source code.
-        adi: If True, include Analog Devices component library
-            (ADC, DAC, amplifier, filter, PLL, mixer, etc.) and
-            ADI brand theme classes.
-        theme: Theme variant when adi=True. Either "light" or "dark".
+        library: Component library to include. Either ``"adi"`` for
+            Analog Devices signal-chain components, ``"sw"`` for
+            software/AI architecture components, or ``None`` for
+            plain D2 compilation.
+        theme: Theme variant when a library is used.
+            Either ``"light"`` or ``"dark"``.
+        adi: Deprecated. Use ``library="adi"`` instead.
 
     Returns:
         SVG string on success, None on failure.
 
     Raises:
         RuntimeError: If D2 compilation or rendering fails.
+        ValueError: If both *adi* and *library* are set, or if
+            *library* is not a recognized name.
     """
+    # Handle deprecated adi parameter
+    if adi:
+        if library is not None:
+            raise ValueError(
+                "Cannot specify both 'adi=True' and 'library'. Use library='adi' instead."
+            )
+        warnings.warn(
+            "The 'adi' parameter is deprecated. Use library='adi' instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        library = "adi"
+
+    if library is not None and library not in _VALID_LIBRARIES:
+        raise ValueError(
+            f"Unknown library '{library}'. Expected one of: {sorted(_VALID_LIBRARIES)}"
+        )
+
     try:
-        if adi:
-            graph_bytes = _runme_adi(
+        if library is not None:
+            graph_bytes = _runme_lib(
                 code.encode("utf-8"),
+                library.encode("utf-8"),
                 theme.encode("utf-8"),
             )
         else:
