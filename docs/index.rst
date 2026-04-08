@@ -4,8 +4,10 @@ pyd2lang-native
 Native Python bindings for the `d2lang <https://d2lang.com>`_ diagram compiler.
 Compile D2 diagram code to SVG directly from Python without requiring the ``d2`` CLI.
 
-Includes a built-in `Analog Devices <https://www.analog.com>`_ component library
-with 21 analog/mixed-signal shapes and ADI brand themes.
+Includes two built-in component libraries with ADI brand themes:
+
+- **ADI** — 64 analog/mixed-signal shapes for signal chain diagrams
+- **SW** — 32 software/AI shapes for architecture and agent pipeline diagrams
 
 Installation
 ------------
@@ -39,7 +41,26 @@ With ADI components:
    filt1 -> adc1: Filtered { class: adi-signal-analog }
    """
 
-   svg = d2.compile(code, adi=True)
+   svg = d2.compile(code, library="adi")
+
+With SW components:
+
+.. code-block:: python
+
+   import d2
+
+   code = """
+   agent: Auditor { class: sw-agent }
+   model: Claude { class: sw-model }
+   tool: Search { class: sw-tool }
+   doc: Seed { class: sw-document }
+
+   doc -> agent { class: sw-flow-data }
+   agent -> tool -> model { class: sw-flow }
+   model -> agent { class: sw-flow-feedback }
+   """
+
+   svg = d2.compile(code, library="sw")
 
 .. toctree::
    :maxdepth: 2
@@ -47,4 +68,5 @@ With ADI components:
 
    api
    adi
+   sw
    examples

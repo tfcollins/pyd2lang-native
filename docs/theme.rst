@@ -261,7 +261,7 @@ Using Themes
    import d2
 
    # Light theme (default)
-   svg_light = d2.compile(code, adi=True)
+   svg_light = d2.compile(code, library="adi")
 
    # Dark theme
-   svg_dark = d2.compile(code, adi=True, theme="dark")
+   svg_dark = d2.compile(code, library="adi", theme="dark")
