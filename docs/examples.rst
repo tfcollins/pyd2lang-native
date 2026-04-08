@@ -228,6 +228,10 @@ An AI agent pipeline with seed instructions, auditing, and scoring:
 
    svg = d2.compile(code, library="sw")
 
+.. image:: _static/example-sw-agent-pipeline.svg
+   :alt: SW agent pipeline example
+   :align: center
+
 SW: Workflow Comparison
 -----------------------
 
@@ -259,6 +263,10 @@ Side-by-side workflow comparison with color-coded steps:
    """
 
    svg = d2.compile(code, library="sw")
+
+.. image:: _static/example-sw-workflow.svg
+   :alt: SW workflow comparison example
+   :align: center
 
 SW: Microservice Architecture
 -----------------------------
@@ -293,6 +301,10 @@ A typical backend architecture:
 
    svg = d2.compile(code, library="sw")
 
+.. image:: _static/example-sw-microservice.svg
+   :alt: SW microservice architecture example
+   :align: center
+
 SW: Dark Theme
 --------------
 
@@ -310,3 +322,7 @@ Use the dark variant for dark-background contexts:
    """
 
    svg = d2.compile(code, library="sw", theme="dark")
+
+.. image:: _static/example-sw-dark.svg
+   :alt: SW dark theme example
+   :align: center
