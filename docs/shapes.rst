@@ -23,7 +23,7 @@ Usage
    amp1 -> filt1 -> adc1
    """
 
-   svg = d2.compile(code, adi=True)
+   svg = d2.compile(code, library="adi")
 
 Data Converters
 ---------------
