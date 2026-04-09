@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
-  <rect x="2" y="2" width="136" height="76" rx="8" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-  <!-- Bottom file -->
+<!-- Bottom file -->
   <rect x="44" y="32" width="56" height="40" rx="2" fill="#8ABBE0" stroke="#231F20" stroke-width="1.5"/>
   <!-- Middle file -->
   <rect x="40" y="24" width="56" height="40" rx="2" fill="#5A9FD4" stroke="#231F20" stroke-width="1.5"/>

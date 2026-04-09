@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
-  <rect x="2" y="2" width="136" height="76" rx="8" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-  <!-- Circular arrow - top arc -->
+<!-- Circular arrow - top arc -->
   <path d="M90,24 A22,22 0 0 0 50,24" fill="none" stroke="#0067B9" stroke-width="3" stroke-linecap="round"/>
   <!-- Arrow head top -->
   <polygon points="50,24 56,16 58,28" fill="#0067B9"/>

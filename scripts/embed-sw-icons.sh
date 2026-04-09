@@ -16,14 +16,11 @@ for svg in "$ICONS_DIR"/sw-*.svg; do
     b64=$(base64 -w0 "$svg" 2>/dev/null || base64 -i "$svg" 2>/dev/null)
     cat >> "$OUTPUT" <<EOF
   ${name}: {
-    shape: image
     icon: "data:image/svg+xml;base64,${b64}"
-    width: 100
-    height: 70
   }
 EOF
 done
 
 echo "}" >> "$OUTPUT"
 
-echo "Generated $OUTPUT with $(grep -c 'shape: image' "$OUTPUT") components"
+echo "Generated $OUTPUT with $(grep -c 'icon:' "$OUTPUT") components"
