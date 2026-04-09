@@ -180,6 +180,14 @@ SW_THEME_CLASSES = [
     "sw-flow-success",
     "sw-flow-feedback",
     "sw-flow-light",
+    "adi-container",
+    "adi-signal",
+    "adi-signal-analog",
+    "adi-signal-digital",
+    "adi-signal-clock",
+    "adi-signal-power",
+    "adi-title",
+    "adi-note",
 ]
 
 _VALID_LIBRARIES = {"adi", "sw"}
