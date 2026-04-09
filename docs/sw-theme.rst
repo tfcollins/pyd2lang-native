@@ -250,6 +250,60 @@ Annotation block for notes. Renders as a page shape with muted colors.
      across multiple dimensions
    | { class: sw-note }
 
+ADI Signal Classes
+------------------
+
+The SW library also includes the ADI theme's signal and layout classes, so you
+can use hardware-style color coding alongside software components. These classes
+adapt automatically to light and dark themes.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 18 15 45
+
+   * - Class
+     - Color (light)
+     - Stroke
+     - Use For
+   * - ``adi-signal``
+     - ADI Blue ``#0067B9``
+     - Solid, 2px
+     - Default signal connections
+   * - ``adi-signal-analog``
+     - Soft Black ``#231F20``
+     - Solid, 2px
+     - Analog signal paths
+   * - ``adi-signal-digital``
+     - ADI Blue ``#0067B9``
+     - Dashed, 2px
+     - Digital buses (SPI, I2S, JESD204B)
+   * - ``adi-signal-clock``
+     - Green ``#007A33``
+     - Dashed, 1px
+     - Clock distribution
+   * - ``adi-signal-power``
+     - Red ``#C8102E``
+     - Solid, 2px
+     - Power supply rails
+
+Additional ADI layout classes are also available:
+
+- ``adi-container`` — Blue border container (8px radius)
+- ``adi-title`` — Bold title in ADI Blue
+- ``adi-note`` — Muted annotation block (page shape)
+
+Example mixing SW components with ADI signal styles:
+
+.. code-block:: text
+
+   server: API Server { class: sw-server }
+   fpga: FPGA { class: sw-function }
+   db: Telemetry DB { class: sw-database }
+
+   server -> fpga: SPI Config { class: adi-signal-digital }
+   fpga -> db: Data Stream { class: sw-flow-data }
+   fpga -> server: Interrupt { class: adi-signal-clock }
+
 Using Themes
 ------------
 
