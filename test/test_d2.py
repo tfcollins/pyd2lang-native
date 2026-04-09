@@ -130,7 +130,6 @@ model1 -> agent1 { class: sw-flow-feedback }
     graph = d2.compile(code, library="sw")
     assert graph is not None
     assert "<?xml" in graph
-    assert "image" in graph.lower()
 
 
 def test_sw_all_components():

@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
-  <rect x="2" y="2" width="136" height="76" rx="8" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-  <!-- 3 connected chevrons -->
+<!-- 3 connected chevrons -->
   <!-- Chevron 1 -->
   <polygon points="24,20 44,40 24,60 40,60 60,40 40,20" fill="#0067B9" stroke="#231F20" stroke-width="1.5" stroke-linejoin="round"/>
   <!-- Chevron 2 -->

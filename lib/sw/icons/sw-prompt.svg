@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
-  <rect x="2" y="2" width="136" height="76" rx="8" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-  <!-- Chat bubble -->
+<!-- Chat bubble -->
   <path d="M40,18 h60 a8,8 0 0 1 8,8 v24 a8,8 0 0 1 -8,8 h-40 l-12,12 v-12 h-8 a8,8 0 0 1 -8,-8 v-24 a8,8 0 0 1 8,-8 z" fill="#0067B9" stroke="#231F20" stroke-width="2"/>
   <!-- Three dots -->
   <circle cx="58" cy="38" r="3.5" fill="#FFFFFF"/>

@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
-  <rect x="2" y="2" width="136" height="76" rx="8" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-  <!-- Robot head -->
+<!-- Robot head -->
   <!-- Antenna -->
   <line x1="70" y1="12" x2="70" y2="22" stroke="#231F20" stroke-width="2"/>
   <circle cx="70" cy="10" r="3" fill="#0067B9" stroke="#231F20" stroke-width="1.5"/>

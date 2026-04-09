@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
-  <rect x="2" y="2" width="136" height="76" rx="8" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-  <!-- Document with folded corner -->
+<!-- Document with folded corner -->
   <path d="M50,12 h26 l14,14 v42 a2,2 0 0 1 -2,2 h-38 a2,2 0 0 1 -2,-2 v-54 a2,2 0 0 1 2,-2 z" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
   <!-- Folded corner -->
   <path d="M76,12 v12 a2,2 0 0 0 2,2 h12" fill="none" stroke="#231F20" stroke-width="2"/>
