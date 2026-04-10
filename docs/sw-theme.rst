@@ -149,7 +149,7 @@ Container Classes
 sw-container
 ~~~~~~~~~~~~
 
-Groups components with ADI blue border and light blue fill.
+Groups components with ADI blue border and light blue fill. All containers use a modern ``border-radius: 12`` layout and feature prominent drop shadows for visual depth.
 
 .. code-block:: text
 
@@ -288,7 +288,7 @@ adapt automatically to light and dark themes.
 
 Additional ADI layout classes are also available:
 
-- ``adi-container`` — Blue border container (8px radius)
+- ``adi-container`` — Blue border container (8px radius, drop shadow)
 - ``adi-title`` — Bold title in ADI Blue
 - ``adi-note`` — Muted annotation block (page shape)
 

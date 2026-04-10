@@ -174,6 +174,9 @@ and light blue fill.
    * - Border radius
      - 8px
      - 8px
+   * - Drop shadow
+     - Yes
+     - Yes
    * - Font color
      - ``#231F20``
      - ``#E0E0E0``
@@ -198,8 +201,8 @@ Diagram title styled with ADI brand colors. Renders as a text-only shape.
      - Light
      - Dark
    * - Font size
-     - 22
-     - 22
+     - 24
+     - 24
    * - Font color
      - ``#0067B9``
      - ``#4D9AD5``
