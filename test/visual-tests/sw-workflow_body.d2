@@ -1,0 +1,35 @@
+direction: right
+
+title: AI Workflow System {class: sw-title}
+
+Cloud Architecture: {
+  class: sw-container
+  
+  API Gateway: {class: sw-api}
+  Message Queue: {class: sw-queue}
+  Storage: {class: sw-database}
+}
+
+Worker Node: {
+  class: sw-container-cream
+
+  Large Language Model: {
+    class: sw-model
+    width: 250
+    height: 100
+  }
+  Document Parser: {class: sw-function}
+  Cache layer: {class: sw-cache}
+}
+
+User: {class: sw-user; style.shadow: true}
+
+User -> Cloud Architecture.API Gateway: Requests analysis {class: sw-flow}
+Cloud Architecture.API Gateway -> Cloud Architecture.Message Queue: Enqueues job {class: sw-flow-control}
+Cloud Architecture.Message Queue -> Worker Node.Document Parser: Consumes job {class: sw-flow-async}
+Worker Node.Document Parser -> Worker Node.Large Language Model: Extracts text {class: sw-flow-data}
+Worker Node.Large Language Model -> Worker Node.Cache layer: Fetch similarities {class: sw-flow}
+Worker Node.Large Language Model -> Cloud Architecture.Storage: Saves result {class: sw-flow-success}
+Worker Node.Large Language Model -> User: Returns output {class: sw-flow-success}
+
+Note: Highly available architecture handling multiple requests asynchronously {class: sw-note}

@@ -1,0 +1,46 @@
+direction: right
+
+Title: Signal Conditioning Flow {class: adi-title}
+
+Hardware Setup: {
+  class: adi-container
+
+  ADC: {
+    shape: class
+    class: adi-ADC
+    width: 150
+    height: 80
+  }
+  
+  Filter: {
+    shape: class
+    class: adi-filter
+    width: 150
+    height: 80
+  }
+
+  DAC: {
+    shape: class
+    class: adi-DAC
+    width: 150
+    height: 80
+  }
+  
+  OpAmp: {
+    shape: class
+    class: adi-amp
+    width: 150
+    height: 80
+  }
+}
+
+Sensor -> Hardware Setup.OpAmp: Analog Signal {class: adi-signal-analog}
+Hardware Setup.OpAmp -> Hardware Setup.ADC: Amplified {class: adi-signal-analog}
+Hardware Setup.ADC -> Hardware Setup.Filter: Digitize {class: adi-signal-digital}
+Hardware Setup.Filter -> Hardware Setup.DAC: Clean Signal {class: adi-signal-digital}
+Hardware Setup.DAC -> Actuator: Output {class: adi-signal-analog}
+
+Clock -> Hardware Setup.ADC: 10MHz {class: adi-signal-clock}
+Clock -> Hardware Setup.DAC: 10MHz {class: adi-signal-clock}
+
+Note: Ensure strict clock synchronicity across conversions. {class: adi-note}

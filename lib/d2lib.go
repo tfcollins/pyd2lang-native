@@ -111,8 +111,9 @@ func runmeLib(codePtr *C.char, libraryPtr *C.char, themeModePtr *C.char) *C.char
 		return C.CString("Error: unknown library '" + library + "', expected 'adi' or 'sw'")
 	}
 
-	// Prepend library (theme + components) to user code
-	combined := theme + "\n" + components + "\n" + userCode
+	// Prepend library (components + theme) to user code so theme can
+	// override component class styles (needed for dark-mode variants).
+	combined := components + "\n" + theme + "\n" + userCode
 
 	ruler, _ := textmeasure.NewRuler()
 	layoutResolver := func(engine string) (d2graph.LayoutGraph, error) {

@@ -1,0 +1,562 @@
+# SW component classes — styled shapes with type-specific colors
+# Color coding: blue=compute, green=output/eval, amber=config/data, grey=tools, dark=terminal
+
+classes: {
+  # ── Core Software / Infrastructure ──
+  sw-server: {
+    style.fill: "#E3F2FD"
+    style.stroke: "#0067B9"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-database: {
+    shape: cylinder
+    style.fill: "#E8EAF6"
+    style.stroke: "#004A87"
+    style.font-color: "#231F20"
+  }
+  sw-queue: {
+    style.fill: "#E3F2FD"
+    style.stroke: "#0067B9"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-api: {
+    style.fill: "#E3F2FD"
+    style.stroke: "#0067B9"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-cloud: {
+    shape: cloud
+    style.fill: "#E3F2FD"
+    style.stroke: "#4D9AD5"
+    style.font-color: "#231F20"
+  }
+  sw-container-svc: {
+    style.fill: "#E3F2FD"
+    style.stroke: "#0067B9"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-function: {
+    style.fill: "#E8F5E9"
+    style.stroke: "#007A33"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-cache: {
+    style.fill: "#FFF3E0"
+    style.stroke: "#F5A623"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-storage: {
+    shape: cylinder
+    style.fill: "#E8EAF6"
+    style.stroke: "#004A87"
+    style.font-color: "#231F20"
+  }
+  sw-gateway: {
+    shape: hexagon
+    style.fill: "#E3F2FD"
+    style.stroke: "#004A87"
+    style.font-color: "#231F20"
+  }
+  sw-browser: {
+    style.fill: "#E3F2FD"
+    style.stroke: "#4D9AD5"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-mobile: {
+    style.fill: "#E3F2FD"
+    style.stroke: "#4D9AD5"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-terminal: {
+    style.fill: "#231F20"
+    style.stroke: "#231F20"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#FFFFFF"
+  }
+  sw-config: {
+    style.fill: "#FFF3E0"
+    style.stroke: "#F5A623"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+
+  # ── AI/ML & Agent Workflow ──
+  sw-model: {
+    style.fill: "#D6EAF8"
+    style.stroke: "#0067B9"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-agent: {
+    style.fill: "#D6EAF8"
+    style.stroke: "#004A87"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-prompt: {
+    style.fill: "#E8F4FD"
+    style.stroke: "#4D9AD5"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-document: {
+    shape: page
+    style.fill: "#FFFFFF"
+    style.stroke: "#231F20"
+    style.font-color: "#231F20"
+  }
+  sw-eval: {
+    style.fill: "#E8F5E9"
+    style.stroke: "#007A33"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-score: {
+    style.fill: "#E8F5E9"
+    style.stroke: "#007A33"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-tool: {
+    style.fill: "#F5F5F5"
+    style.stroke: "#58595B"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-action: {
+    style.fill: "#D6EAF8"
+    style.stroke: "#0067B9"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-loop: {
+    style.fill: "#E3F2FD"
+    style.stroke: "#4D9AD5"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-branch: {
+    shape: diamond
+    style.fill: "#FFF3E0"
+    style.stroke: "#F5A623"
+    style.font-color: "#231F20"
+  }
+  sw-dataset: {
+    shape: cylinder
+    style.fill: "#E8EAF6"
+    style.stroke: "#004A87"
+    style.font-color: "#231F20"
+  }
+  sw-pipeline: {
+    style.fill: "#D6EAF8"
+    style.stroke: "#0067B9"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+
+  # ── Communication & Observation ──
+  sw-message: {
+    style.fill: "#E3F2FD"
+    style.stroke: "#4D9AD5"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-log: {
+    style.fill: "#F5F5F5"
+    style.stroke: "#58595B"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-metric: {
+    style.fill: "#E8F5E9"
+    style.stroke: "#007A33"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+  sw-user: {
+    shape: person
+    style.fill: "#E3F2FD"
+    style.stroke: "#0067B9"
+    style.font-color: "#231F20"
+  }
+  sw-team: {
+    shape: person
+    style.fill: "#D6EAF8"
+    style.stroke: "#004A87"
+    style.font-color: "#231F20"
+  }
+  sw-webhook: {
+    style.fill: "#FFF3E0"
+    style.stroke: "#F5A623"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#231F20"
+  }
+}
+# SW Dark Theme — Software/AI diagram styles (dark variant)
+# For use on dark backgrounds
+
+vars: {
+  sw-blue: "#4D9AD5"
+  sw-dark-blue: "#0067B9"
+  sw-light-blue: "#A8D4F0"
+  sw-pale-blue: "#1A3A5C"
+  sw-bg-cream: "#2A2520"
+  sw-bg-blue: "#0D1B2A"
+  sw-black: "#E0E0E0"
+  sw-grey: "#B0B0B0"
+  sw-light-grey: "#3A3A3A"
+  sw-white: "#1A1A2E"
+  sw-red: "#FF6B6B"
+  sw-green: "#66BB6A"
+  sw-amber: "#FFB74D"
+}
+
+classes: {
+  # ── Containers ──
+  sw-container: {
+    style: {
+      fill: "#0D1B2A"
+      stroke: "#4D9AD5"
+      stroke-width: 2
+      border-radius: 12
+      shadow: true
+      font-color: "#E0E0E0"
+      font-size: 16
+    }
+  }
+  sw-container-cream: {
+    style: {
+      fill: "#2A2520"
+      stroke: "#3A3A3A"
+      stroke-width: 1
+      border-radius: 12
+      shadow: true
+      font-color: "#E0E0E0"
+      font-size: 16
+    }
+  }
+  sw-container-green: {
+    style: {
+      fill: "#1B3A1B"
+      stroke: "#66BB6A"
+      stroke-width: 2
+      border-radius: 12
+      shadow: true
+      font-color: "#E0E0E0"
+      font-size: 16
+    }
+  }
+  sw-container-amber: {
+    style: {
+      fill: "#3A2E1B"
+      stroke: "#FFB74D"
+      stroke-width: 2
+      border-radius: 12
+      shadow: true
+      font-color: "#E0E0E0"
+      font-size: 16
+    }
+  }
+  sw-container-red: {
+    style: {
+      fill: "#3A1B1B"
+      stroke: "#FF6B6B"
+      stroke-width: 2
+      border-radius: 12
+      shadow: true
+      font-color: "#E0E0E0"
+      font-size: 16
+    }
+  }
+  sw-container-white: {
+    style: {
+      fill: "#1A1A2E"
+      stroke: "#3A3A3A"
+      stroke-width: 1
+      border-radius: 12
+      shadow: true
+      font-color: "#E0E0E0"
+      font-size: 16
+    }
+  }
+
+  # ── Step highlights ──
+  sw-step-blue: {
+    style: {
+      fill: "#1A3A5C"
+      stroke: "#4D9AD5"
+      stroke-width: 1
+      border-radius: 8
+      font-color: "#E0E0E0"
+      font-size: 14
+    }
+  }
+  sw-step-green: {
+    style: {
+      fill: "#1B3A1B"
+      stroke: "#66BB6A"
+      stroke-width: 1
+      border-radius: 8
+      font-color: "#E0E0E0"
+      font-size: 14
+    }
+  }
+  sw-step-amber: {
+    style: {
+      fill: "#3A2E1B"
+      stroke: "#FFB74D"
+      stroke-width: 1
+      border-radius: 8
+      font-color: "#E0E0E0"
+      font-size: 14
+    }
+  }
+  sw-step-white: {
+    style: {
+      fill: "#1A1A2E"
+      stroke: "#3A3A3A"
+      stroke-width: 1
+      border-radius: 8
+      font-color: "#E0E0E0"
+      font-size: 14
+    }
+  }
+
+  # ── Typography ──
+  sw-title: {
+    shape: text
+    style: {
+      font-size: 22
+      font-color: "#4D9AD5"
+      bold: true
+    }
+  }
+  sw-subtitle: {
+    shape: text
+    style: {
+      font-size: 16
+      font-color: "#E0E0E0"
+      bold: true
+    }
+  }
+  sw-note: {
+    shape: page
+    style: {
+      fill: "#2A2A1E"
+      stroke: "#3A3A3A"
+      stroke-width: 1
+      font-size: 11
+      font-color: "#B0B0B0"
+      italic: true
+    }
+  }
+
+  # ── Connection/flow styles ──
+  sw-flow: {
+    style: {
+      stroke: "#4D9AD5"
+      stroke-width: 2
+      font-color: "#E0E0E0"
+      font-size: 13
+    }
+  }
+  sw-flow-data: {
+    style: {
+      stroke: "#A8D4F0"
+      stroke-width: 3
+      font-color: "#A8D4F0"
+      font-size: 13
+    }
+  }
+  sw-flow-control: {
+    style: {
+      stroke: "#B0B0B0"
+      stroke-width: 2
+      stroke-dash: 5
+      font-color: "#B0B0B0"
+      font-size: 13
+    }
+  }
+  sw-flow-async: {
+    style: {
+      stroke: "#FFB74D"
+      stroke-width: 2
+      stroke-dash: 3
+      font-color: "#FFB74D"
+      font-size: 13
+    }
+  }
+  sw-flow-error: {
+    style: {
+      stroke: "#FF6B6B"
+      stroke-width: 2
+      font-color: "#FF6B6B"
+      font-size: 13
+    }
+  }
+  sw-flow-success: {
+    style: {
+      stroke: "#66BB6A"
+      stroke-width: 2
+      font-color: "#66BB6A"
+      font-size: 13
+    }
+  }
+  sw-flow-feedback: {
+    style: {
+      stroke: "#4D9AD5"
+      stroke-width: 2
+      stroke-dash: 3
+      font-color: "#4D9AD5"
+      font-size: 13
+    }
+  }
+  sw-flow-light: {
+    style: {
+      stroke: "#3A3A3A"
+      stroke-width: 2
+      font-color: "#B0B0B0"
+      font-size: 12
+    }
+  }
+
+  # ── ADI color classes (dark) ──
+  adi-container: {
+    style: {
+      fill: "#0D1B2A"
+      stroke: "#4D9AD5"
+      stroke-width: 2
+      border-radius: 8
+      shadow: true
+      font-color: "#E0E0E0"
+      font-size: 16
+    }
+  }
+  adi-signal: {
+    style: {
+      stroke: "#4D9AD5"
+      stroke-width: 2
+      font-color: "#E0E0E0"
+      font-size: 13
+    }
+  }
+  adi-signal-analog: {
+    style: {
+      stroke: "#E0E0E0"
+      stroke-width: 2
+      font-color: "#E0E0E0"
+      font-size: 13
+    }
+  }
+  adi-signal-digital: {
+    style: {
+      stroke: "#4D9AD5"
+      stroke-width: 2
+      stroke-dash: 5
+      font-color: "#4D9AD5"
+      font-size: 13
+    }
+  }
+  adi-signal-clock: {
+    style: {
+      stroke: "#66BB6A"
+      stroke-width: 1
+      stroke-dash: 3
+      font-color: "#66BB6A"
+      font-size: 11
+    }
+  }
+  adi-signal-power: {
+    style: {
+      stroke: "#FF6B6B"
+      stroke-width: 2
+      font-color: "#FF6B6B"
+      font-size: 13
+    }
+  }
+  adi-title: {
+    shape: text
+    style: {
+      font-size: 24
+      font-color: "#4D9AD5"
+      bold: true
+    }
+  }
+  adi-note: {
+    shape: page
+    style: {
+      fill: "#2A2A1E"
+      stroke: "#3A3A3A"
+      stroke-width: 1
+      font-size: 11
+      font-color: "#B0B0B0"
+      italic: true
+    }
+  }
+}
+direction: right
+
+title: AI Workflow System {class: sw-title}
+
+Cloud Architecture: {
+  class: sw-container
+  
+  API Gateway: {class: sw-api}
+  Message Queue: {class: sw-queue}
+  Storage: {class: sw-database}
+}
+
+Worker Node: {
+  class: sw-container-cream
+
+  Large Language Model: {
+    class: sw-model
+    width: 250
+    height: 100
+  }
+  Document Parser: {class: sw-function}
+  Cache layer: {class: sw-cache}
+}
+
+User: {class: sw-user; style.shadow: true}
+
+User -> Cloud Architecture.API Gateway: Requests analysis {class: sw-flow}
+Cloud Architecture.API Gateway -> Cloud Architecture.Message Queue: Enqueues job {class: sw-flow-control}
+Cloud Architecture.Message Queue -> Worker Node.Document Parser: Consumes job {class: sw-flow-async}
+Worker Node.Document Parser -> Worker Node.Large Language Model: Extracts text {class: sw-flow-data}
+Worker Node.Large Language Model -> Worker Node.Cache layer: Fetch similarities {class: sw-flow}
+Worker Node.Large Language Model -> Cloud Architecture.Storage: Saves result {class: sw-flow-success}
+Worker Node.Large Language Model -> User: Returns output {class: sw-flow-success}
+
+Note: Highly available architecture handling multiple requests asynchronously {class: sw-note}
