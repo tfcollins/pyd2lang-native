@@ -19,6 +19,12 @@ Compile a simple D2 diagram to SVG:
 .. image:: _static/example-basic.svg
    :alt: Basic diagram
    :align: center
+   :class: only-light
+
+.. image:: _static/example-basic-dark.svg
+   :alt: Basic diagram
+   :align: center
+   :class: only-dark
 
 Signal Chain
 ------------
@@ -55,6 +61,12 @@ A typical ADI signal chain with sensor, conditioning, and digitization:
 .. image:: _static/example-signal-chain.svg
    :alt: Signal chain example
    :align: center
+   :class: only-light
+
+.. image:: _static/example-signal-chain-dark.svg
+   :alt: Signal chain example
+   :align: center
+   :class: only-dark
 
 Nested Subsystems
 -----------------
@@ -97,6 +109,12 @@ Group components into named subsystem containers:
 .. image:: _static/example-nested.svg
    :alt: Nested subsystems example
    :align: center
+   :class: only-light
+
+.. image:: _static/example-nested-dark.svg
+   :alt: Nested subsystems example
+   :align: center
+   :class: only-dark
 
 RF Receiver
 -----------
@@ -143,6 +161,12 @@ An RF receiver front end with LO generation:
 .. image:: _static/example-rf-receiver.svg
    :alt: RF receiver example
    :align: center
+   :class: only-light
+
+.. image:: _static/example-rf-receiver-dark.svg
+   :alt: RF receiver example
+   :align: center
+   :class: only-dark
 
 Dark Theme
 ----------
@@ -246,6 +270,12 @@ An AI agent pipeline with seed instructions, auditing, and scoring:
 .. image:: _static/example-sw-agent-pipeline.svg
    :alt: SW agent pipeline example
    :align: center
+   :class: only-light
+
+.. image:: _static/example-sw-agent-pipeline-dark.svg
+   :alt: SW agent pipeline example
+   :align: center
+   :class: only-dark
 
 SW: Workflow Comparison
 -----------------------
@@ -285,6 +315,12 @@ Side-by-side workflow comparison with color-coded steps:
 .. image:: _static/example-sw-workflow.svg
    :alt: SW workflow comparison example
    :align: center
+   :class: only-light
+
+.. image:: _static/example-sw-workflow-dark.svg
+   :alt: SW workflow comparison example
+   :align: center
+   :class: only-dark
 
 SW: Microservice Architecture
 -----------------------------
@@ -325,6 +361,12 @@ A typical backend architecture:
 .. image:: _static/example-sw-microservice.svg
    :alt: SW microservice architecture example
    :align: center
+   :class: only-light
+
+.. image:: _static/example-sw-microservice-dark.svg
+   :alt: SW microservice architecture example
+   :align: center
+   :class: only-dark
 
 SW: Dark Theme
 --------------

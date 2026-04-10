@@ -244,17 +244,15 @@ Annotation block for design notes. Renders as a page shape with muted colors.
 Theme Comparison
 ----------------
 
-Light:
-
 .. image:: _static/signal-chain-example.svg
    :alt: Signal chain — light theme
    :align: center
-
-Dark:
+   :class: only-light
 
 .. image:: _static/signal-chain-dark.svg
    :alt: Signal chain — dark theme
    :align: center
+   :class: only-dark
 
 Using Themes
 ------------
