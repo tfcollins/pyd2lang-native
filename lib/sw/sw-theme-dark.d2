@@ -1,17 +1,17 @@
 # SW Dark Theme — Software/AI diagram styles (dark variant)
-# For use on dark backgrounds
+# Harmonized with adi_doctools "cosmic" Sphinx theme dark mode
 
 vars: {
-  sw-blue: "#4D9AD5"
-  sw-dark-blue: "#0067B9"
-  sw-light-blue: "#A8D4F0"
-  sw-pale-blue: "#1A3A5C"
-  sw-bg-cream: "#2A2520"
-  sw-bg-blue: "#0D1B2A"
-  sw-black: "#E0E0E0"
-  sw-grey: "#B0B0B0"
-  sw-light-grey: "#3A3A3A"
-  sw-white: "#1A1A2E"
+  sw-blue: "#92befc"
+  sw-dark-blue: "#5a9fd4"
+  sw-light-blue: "#b8d4f0"
+  sw-pale-blue: "#152535"
+  sw-bg-cream: "#293038"
+  sw-bg-blue: "#152535"
+  sw-black: "#e5e5e5"
+  sw-grey: "#cccccc"
+  sw-light-grey: "#3a424b"
+  sw-white: "#1e2830"
   sw-red: "#FF6B6B"
   sw-green: "#66BB6A"
   sw-amber: "#FFB74D"
@@ -21,67 +21,67 @@ classes: {
   # ── Containers ──
   sw-container: {
     style: {
-      fill: "#0D1B2A"
-      stroke: "#4D9AD5"
+      fill: "#152535"
+      stroke: "#92befc"
       stroke-width: 2
       border-radius: 12
       shadow: true
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 16
     }
   }
   sw-container-cream: {
     style: {
-      fill: "#2A2520"
-      stroke: "#3A3A3A"
+      fill: "#293038"
+      stroke: "#3a424b"
       stroke-width: 1
       border-radius: 12
       shadow: true
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 16
     }
   }
   sw-container-green: {
     style: {
-      fill: "#1B3A1B"
+      fill: "#162e1e"
       stroke: "#66BB6A"
       stroke-width: 2
       border-radius: 12
       shadow: true
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 16
     }
   }
   sw-container-amber: {
     style: {
-      fill: "#3A2E1B"
+      fill: "#2e2515"
       stroke: "#FFB74D"
       stroke-width: 2
       border-radius: 12
       shadow: true
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 16
     }
   }
   sw-container-red: {
     style: {
-      fill: "#3A1B1B"
+      fill: "#301a1a"
       stroke: "#FF6B6B"
       stroke-width: 2
       border-radius: 12
       shadow: true
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 16
     }
   }
   sw-container-white: {
     style: {
-      fill: "#1A1A2E"
-      stroke: "#3A3A3A"
+      fill: "#1e2830"
+      stroke: "#3a424b"
       stroke-width: 1
       border-radius: 12
       shadow: true
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 16
     }
   }
@@ -89,63 +89,232 @@ classes: {
   # ── Step highlights ──
   sw-step-blue: {
     style: {
-      fill: "#1A3A5C"
-      stroke: "#4D9AD5"
+      fill: "#1a2d40"
+      stroke: "#92befc"
       stroke-width: 1
       border-radius: 8
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 14
     }
   }
   sw-step-green: {
     style: {
-      fill: "#1B3A1B"
+      fill: "#162e1e"
       stroke: "#66BB6A"
       stroke-width: 1
       border-radius: 8
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 14
     }
   }
   sw-step-amber: {
     style: {
-      fill: "#3A2E1B"
+      fill: "#2e2515"
       stroke: "#FFB74D"
       stroke-width: 1
       border-radius: 8
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 14
     }
   }
   sw-step-white: {
     style: {
-      fill: "#1A1A2E"
-      stroke: "#3A3A3A"
+      fill: "#1e2830"
+      stroke: "#3a424b"
       stroke-width: 1
       border-radius: 8
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 14
     }
   }
 
-  # ── Dark overrides for light-biased component defaults ──
+  # ── Dark overrides for component classes ──
+  # Blue/compute group
+  sw-server: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-database: {
+    shape: cylinder
+    style.fill: "#182338"
+    style.stroke: "#5a9fd4"
+    style.font-color: "#e5e5e5"
+  }
+  sw-queue: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-api: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-cloud: {
+    shape: cloud
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-container-svc: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-browser: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-mobile: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-loop: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-message: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-user: {
+    shape: person
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-prompt: {
+    style.fill: "#152535"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+
+  # Blue-medium/AI group
+  sw-model: {
+    style.fill: "#1a2d40"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-agent: {
+    style.fill: "#1a2d40"
+    style.stroke: "#5a9fd4"
+    style.font-color: "#e5e5e5"
+  }
+  sw-action: {
+    style.fill: "#1a2d40"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-pipeline: {
+    style.fill: "#1a2d40"
+    style.stroke: "#92befc"
+    style.font-color: "#e5e5e5"
+  }
+  sw-team: {
+    shape: person
+    style.fill: "#1a2d40"
+    style.stroke: "#5a9fd4"
+    style.font-color: "#e5e5e5"
+  }
+
+  # Indigo/data group
+  sw-storage: {
+    shape: cylinder
+    style.fill: "#182338"
+    style.stroke: "#5a9fd4"
+    style.font-color: "#e5e5e5"
+  }
+  sw-dataset: {
+    shape: cylinder
+    style.fill: "#182338"
+    style.stroke: "#5a9fd4"
+    style.font-color: "#e5e5e5"
+  }
+  sw-gateway: {
+    shape: hexagon
+    style.fill: "#182338"
+    style.stroke: "#5a9fd4"
+    style.font-color: "#e5e5e5"
+  }
+
+  # Green/output group
+  sw-function: {
+    style.fill: "#162e1e"
+    style.stroke: "#66BB6A"
+    style.font-color: "#e5e5e5"
+  }
+  sw-eval: {
+    style.fill: "#162e1e"
+    style.stroke: "#66BB6A"
+    style.font-color: "#e5e5e5"
+  }
+  sw-score: {
+    style.fill: "#162e1e"
+    style.stroke: "#66BB6A"
+    style.font-color: "#e5e5e5"
+  }
+  sw-metric: {
+    style.fill: "#162e1e"
+    style.stroke: "#66BB6A"
+    style.font-color: "#e5e5e5"
+  }
+
+  # Amber/config group
+  sw-cache: {
+    style.fill: "#2e2515"
+    style.stroke: "#FFB74D"
+    style.font-color: "#e5e5e5"
+  }
+  sw-config: {
+    style.fill: "#2e2515"
+    style.stroke: "#FFB74D"
+    style.font-color: "#e5e5e5"
+  }
+  sw-branch: {
+    shape: diamond
+    style.fill: "#2e2515"
+    style.stroke: "#FFB74D"
+    style.font-color: "#e5e5e5"
+  }
+  sw-webhook: {
+    style.fill: "#2e2515"
+    style.stroke: "#FFB74D"
+    style.font-color: "#e5e5e5"
+  }
+
+  # Grey/tools group
+  sw-tool: {
+    style.fill: "#293038"
+    style.stroke: "#cccccc"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#e5e5e5"
+  }
+  sw-log: {
+    style.fill: "#293038"
+    style.stroke: "#cccccc"
+    style.font-color: "#e5e5e5"
+  }
+
+  # Document
   sw-document: {
     shape: page
-    style: {
-      fill: "#1A1A2E"
-      stroke: "#B0B0B0"
-      stroke-width: 2
-      font-color: "#E0E0E0"
-    }
+    style.fill: "#1e2830"
+    style.stroke: "#cccccc"
+    style.stroke-width: 2
+    style.font-color: "#e5e5e5"
   }
-  sw-tool: {
-    style: {
-      fill: "#2A2520"
-      stroke: "#B0B0B0"
-      border-radius: 8
-      shadow: true
-      font-color: "#E0E0E0"
-    }
+
+  # Terminal
+  sw-terminal: {
+    style.fill: "#101820"
+    style.stroke: "#3a424b"
+    style.font-color: "#e5e5e5"
   }
 
   # ── Typography ──
@@ -153,7 +322,7 @@ classes: {
     shape: text
     style: {
       font-size: 22
-      font-color: "#4D9AD5"
+      font-color: "#92befc"
       bold: true
     }
   }
@@ -161,18 +330,18 @@ classes: {
     shape: text
     style: {
       font-size: 16
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       bold: true
     }
   }
   sw-note: {
     shape: page
     style: {
-      fill: "#2A2A1E"
-      stroke: "#3A3A3A"
+      fill: "#293038"
+      stroke: "#3a424b"
       stroke-width: 1
       font-size: 11
-      font-color: "#B0B0B0"
+      font-color: "#cccccc"
       italic: true
     }
   }
@@ -180,26 +349,26 @@ classes: {
   # ── Connection/flow styles ──
   sw-flow: {
     style: {
-      stroke: "#4D9AD5"
+      stroke: "#92befc"
       stroke-width: 2
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 13
     }
   }
   sw-flow-data: {
     style: {
-      stroke: "#A8D4F0"
+      stroke: "#b8d4f0"
       stroke-width: 3
-      font-color: "#A8D4F0"
+      font-color: "#b8d4f0"
       font-size: 13
     }
   }
   sw-flow-control: {
     style: {
-      stroke: "#B0B0B0"
+      stroke: "#cccccc"
       stroke-width: 2
       stroke-dash: 5
-      font-color: "#B0B0B0"
+      font-color: "#cccccc"
       font-size: 13
     }
   }
@@ -230,18 +399,18 @@ classes: {
   }
   sw-flow-feedback: {
     style: {
-      stroke: "#4D9AD5"
+      stroke: "#92befc"
       stroke-width: 2
       stroke-dash: 3
-      font-color: "#4D9AD5"
+      font-color: "#92befc"
       font-size: 13
     }
   }
   sw-flow-light: {
     style: {
-      stroke: "#3A3A3A"
+      stroke: "#3a424b"
       stroke-width: 2
-      font-color: "#B0B0B0"
+      font-color: "#cccccc"
       font-size: 12
     }
   }
@@ -249,37 +418,37 @@ classes: {
   # ── ADI color classes (dark) ──
   adi-container: {
     style: {
-      fill: "#0D1B2A"
-      stroke: "#4D9AD5"
+      fill: "#152535"
+      stroke: "#92befc"
       stroke-width: 2
       border-radius: 8
       shadow: true
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 16
     }
   }
   adi-signal: {
     style: {
-      stroke: "#4D9AD5"
+      stroke: "#92befc"
       stroke-width: 2
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 13
     }
   }
   adi-signal-analog: {
     style: {
-      stroke: "#E0E0E0"
+      stroke: "#e5e5e5"
       stroke-width: 2
-      font-color: "#E0E0E0"
+      font-color: "#e5e5e5"
       font-size: 13
     }
   }
   adi-signal-digital: {
     style: {
-      stroke: "#4D9AD5"
+      stroke: "#92befc"
       stroke-width: 2
       stroke-dash: 5
-      font-color: "#4D9AD5"
+      font-color: "#92befc"
       font-size: 13
     }
   }
@@ -304,18 +473,18 @@ classes: {
     shape: text
     style: {
       font-size: 24
-      font-color: "#4D9AD5"
+      font-color: "#92befc"
       bold: true
     }
   }
   adi-note: {
     shape: page
     style: {
-      fill: "#2A2A1E"
-      stroke: "#3A3A3A"
+      fill: "#293038"
+      stroke: "#3a424b"
       stroke-width: 1
       font-size: 11
-      font-color: "#B0B0B0"
+      font-color: "#cccccc"
       italic: true
     }
   }
