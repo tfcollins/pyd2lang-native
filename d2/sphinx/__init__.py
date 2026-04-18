@@ -22,6 +22,7 @@ def _resolve_paths(app: Any) -> None:
 
 
 def setup(app: Any) -> dict[str, Any]:
+    import d2
     from d2.sphinx.directive import D2Directive
     from d2.sphinx.nodes import d2_svg, depart_d2_svg_html, visit_d2_svg_html
 
@@ -37,7 +38,7 @@ def setup(app: Any) -> dict[str, Any]:
     app.connect("builder-inited", _resolve_paths)
 
     return {
-        "version": "0.1.0",
+        "version": d2.__version__,
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }

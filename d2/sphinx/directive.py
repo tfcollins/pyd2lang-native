@@ -112,9 +112,16 @@ class D2Directive(SphinxDirective):
         alt = self.options.get("alt")
 
         if len(svgs) == 1:
-            node = d2_svg(svg=self._wrap_with_alt(svgs[0][1], alt))
-            self._apply_wrapper_attrs(node, extra_classes, align)
-            return [node]
+            svg_node = d2_svg(svg=self._wrap_with_alt(svgs[0][1], alt))
+            needs_wrapper = bool(extra_classes or align or self.options.get("name"))
+            if not needs_wrapper:
+                return [svg_node]
+            container = dnodes.container(classes=list(extra_classes))
+            if align:
+                container["classes"].append(f"align-{align}")
+            container += svg_node
+            self.add_name(container)
+            return [container]
 
         container = dnodes.container(classes=["d2-container", *extra_classes])
         if align:
@@ -124,6 +131,7 @@ class D2Directive(SphinxDirective):
             inner = dnodes.container(classes=wrap_classes)
             inner += d2_svg(svg=self._wrap_with_alt(inline_svg, alt))
             container += inner
+        self.add_name(container)
         return [container]
 
     def _emit_files(
@@ -161,19 +169,13 @@ class D2Directive(SphinxDirective):
             img_nodes.append(dnodes.raw("", markup, format="html"))
 
         if len(img_nodes) == 1:
+            self.add_name(img_nodes[0])
             return img_nodes
         container = dnodes.container(classes=["d2-container", *extra_classes])
         for n in img_nodes:
             container += n
+        self.add_name(container)
         return [container]
-
-    def _apply_wrapper_attrs(
-        self, node: dnodes.Node, extra_classes: list[str], align: str | None
-    ) -> None:
-        if extra_classes:
-            node["classes"] = extra_classes
-        if align:
-            node.setdefault("classes", []).append(f"align-{align}")
 
     def _wrap_with_alt(self, svg: str, alt: str | None) -> str:
         if not alt:

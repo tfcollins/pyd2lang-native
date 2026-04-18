@@ -250,3 +250,42 @@ def test_second_build_is_a_cache_hit(tmp_path: Path):
     assert entries_after == entries_before
     for p in entries_after:
         assert (cache_dir / p).stat().st_mtime_ns == mtimes_before[p]
+
+
+def test_align_option_single_variant(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :theme: light\n"
+        "   :align: center\n"
+        "\n"
+        "   a -> b\n"
+    )
+    html, _ = build_docs(tmp_path, rst)
+    assert "align-center" in html
+
+
+def test_class_option_single_variant(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :theme: light\n"
+        "   :class: my-extra\n"
+        "\n"
+        "   a -> b\n"
+    )
+    html, _ = build_docs(tmp_path, rst)
+    assert "my-extra" in html
+
+
+def test_name_option_creates_reference_target(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :theme: light\n"
+        "   :name: my-diagram\n"
+        "\n"
+        "   a -> b\n"
+    )
+    html, _ = build_docs(tmp_path, rst)
+    assert 'id="my-diagram"' in html
