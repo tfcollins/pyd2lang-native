@@ -54,7 +54,11 @@ class D2Directive(Directive):
     }
 
     def run(self) -> list[dnodes.Node]:
-        source = "\n".join(self.content).strip()
+        source, err = self._resolve_source()
+        if err is not None:
+            self.state.document.reporter.warning(err, line=self.lineno)
+            return [d2_svg(svg=placeholder_svg(err))]
+
         library = self.options.get("library")
         theme = self.options.get("theme") or "light"
 
@@ -76,3 +80,24 @@ class D2Directive(Directive):
         inline = _strip_xml_declaration(svg)
         node = d2_svg(svg=inline)
         return [node]
+
+    def _resolve_source(self) -> tuple[str, str | None]:
+        body = "\n".join(self.content).strip()
+        arg = self.arguments[0] if self.arguments else None
+
+        if arg and body:
+            return "", "D2 directive takes either a file path or inline content, not both"
+        if not arg and not body:
+            return "", "D2 directive requires either a file path or inline content"
+
+        if arg:
+            env = self.state.document.settings.env
+            rst_path = Path(env.doc2path(env.docname))
+            target = Path(arg)
+            if not target.is_absolute():
+                target = (rst_path.parent / target).resolve()
+            try:
+                return target.read_text(encoding="utf-8"), None
+            except OSError as exc:
+                return "", f"D2 directive cannot read {target}: {exc}"
+        return body, None
