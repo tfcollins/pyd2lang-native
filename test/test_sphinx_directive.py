@@ -127,3 +127,18 @@ def test_alt_option_lands_on_wrapper(tmp_path: Path):
     )
     html, _ = build_docs(tmp_path, rst)
     assert 'aria-label="my diagram"' in html
+
+
+def test_alt_option_escapes_html_injection(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :theme: light\n"
+        "   :alt: \"><script>alert(1)</script>\n"
+        "\n"
+        "   a -> b\n"
+    )
+    html_out, _ = build_docs(tmp_path, rst)
+    # The script tag must be escaped, not pass through literally.
+    assert "<script>alert(1)</script>" not in html_out
+    assert "&lt;script&gt;" in html_out or "&#x3C;script&#x3E;" in html_out

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import html
+import warnings
 from pathlib import Path
 
 from docutils import nodes as dnodes
@@ -57,6 +59,13 @@ class D2Directive(SphinxDirective):
         "name": directives.unchanged,
     }
 
+    @property
+    def app(self):
+        """Expose the Sphinx app object directly."""
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore")
+            return self.env.app
+
     def run(self) -> list[dnodes.Node]:
         source, err = self._resolve_source()
         if err is not None:
@@ -71,7 +80,7 @@ class D2Directive(SphinxDirective):
         else:
             variants = [theme_opt or "light"]
 
-        cache_dir = Path(self.config.d2_cache_dir or (Path(self.env.app.outdir) / ".d2_cache"))
+        cache_dir = Path(self.config.d2_cache_dir or (Path(self.app.outdir) / ".d2_cache"))
 
         svgs: list[tuple[str, str]] = []  # (variant, inline-safe svg)
         for variant in variants:
@@ -125,7 +134,7 @@ class D2Directive(SphinxDirective):
         head_end = svg.find(">")
         if head_end == -1 or not svg.startswith("<svg"):
             return svg
-        return svg[:head_end] + f' aria-label="{alt}"' + svg[head_end:]
+        return svg[:head_end] + f' aria-label="{html.escape(alt, quote=True)}"' + svg[head_end:]
 
     def _resolve_source(self) -> tuple[str, str | None]:
         body = "\n".join(self.content).strip()
