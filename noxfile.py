@@ -12,8 +12,23 @@ PYTHON_VERSIONS = ["3.10", "3.11", "3.12"]
 def tests(session: nox.Session) -> None:
     """Run the test suite."""
     session.install("pytest")
-    session.install("-e", ".")
+    session.install("-e", ".[sphinx]")
     session.run("pytest", "test/", "-v", *session.posargs)
+
+
+@nox.session(python=PYTHON_VERSIONS)
+def sphinx_tests(session: nox.Session) -> None:
+    """Run only the Sphinx directive tests."""
+    session.install("pytest")
+    session.install("-e", ".[sphinx]")
+    session.run(
+        "pytest",
+        "test/test_sphinx_directive.py",
+        "test/test_sphinx_cache.py",
+        "test/test_sphinx_nodes.py",
+        "-v",
+        *session.posargs,
+    )
 
 
 @nox.session
