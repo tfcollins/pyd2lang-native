@@ -226,3 +226,27 @@ def test_invalid_library_raises_directive_error(tmp_path: Path):
     _html, warnings = build_docs(tmp_path, rst)
     # Invalid option values raise during parsing; docutils logs them as errors
     assert "invalid" in warnings.lower() or "bogus" in warnings.lower()
+
+
+def test_second_build_is_a_cache_hit(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :theme: light\n"
+        "\n"
+        "   a -> b\n"
+    )
+    # First build populates the cache
+    build_docs(tmp_path, rst)
+    cache_dir = tmp_path / "out" / ".d2_cache"
+    assert cache_dir.is_dir()
+    entries_before = sorted(p.relative_to(cache_dir) for p in cache_dir.rglob("*.svg"))
+    mtimes_before = {p: (cache_dir / p).stat().st_mtime_ns for p in entries_before}
+    assert entries_before  # at least one entry
+
+    # Rebuild using the same source; no new files should appear, existing mtimes stable.
+    build_docs(tmp_path, rst)
+    entries_after = sorted(p.relative_to(cache_dir) for p in cache_dir.rglob("*.svg"))
+    assert entries_after == entries_before
+    for p in entries_after:
+        assert (cache_dir / p).stat().st_mtime_ns == mtimes_before[p]
