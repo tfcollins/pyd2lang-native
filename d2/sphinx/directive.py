@@ -3,13 +3,11 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
 
 from docutils import nodes as dnodes
 from docutils.parsers.rst import Directive, directives
 
 import d2
-
 from d2.sphinx import cache
 from d2.sphinx.nodes import d2_svg, placeholder_svg
 
@@ -49,7 +47,7 @@ class D2Directive(Directive):
     final_argument_whitespace = False
     has_content = True
 
-    option_spec = {
+    option_spec = {  # noqa: RUF012 - docutils convention
         "library": _library_option,
         "theme": _theme_option,
         "alt": directives.unchanged,
