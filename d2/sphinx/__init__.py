@@ -6,7 +6,14 @@ free of optional dependencies.
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
+
+
+def _resolve_cache_dir(app: Any) -> None:
+    """Fill in `d2_cache_dir` from `app.outdir` if the user didn't configure one."""
+    if not app.config.d2_cache_dir:
+        app.config.d2_cache_dir = str(Path(app.outdir) / ".d2_cache")
 
 
 def setup(app: Any) -> dict[str, Any]:
@@ -19,6 +26,8 @@ def setup(app: Any) -> dict[str, Any]:
     app.add_config_value("d2_default_library", None, "env")
     app.add_config_value("d2_default_theme_dual", True, "env")
     app.add_config_value("d2_cache_dir", None, "env")
+
+    app.connect("builder-inited", _resolve_cache_dir)
 
     return {
         "version": "0.1.0",

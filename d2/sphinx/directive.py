@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import html
-import warnings
 from pathlib import Path
 
 from docutils import nodes as dnodes
@@ -59,13 +58,6 @@ class D2Directive(SphinxDirective):
         "name": directives.unchanged,
     }
 
-    @property
-    def app(self):
-        """Expose the Sphinx app object directly."""
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore")
-            return self.env.app
-
     def run(self) -> list[dnodes.Node]:
         source, err = self._resolve_source()
         if err is not None:
@@ -80,7 +72,7 @@ class D2Directive(SphinxDirective):
         else:
             variants = [theme_opt or "light"]
 
-        cache_dir = Path(self.config.d2_cache_dir or (Path(self.app.outdir) / ".d2_cache"))
+        cache_dir = Path(self.config.d2_cache_dir)
 
         svgs: list[tuple[str, str]] = []  # (variant, inline-safe svg)
         for variant in variants:
