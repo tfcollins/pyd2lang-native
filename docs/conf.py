@@ -29,6 +29,7 @@ release = _version
 extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
+    "d2.sphinx",
 ]
 
 templates_path = ["_templates"]
