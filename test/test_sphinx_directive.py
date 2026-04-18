@@ -3,28 +3,12 @@
 from __future__ import annotations
 
 import io
-import re
 from pathlib import Path
 
 import pytest
 
 sphinx = pytest.importorskip("sphinx")
 from sphinx.application import Sphinx  # noqa: E402
-
-# ANSI escape sequence pattern (used by Sphinx colorized output)
-_ANSI_RE = re.compile(r"\x1b\[[0-9;]*m")
-
-
-def _filter_sphinx_builtin_warnings(raw: str) -> str:
-    """Strip ANSI codes and drop Sphinx built-in extension re-registration warnings."""
-    lines = []
-    for line in raw.splitlines():
-        plain = _ANSI_RE.sub("", line)
-        # Filter out only Sphinx's internal node/directive re-registration warnings
-        if "sphinx.addnodes" in plain or "sphinx.domains" in plain:
-            continue
-        lines.append(plain)
-    return "\n".join(lines).strip()
 
 
 def build_docs(tmp_path: Path, rst: str, conf_extra: str = "") -> tuple[str, str]:
@@ -37,6 +21,7 @@ def build_docs(tmp_path: Path, rst: str, conf_extra: str = "") -> tuple[str, str
         'extensions = ["d2.sphinx"]\n'
         'master_doc = "index"\n'
         'exclude_patterns = []\n'
+        'suppress_warnings = ["app"]\n'
         + conf_extra
     )
     (src / "index.rst").write_text(rst)
@@ -52,7 +37,7 @@ def build_docs(tmp_path: Path, rst: str, conf_extra: str = "") -> tuple[str, str
     )
     app.build()
     html = (out / "index.html").read_text(encoding="utf-8")
-    return html, _filter_sphinx_builtin_warnings(warn_buf.getvalue())
+    return html, warn_buf.getvalue()
 
 
 def test_file_path_source_renders_svg(tmp_path: Path):
