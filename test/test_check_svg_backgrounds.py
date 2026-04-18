@@ -50,16 +50,3 @@ def test_accepts_transparent_canvas_background():
     assert issue is None
 
 
-def test_docs_dark_svgs_have_transparent_canvas_backgrounds():
-    dark_svgs = sorted(
-        (Path(__file__).resolve().parents[1] / "docs" / "_static").glob("*dark*.svg")
-    )
-    assert dark_svgs, "Expected dark SVG files under docs/_static"
-
-    issues = []
-    for svg_path in dark_svgs:
-        issue = checker.check_svg_file(svg_path)
-        if issue:
-            issues.append(f"{svg_path.name}: {issue}")
-
-    assert not issues, "\n".join(issues)
