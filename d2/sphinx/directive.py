@@ -139,29 +139,32 @@ class D2Directive(SphinxDirective):
         extra_classes = self.options.get("class", []) or []
         align = self.options.get("align")
         alt = self.options.get("alt") or ""
+        alt_attr = html.escape(alt, quote=True)
 
-        images: list[dnodes.Node] = []
+        img_nodes: list[dnodes.Node] = []
         for variant, _inline, raw in svgs:
             key = cache.make_key(source, library, variant, d2.__version__)
             suffix = "" if variant == "light" else "-dark"
             filename = f"d2-{key[:12]}{suffix}.svg"
             (imagedir / filename).write_text(raw, encoding="utf-8")
-            img = dnodes.image(
-                uri=f"{relpath}/{filename}",
-                alt=alt,
-                classes=(
-                    ([f"only-{variant}"] if len(svgs) > 1 else []) + extra_classes
-                ),
-            )
-            if align:
-                img["align"] = align
-            images.append(img)
 
-        if len(images) == 1:
-            return images
+            classes = (
+                ([f"only-{variant}"] if len(svgs) > 1 else []) + extra_classes
+            )
+            class_attr = html.escape(" ".join(classes), quote=True) if classes else ""
+            align_attr = f' align="{align}"' if align else ""
+            class_markup = f' class="{class_attr}"' if class_attr else ""
+            markup = (
+                f'<img src="{relpath}/{filename}" alt="{alt_attr}"'
+                f'{class_markup}{align_attr}>'
+            )
+            img_nodes.append(dnodes.raw("", markup, format="html"))
+
+        if len(img_nodes) == 1:
+            return img_nodes
         container = dnodes.container(classes=["d2-container", *extra_classes])
-        for img in images:
-            container += img
+        for n in img_nodes:
+            container += n
         return [container]
 
     def _apply_wrapper_attrs(

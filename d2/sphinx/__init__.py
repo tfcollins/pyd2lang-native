@@ -14,9 +14,10 @@ def _resolve_paths(app: Any) -> None:
     """Fill in cache + images paths from app once the builder is up."""
     if not app.config.d2_cache_dir:
         app.config.d2_cache_dir = str(Path(app.outdir) / ".d2_cache")
-    # Write generated SVGs into srcdir/_images/ so Sphinx can discover and
-    # copy them to outdir/_images/ via the normal image pipeline.
-    app.config.d2_images_dir = str(Path(app.srcdir) / app.builder.imagedir)
+    # Write generated SVGs directly into outdir/_images/ and emit raw <img>
+    # nodes referencing them — we bypass Sphinx's image pipeline because the
+    # files never live under srcdir.
+    app.config.d2_images_dir = str(Path(app.outdir) / app.builder.imagedir)
     app.config.d2_images_relpath = app.builder.imagedir
 
 
