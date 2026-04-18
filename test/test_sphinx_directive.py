@@ -15,12 +15,13 @@ from sphinx.application import Sphinx  # noqa: E402
 _ANSI_RE = re.compile(r"\x1b\[[0-9;]*m")
 
 
-def _filter_warnings(raw: str) -> str:
-    """Strip ANSI codes and drop Sphinx re-registration noise lines."""
+def _filter_sphinx_builtin_warnings(raw: str) -> str:
+    """Strip ANSI codes and drop Sphinx built-in extension re-registration warnings."""
     lines = []
     for line in raw.splitlines():
         plain = _ANSI_RE.sub("", line)
-        if "is already registered" in plain:
+        # Filter out only Sphinx's internal node/directive re-registration warnings
+        if "sphinx.addnodes" in plain or "sphinx.domains" in plain:
             continue
         lines.append(plain)
     return "\n".join(lines).strip()
@@ -51,7 +52,7 @@ def build_docs(tmp_path: Path, rst: str, conf_extra: str = "") -> tuple[str, str
     )
     app.build()
     html = (out / "index.html").read_text(encoding="utf-8")
-    return html, _filter_warnings(warn_buf.getvalue())
+    return html, _filter_sphinx_builtin_warnings(warn_buf.getvalue())
 
 
 def test_file_path_source_renders_svg(tmp_path: Path):
