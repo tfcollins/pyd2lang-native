@@ -10,10 +10,14 @@ from pathlib import Path
 from typing import Any
 
 
-def _resolve_cache_dir(app: Any) -> None:
-    """Fill in `d2_cache_dir` from `app.outdir` if the user didn't configure one."""
+def _resolve_paths(app: Any) -> None:
+    """Fill in cache + images paths from app once the builder is up."""
     if not app.config.d2_cache_dir:
         app.config.d2_cache_dir = str(Path(app.outdir) / ".d2_cache")
+    # Write generated SVGs into srcdir/_images/ so Sphinx can discover and
+    # copy them to outdir/_images/ via the normal image pipeline.
+    app.config.d2_images_dir = str(Path(app.srcdir) / app.builder.imagedir)
+    app.config.d2_images_relpath = app.builder.imagedir
 
 
 def setup(app: Any) -> dict[str, Any]:
@@ -26,8 +30,10 @@ def setup(app: Any) -> dict[str, Any]:
     app.add_config_value("d2_default_library", None, "env")
     app.add_config_value("d2_default_theme_dual", True, "env")
     app.add_config_value("d2_cache_dir", None, "env")
+    app.add_config_value("d2_images_dir", None, "env")
+    app.add_config_value("d2_images_relpath", "_images", "env")
 
-    app.connect("builder-inited", _resolve_cache_dir)
+    app.connect("builder-inited", _resolve_paths)
 
     return {
         "version": "0.1.0",

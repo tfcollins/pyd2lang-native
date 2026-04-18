@@ -35,6 +35,17 @@ def _theme_option(value: str | None) -> str | None:
     return value
 
 
+def _bool_option(value: str | None) -> bool:
+    if value is None or value == "":
+        return True
+    lowered = value.strip().lower()
+    if lowered in {"true", "yes", "1"}:
+        return True
+    if lowered in {"false", "no", "0"}:
+        return False
+    raise ValueError(f"invalid :inline: {value!r}")
+
+
 def _strip_xml_declaration(svg: str) -> str:
     if svg.startswith(_XML_DECL_PREFIX):
         end = svg.find("?>")
@@ -56,6 +67,7 @@ class D2Directive(SphinxDirective):
         "class": directives.class_option,
         "align": lambda v: directives.choice(v, ("left", "center", "right")),
         "name": directives.unchanged,
+        "inline": _bool_option,
     }
 
     def run(self) -> list[dnodes.Node]:
@@ -74,25 +86,27 @@ class D2Directive(SphinxDirective):
 
         cache_dir = Path(self.config.d2_cache_dir)
 
-        svgs: list[tuple[str, str]] = []  # (variant, inline-safe svg)
+        svgs: list[tuple[str, str, str]] = []  # (variant, inline-safe, raw)
         for variant in variants:
             key = cache.make_key(source, library, variant, d2.__version__)
-            svg = cache.get(cache_dir, key)
-            if svg is None:
+            raw = cache.get(cache_dir, key)
+            if raw is None:
                 try:
-                    svg = d2.compile(source, library=library, theme=variant)
+                    raw = d2.compile(source, library=library, theme=variant)
                 except RuntimeError as exc:
                     self.state.document.reporter.warning(
                         f"D2 compile error ({variant}): {exc}", line=self.lineno
                     )
-                    svg = placeholder_svg(str(exc))
+                    raw = placeholder_svg(str(exc))
                 else:
-                    cache.put(cache_dir, key, svg)
-            svgs.append((variant, _strip_xml_declaration(svg)))
+                    cache.put(cache_dir, key, raw)
+            svgs.append((variant, _strip_xml_declaration(raw), raw))
 
-        return self._emit_inline(svgs)
+        if self.options.get("inline", True):
+            return self._emit_inline(svgs)
+        return self._emit_files(svgs, source, library)
 
-    def _emit_inline(self, svgs: list[tuple[str, str]]) -> list[dnodes.Node]:
+    def _emit_inline(self, svgs: list[tuple[str, str, str]]) -> list[dnodes.Node]:
         extra_classes = self.options.get("class", []) or []
         align = self.options.get("align")
         alt = self.options.get("alt")
@@ -105,11 +119,49 @@ class D2Directive(SphinxDirective):
         container = dnodes.container(classes=["d2-container", *extra_classes])
         if align:
             container["classes"].append(f"align-{align}")
-        for variant, svg in svgs:
+        for variant, inline_svg, _raw in svgs:
             wrap_classes = [f"only-{variant}", *extra_classes]
             inner = dnodes.container(classes=wrap_classes)
-            inner += d2_svg(svg=self._wrap_with_alt(svg, alt))
+            inner += d2_svg(svg=self._wrap_with_alt(inline_svg, alt))
             container += inner
+        return [container]
+
+    def _emit_files(
+        self,
+        svgs: list[tuple[str, str, str]],
+        source: str,
+        library: str | None,
+    ) -> list[dnodes.Node]:
+        imagedir = Path(self.config.d2_images_dir)
+        imagedir.mkdir(parents=True, exist_ok=True)
+        relpath = self.config.d2_images_relpath
+
+        extra_classes = self.options.get("class", []) or []
+        align = self.options.get("align")
+        alt = self.options.get("alt") or ""
+
+        images: list[dnodes.Node] = []
+        for variant, _inline, raw in svgs:
+            key = cache.make_key(source, library, variant, d2.__version__)
+            suffix = "" if variant == "light" else "-dark"
+            filename = f"d2-{key[:12]}{suffix}.svg"
+            (imagedir / filename).write_text(raw, encoding="utf-8")
+            img = dnodes.image(
+                uri=f"{relpath}/{filename}",
+                alt=alt,
+                classes=(
+                    ([f"only-{variant}"] if len(svgs) > 1 else []) + extra_classes
+                ),
+            )
+            if align:
+                img["align"] = align
+            images.append(img)
+
+        if len(images) == 1:
+            return images
+        container = dnodes.container(classes=["d2-container", *extra_classes])
+        for img in images:
+            container += img
         return [container]
 
     def _apply_wrapper_attrs(

@@ -142,3 +142,26 @@ def test_alt_option_escapes_html_injection(tmp_path: Path):
     # The script tag must be escaped, not pass through literally.
     assert "<script>alert(1)</script>" not in html_out
     assert "&lt;script&gt;" in html_out or "&#x3C;script&#x3E;" in html_out
+
+
+def test_inline_false_emits_img_and_writes_file(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :theme: light\n"
+        "   :inline: false\n"
+        "\n"
+        "   a -> b\n"
+    )
+    html, warnings = build_docs(tmp_path, rst)
+    assert warnings.strip() == ""
+    assert "<svg" not in html  # No inlined SVG
+    # <img> points into _images/
+    import re
+    match = re.search(r'<img[^>]+src="([^"]+)"', html)
+    assert match is not None
+    src = match.group(1)
+    assert "_images" in src
+    # And the file landed there
+    out = tmp_path / "out"
+    assert (out / src.lstrip("./")).is_file()
