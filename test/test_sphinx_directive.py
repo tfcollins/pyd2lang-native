@@ -165,3 +165,64 @@ def test_inline_false_emits_img_and_writes_file(tmp_path: Path):
     # And the file landed there
     out = tmp_path / "out"
     assert (out / src.lstrip("./")).is_file()
+
+
+def test_missing_source_warns_and_emits_placeholder(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+    )
+    html, warnings = build_docs(tmp_path, rst)
+    assert "D2 directive requires either" in warnings
+    assert "D2 compile error" in html  # placeholder text
+
+
+def test_both_source_forms_warns(tmp_path: Path):
+    src = tmp_path / "src"
+    src.mkdir(exist_ok=True)
+    (src / "a.d2").write_text("x\n")
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2:: a.d2\n"
+        "\n"
+        "   y -> z\n"
+    )
+    html, warnings = build_docs(tmp_path, rst)
+    assert "either a file path or inline content, not both" in warnings
+    assert "D2 compile error" in html
+
+
+def test_missing_file_warns(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2:: does_not_exist.d2\n"
+    )
+    html, warnings = build_docs(tmp_path, rst)
+    assert "cannot read" in warnings
+    assert "D2 compile error" in html
+
+
+def test_compile_failure_warns_and_emits_placeholder(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :theme: light\n"
+        "\n"
+        "   invalid {{ syntax\n"
+    )
+    html, warnings = build_docs(tmp_path, rst)
+    assert "D2 compile error" in warnings
+    assert "D2 compile error" in html
+
+
+def test_invalid_library_raises_directive_error(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :library: bogus\n"
+        "\n"
+        "   a -> b\n"
+    )
+    _html, warnings = build_docs(tmp_path, rst)
+    # Invalid option values raise during parsing; docutils logs them as errors
+    assert "invalid" in warnings.lower() or "bogus" in warnings.lower()
