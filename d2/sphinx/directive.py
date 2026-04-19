@@ -156,16 +156,11 @@ class D2Directive(SphinxDirective):
             filename = f"d2-{key[:12]}{suffix}.svg"
             (imagedir / filename).write_text(raw, encoding="utf-8")
 
-            classes = (
-                ([f"only-{variant}"] if len(svgs) > 1 else []) + extra_classes
-            )
+            classes = ([f"only-{variant}"] if len(svgs) > 1 else []) + extra_classes
             class_attr = html.escape(" ".join(classes), quote=True) if classes else ""
             align_attr = f' align="{align}"' if align else ""
             class_markup = f' class="{class_attr}"' if class_attr else ""
-            markup = (
-                f'<img src="{relpath}/{filename}" alt="{alt_attr}"'
-                f'{class_markup}{align_attr}>'
-            )
+            markup = f'<img src="{relpath}/{filename}" alt="{alt_attr}"{class_markup}{align_attr}>'
             img_nodes.append(dnodes.raw("", markup, format="html"))
 
         if len(img_nodes) == 1:

@@ -20,9 +20,8 @@ def build_docs(tmp_path: Path, rst: str, conf_extra: str = "") -> tuple[str, str
     (src / "conf.py").write_text(
         'extensions = ["d2.sphinx"]\n'
         'master_doc = "index"\n'
-        'exclude_patterns = []\n'
-        'suppress_warnings = ["app"]\n'
-        + conf_extra
+        "exclude_patterns = []\n"
+        'suppress_warnings = ["app"]\n' + conf_extra
     )
     (src / "index.rst").write_text(rst)
     warn_buf = io.StringIO()
@@ -45,24 +44,14 @@ def test_file_path_source_renders_svg(tmp_path: Path):
     src = tmp_path / "src"
     src.mkdir(exist_ok=True)
     (src / "shape.d2").write_text("x -> y\n")
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2:: shape.d2\n"
-        "   :theme: light\n"
-    )
+    rst = "Title\n=====\n\n.. d2:: shape.d2\n   :theme: light\n"
     html, warnings = build_docs(tmp_path, rst)
     assert warnings.strip() == ""
     assert "<svg" in html
 
 
 def test_inline_body_single_theme_renders_svg(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: light\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: light\n\n   a -> b\n"
     html, warnings = build_docs(tmp_path, rst)
     assert warnings.strip() == ""
     assert "<svg" in html
@@ -70,16 +59,15 @@ def test_inline_body_single_theme_renders_svg(tmp_path: Path):
 
 
 def test_dual_theme_emits_both_variants(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n\n   a -> b\n"
     html, warnings = build_docs(tmp_path, rst)
     assert warnings.strip() == ""
-    assert 'class="only-light"' in html or 'class="only-light ' in html \
-        or ' only-light"' in html or ' only-light ' in html
+    assert (
+        'class="only-light"' in html
+        or 'class="only-light ' in html
+        or ' only-light"' in html
+        or " only-light " in html
+    )
     assert "only-dark" in html
     # Two compiled SVGs embedded (each D2 SVG contains an outer + inner <svg>)
     svg_count = html.count("<svg")
@@ -88,13 +76,7 @@ def test_dual_theme_emits_both_variants(tmp_path: Path):
 
 
 def test_theme_option_forces_single_variant(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: dark\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: dark\n\n   a -> b\n"
     html, warnings = build_docs(tmp_path, rst)
     assert warnings.strip() == ""
     # Single variant: D2 SVGs have nested <svg>, so at least 1 but fewer than dual
@@ -104,27 +86,14 @@ def test_theme_option_forces_single_variant(tmp_path: Path):
 
 
 def test_class_option_appends_to_wrapper(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :class: my-extra\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :class: my-extra\n\n   a -> b\n"
     html, _ = build_docs(tmp_path, rst)
     assert "my-extra" in html
     assert "only-light" in html and "only-dark" in html
 
 
 def test_alt_option_lands_on_wrapper(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: light\n"
-        "   :alt: my diagram\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: light\n   :alt: my diagram\n\n   a -> b\n"
     html, _ = build_docs(tmp_path, rst)
     assert 'aria-label="my diagram"' in html
 
@@ -134,7 +103,7 @@ def test_alt_option_escapes_html_injection(tmp_path: Path):
         "Title\n=====\n\n"
         ".. d2::\n"
         "   :theme: light\n"
-        "   :alt: \"><script>alert(1)</script>\n"
+        '   :alt: "><script>alert(1)</script>\n'
         "\n"
         "   a -> b\n"
     )
@@ -145,19 +114,13 @@ def test_alt_option_escapes_html_injection(tmp_path: Path):
 
 
 def test_inline_false_emits_img_and_writes_file(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: light\n"
-        "   :inline: false\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: light\n   :inline: false\n\n   a -> b\n"
     html, warnings = build_docs(tmp_path, rst)
     assert warnings.strip() == ""
     assert "<svg" not in html  # No inlined SVG
     # <img> points into _images/
     import re
+
     match = re.search(r'<img[^>]+src="([^"]+)"', html)
     assert match is not None
     src = match.group(1)
@@ -168,10 +131,7 @@ def test_inline_false_emits_img_and_writes_file(tmp_path: Path):
 
 
 def test_missing_source_warns_and_emits_placeholder(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n"
     html, warnings = build_docs(tmp_path, rst)
     assert "D2 directive requires either" in warnings
     assert "D2 compile error" in html  # placeholder text
@@ -181,61 +141,35 @@ def test_both_source_forms_warns(tmp_path: Path):
     src = tmp_path / "src"
     src.mkdir(exist_ok=True)
     (src / "a.d2").write_text("x\n")
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2:: a.d2\n"
-        "\n"
-        "   y -> z\n"
-    )
+    rst = "Title\n=====\n\n.. d2:: a.d2\n\n   y -> z\n"
     html, warnings = build_docs(tmp_path, rst)
     assert "either a file path or inline content, not both" in warnings
     assert "D2 compile error" in html
 
 
 def test_missing_file_warns(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2:: does_not_exist.d2\n"
-    )
+    rst = "Title\n=====\n\n.. d2:: does_not_exist.d2\n"
     html, warnings = build_docs(tmp_path, rst)
     assert "cannot read" in warnings
     assert "D2 compile error" in html
 
 
 def test_compile_failure_warns_and_emits_placeholder(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: light\n"
-        "\n"
-        "   invalid {{ syntax\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: light\n\n   invalid {{ syntax\n"
     html, warnings = build_docs(tmp_path, rst)
     assert "D2 compile error" in warnings
     assert "D2 compile error" in html
 
 
 def test_invalid_library_raises_directive_error(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :library: bogus\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :library: bogus\n\n   a -> b\n"
     _html, warnings = build_docs(tmp_path, rst)
     # Invalid option values raise during parsing; docutils logs them as errors
     assert "invalid" in warnings.lower() or "bogus" in warnings.lower()
 
 
 def test_second_build_is_a_cache_hit(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: light\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: light\n\n   a -> b\n"
     # First build populates the cache
     build_docs(tmp_path, rst)
     cache_dir = tmp_path / "out" / ".d2_cache"
@@ -253,39 +187,18 @@ def test_second_build_is_a_cache_hit(tmp_path: Path):
 
 
 def test_align_option_single_variant(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: light\n"
-        "   :align: center\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: light\n   :align: center\n\n   a -> b\n"
     html, _ = build_docs(tmp_path, rst)
     assert "align-center" in html
 
 
 def test_class_option_single_variant(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: light\n"
-        "   :class: my-extra\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: light\n   :class: my-extra\n\n   a -> b\n"
     html, _ = build_docs(tmp_path, rst)
     assert "my-extra" in html
 
 
 def test_name_option_creates_reference_target(tmp_path: Path):
-    rst = (
-        "Title\n=====\n\n"
-        ".. d2::\n"
-        "   :theme: light\n"
-        "   :name: my-diagram\n"
-        "\n"
-        "   a -> b\n"
-    )
+    rst = "Title\n=====\n\n.. d2::\n   :theme: light\n   :name: my-diagram\n\n   a -> b\n"
     html, _ = build_docs(tmp_path, rst)
     assert 'id="my-diagram"' in html

@@ -5,9 +5,7 @@ from pathlib import Path
 
 
 def _load_checker_module():
-    script_path = (
-        Path(__file__).resolve().parents[1] / "scripts" / "check_svg_backgrounds.py"
-    )
+    script_path = Path(__file__).resolve().parents[1] / "scripts" / "check_svg_backgrounds.py"
     spec = importlib.util.spec_from_file_location("check_svg_backgrounds", script_path)
     assert spec is not None
     assert spec.loader is not None
@@ -48,5 +46,3 @@ def test_accepts_transparent_canvas_background():
     issue = checker.check_svg_text(svg)
 
     assert issue is None
-
-
