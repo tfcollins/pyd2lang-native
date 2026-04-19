@@ -125,6 +125,12 @@ def act(session: nox.Session) -> None:
         )
 
 
+@nox.session(python=False)
+def embed_check(session: nox.Session) -> None:
+    """Verify lib/*/*-components.d2 and d2/__init__.py lists match icon sources."""
+    session.run("python", "scripts/embed_icons.py", "--library", "all", "--check", external=True)
+
+
 @nox.session
 def release(session: nox.Session) -> None:
     """Create a release: bump version, tag, and push.
