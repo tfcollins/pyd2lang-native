@@ -1,12 +1,15 @@
-"""Regenerate lib/<lib>/<lib>-components.d2 and the matching
-*_COMPONENTS list in d2/__init__.py from source SVG icons.
+"""Regenerate lib/adi/adi-components.d2 and the ADI_COMPONENTS list in
+d2/__init__.py from source SVG icons under lib/adi/icons/.
 
 Usage:
-    python scripts/embed_icons.py --library {adi,sw,all} [--check]
+    python scripts/embed_icons.py --library adi [--check]
 
 In --check mode nothing is written; the script exits 0 if the
 on-disk files already match what would be generated, 1 otherwise
 with a unified diff printed to stderr.
+
+SW components (lib/sw/sw-components.d2) are NOT covered — SW uses
+style-based shape rendering rather than embedded base64 icons.
 """
 
 from __future__ import annotations
@@ -151,34 +154,23 @@ def _diff(existing: Path, generated: str) -> str:
 
 def _main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--library", choices=["adi", "sw", "all"], required=True)
+    parser.add_argument("--library", choices=["adi"], required=True)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args(argv)
 
-    libs = ["adi", "sw"] if args.library == "all" else [args.library]
-    exit_code = 0
-    for lib in libs:
-        if lib == "adi":
-            order = _ADI_ORDER
-            list_name = "ADI_COMPONENTS"
-        else:
-            order = sorted(
-                p.stem for p in (_ROOT / "lib" / "sw" / "icons").glob("*.svg")
-            )
-            list_name = "SW_COMPONENTS"
-        result = generate_library(
-            lib_name=lib,
-            list_name=list_name,
-            order=order,
-            icons_dir=_ROOT / "lib" / lib / "icons",
-            d2_output=_ROOT / "lib" / lib / f"{lib}-components.d2",
-            init_py=_ROOT / "d2" / "__init__.py",
-            check=args.check,
-        )
-        if not result.in_sync:
-            print(result.message, file=sys.stderr)
-            exit_code = 1
-    return exit_code
+    result = generate_library(
+        lib_name="adi",
+        list_name="ADI_COMPONENTS",
+        order=_ADI_ORDER,
+        icons_dir=_ROOT / "lib" / "adi" / "icons",
+        d2_output=_ROOT / "lib" / "adi" / "adi-components.d2",
+        init_py=_ROOT / "d2" / "__init__.py",
+        check=args.check,
+    )
+    if not result.in_sync:
+        print(result.message, file=sys.stderr)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
