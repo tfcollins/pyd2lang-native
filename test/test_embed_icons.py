@@ -60,6 +60,7 @@ def test_generate_writes_components_d2(tmp_path: Path):
     assert "  dac: {" in text
     # base64-encoded SVG content must be present
     import base64
+
     adc_b64 = base64.b64encode(b"<svg>ADC</svg>").decode("ascii")
     assert adc_b64 in text
 
