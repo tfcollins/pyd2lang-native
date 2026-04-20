@@ -118,7 +118,7 @@ def generate_library(
     if orphans:
         return GenerateResult(
             False,
-            f"unknown icons in {icons_dir}: {orphans} — add to _ORDER['{lib_name}']",
+            f"unknown icons in {icons_dir}: {orphans} — add to _ADI_ORDER in scripts/embed_icons.py",
         )
 
     new_d2 = _render_d2(lib_name, order, icons_dir)

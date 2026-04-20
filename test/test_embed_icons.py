@@ -176,7 +176,7 @@ def test_orphan_icon_fails(tmp_path: Path):
     assert not result.in_sync
     assert "unknown icons" in result.message
     assert "zzz-new" in result.message
-    assert "_ORDER['adi']" in result.message
+    assert "_ADI_ORDER" in result.message
 
 
 def test_generator_is_deterministic(tmp_path: Path):

@@ -48,7 +48,6 @@ lib/d2lib.go            C-exported functions:
                           runmeLib() - generic dispatch: selects library by name
 lib/adi/                ADI assets: adi-components.d2 (64 icons), adi-theme.d2, adi-theme-dark.d2
 lib/sw/                 SW assets: sw-components.d2 (32 icons), sw-theme.d2, sw-theme-dark.d2
-lib/sw/icons/           Source SVGs for SW components (used by scripts/embed-sw-icons.sh)
 ```
 
 The Go library embeds library assets at compile time via `//go:embed`. The Python side loads the shared library, calls the appropriate C function, and returns the SVG string or raises `RuntimeError`. The `library` parameter selects which component library to prepend (or `None` for plain D2).

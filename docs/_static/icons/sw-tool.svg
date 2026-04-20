@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
+<!-- Wrench -->
+  <path d="M56,22 c-6,-2 -13,0 -17,5 c-5,5 -6,13 -2,19 l24,24 c2,2 5,2 7,0 l4,-4 c2,-2 2,-5 0,-7 l-24,-24 c3,-6 2,-11 -1,-14 z" fill="#0067B9" stroke="#231F20" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Wrench jaw opening -->
+  <path d="M56,22 l12,-6 l4,4 l-6,12" fill="#FFFFFF" stroke="#231F20" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Handle detail -->
+  <line x1="58" y1="52" x2="66" y2="44" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
