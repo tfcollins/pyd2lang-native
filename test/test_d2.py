@@ -205,6 +205,21 @@ adc -> ddc -> framer
     assert "<?xml" in graph
 
 
+def test_jif_adc_dac_use_converter_outline_icons():
+    """JIF ADC/DAC classes render as converter-outline icons."""
+    code = """
+direction: right
+adc: ADC { class: adc }
+dac: DAC { class: dac }
+adc -> dac
+"""
+    graph = d2.compile(code, library="jif")
+    assert graph is not None
+    assert "<?xml" in graph
+    assert "image" in graph.lower()
+    assert "data:image/svg+xml;base64" in graph
+
+
 def test_jif_all_components():
     """All JIF component classes render without error."""
     lines = []
