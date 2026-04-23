@@ -27,6 +27,10 @@ nox -s docs_serve               # Live preview at localhost:8080
 # Release
 nox -s release                  # Patch bump (default)
 nox -s release -- minor         # Minor/major bump
+
+# Regenerate embedded ADI icon library
+python scripts/embed_icons.py --library adi   # rewrite adi-components.d2 + ADI_COMPONENTS
+nox -s embed_check                             # CI drift check
 ```
 
 Nox uses `uv` as its venv backend.
@@ -44,7 +48,6 @@ lib/d2lib.go            C-exported functions:
                           runmeLib() - generic dispatch: selects library by name
 lib/adi/                ADI assets: adi-components.d2 (64 icons), adi-theme.d2, adi-theme-dark.d2
 lib/sw/                 SW assets: sw-components.d2 (32 icons), sw-theme.d2, sw-theme-dark.d2
-lib/sw/icons/           Source SVGs for SW components (used by scripts/embed-sw-icons.sh)
 ```
 
 The Go library embeds library assets at compile time via `//go:embed`. The Python side loads the shared library, calls the appropriate C function, and returns the SVG string or raises `RuntimeError`. The `library` parameter selects which component library to prepend (or `None` for plain D2).
@@ -54,6 +57,6 @@ The Go library embeds library assets at compile time via `//go:embed`. The Pytho
 - **Ruff config**: line-length 100, target Python 3.10, double quotes, rules: E/W/F/I/UP/B/SIM/RUF
 - **Version**: single source of truth in `d2.__version__` (`d2/__init__.py`), read dynamically by pyproject.toml
 - **Tests**: live in `test/` — `test_d2.py` (compilation smoke tests) and a Sphinx directive suite covering the directive (`test_sphinx_directive.py`), cache (`test_sphinx_cache.py`), and nodes (`test_sphinx_nodes.py`). `test_check_svg_backgrounds.py` keeps SVG-canvas-background unit tests. Compilation tests assert `"<?xml"` appears in output; directive tests drive end-to-end Sphinx builds.
-- **ADI components**: defined as SVG icons in `lib/adi/adi-components.d2`, exposed as `d2.ADI_COMPONENTS` list
-- **SW components**: defined as SVG icons in `lib/sw/sw-components.d2` (auto-generated from `lib/sw/icons/` via `scripts/embed-sw-icons.sh`), exposed as `d2.SW_COMPONENTS` list
+- **ADI components**: source SVGs in `lib/adi/icons/`; embedded into `lib/adi/adi-components.d2` and the `d2.ADI_COMPONENTS` list by `python scripts/embed_icons.py --library adi`. Adding a component = drop an SVG in the icons dir, append its class name to `_ADI_ORDER` in `scripts/embed_icons.py`, and regenerate. `nox -s embed_check` verifies drift.
+- **SW components**: defined as hand-styled D2 classes in `lib/sw/sw-components.d2`, exposed as `d2.SW_COMPONENTS` list. Unlike ADI, SW does not use base64-embedded icons — classes are rendered via `style.fill` / `style.stroke` / `shape:` properties. Edit the file directly and keep `SW_COMPONENTS` in `d2/__init__.py` in sync by hand.
 - **CI**: cibuildwheel builds wheels on 5 OS matrix entries; docs auto-deploy to GitHub Pages on main

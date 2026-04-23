@@ -125,6 +125,12 @@ def act(session: nox.Session) -> None:
         )
 
 
+@nox.session(python=False)
+def embed_check(session: nox.Session) -> None:
+    """Verify lib/adi/adi-components.d2 and d2.ADI_COMPONENTS match icon sources."""
+    session.run("python3", "scripts/embed_icons.py", "--library", "adi", "--check", external=True)
+
+
 @nox.session
 def release(session: nox.Session) -> None:
     """Create a release: bump version, tag, and push.

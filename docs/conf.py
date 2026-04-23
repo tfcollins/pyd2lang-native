@@ -27,7 +27,9 @@ version = _version
 release = _version
 
 extensions = [
+    "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
     "sphinx_copybutton",
     "d2.sphinx",
 ]
