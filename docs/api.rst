@@ -56,6 +56,24 @@ SW Library
           "sw-flow-error", "sw-flow-success", "sw-flow-feedback", "sw-flow-light",
       ]
 
+JIF Library
+~~~~~~~~~~~
+
+.. py:data:: JIF_COMPONENTS
+   :type: list[str]
+
+   List of all JIF component class names used by pyadi-jif ``Node.ntype`` values
+   (see :doc:`jif-shapes`).
+
+.. py:data:: JIF_THEME_CLASSES
+   :type: list[str]
+
+   List of all JIF theme class names:
+
+   .. code-block:: python
+
+      ["jif-container", "jif-signal"]
+
 General
 ~~~~~~~
 

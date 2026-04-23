@@ -15,6 +15,13 @@ downloads/
 eggs/
 .eggs/
 lib/
+!lib/
+!lib/adi/
+!lib/adi/**
+!lib/jif/
+!lib/jif/**
+!lib/sw/
+!lib/sw/**
 lib64/
 parts/
 sdist/
