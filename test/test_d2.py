@@ -1,3 +1,5 @@
+import base64
+import re
 import warnings
 
 import pytest
@@ -206,7 +208,7 @@ adc -> ddc -> framer
 
 
 def test_jif_adc_dac_use_converter_outline_icons():
-    """JIF ADC/DAC classes render as converter-outline icons."""
+    """JIF ADC/DAC classes render as balanced converter-outline icons."""
     code = """
 direction: right
 adc: ADC { class: adc }
@@ -217,7 +219,12 @@ adc -> dac
     assert graph is not None
     assert "<?xml" in graph
     assert "image" in graph.lower()
-    assert "data:image/svg+xml;base64" in graph
+    encoded_icons = re.findall(r"data:image/svg\+xml;base64,([A-Za-z0-9+/=]+)", graph)
+    assert len(encoded_icons) >= 2
+
+    decoded_icons = [base64.b64decode(icon).decode("utf-8") for icon in encoded_icons[:2]]
+    assert 'points="2,2 82,2 118,40 82,78 2,78"' in decoded_icons[0]
+    assert 'points="58,2 138,2 138,78 58,78 22,40"' in decoded_icons[1]
 
 
 def test_jif_all_components():
