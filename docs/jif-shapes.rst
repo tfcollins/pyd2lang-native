@@ -27,29 +27,90 @@ Converter And JESD Blocks
 
 .. list-table::
    :header-rows: 1
-   :widths: 28 72
+   :widths: 22 24 54
 
-   * - Class
+   * - Shape
+     - Class
      - Description
-   * - ``adc``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          adc: ADC { class: adc }
+
+     - ``adc``
      - Analog-to-digital converter block.
-   * - ``dac``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          dac: DAC { class: dac }
+
+     - ``dac``
      - Digital-to-analog converter block.
-   * - ``ddc``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          ddc: DDC { class: ddc }
+
+     - ``ddc``
      - Digital downconverter or decimation block.
-   * - ``duc``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          duc: DUC { class: duc }
+
+     - ``duc``
      - Digital upconverter or interpolation block.
-   * - ``crossbar``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          crossbar: Crossbar { class: crossbar }
+
+     - ``crossbar``
      - Crossbar, router, or converter datapath mux.
-   * - ``mux``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          mux: Mux { class: mux }
+
+     - ``mux``
      - Multiplexer or clock/data select block.
-   * - ``jesd204framer``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          framer: Framer { class: jesd204framer }
+
+     - ``jesd204framer``
      - JESD204 framer block inside a converter.
-   * - ``jesd204deframer``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          deframer: Deframer { class: jesd204deframer }
+
+     - ``jesd204deframer``
      - JESD204 deframer block inside a converter.
-   * - ``framer``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          framer: Framer { class: framer }
+
+     - ``framer``
      - Remote JESD204 framer block.
-   * - ``deframer``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          deframer: Deframer { class: deframer }
+
+     - ``deframer``
      - Remote JESD204 deframer block.
 
 Clocking Blocks
@@ -57,27 +118,82 @@ Clocking Blocks
 
 .. list-table::
    :header-rows: 1
-   :widths: 28 72
+   :widths: 22 24 54
 
-   * - Class
+   * - Shape
+     - Class
      - Description
-   * - ``input``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          input: Input { class: input }
+
+     - ``input``
      - External reference, SYSREF, or device-clock input.
-   * - ``out_clock_connected``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          output: Output { class: out_clock_connected }
+
+     - ``out_clock_connected``
      - Output clock pin or connected clock output.
-   * - ``divider``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          divider: Divider { class: divider }
+
+     - ``divider``
      - Clock, feedback, output, or transceiver divider.
-   * - ``phase-frequency-detector``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          pfd: PFD { class: phase-frequency-detector }
+
+     - ``phase-frequency-detector``
      - PLL phase-frequency detector.
-   * - ``charge-pump``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          cp: Charge Pump { class: charge-pump }
+
+     - ``charge-pump``
      - PLL charge-pump block.
-   * - ``loop-filter``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          lf: Loop Filter { class: loop-filter }
+
+     - ``loop-filter``
      - PLL loop-filter block.
-   * - ``vco``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          vco: VCO { class: vco }
+
+     - ``vco``
      - Voltage-controlled oscillator.
-   * - ``voltage-controlled-oscillator``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          vco: VCO { class: voltage-controlled-oscillator }
+
+     - ``voltage-controlled-oscillator``
      - Long-form VCO class used by some pyadi-jif clock drawings.
-   * - ``cdr``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          cdr: CDR { class: cdr }
+
+     - ``cdr``
      - Clock-data recovery block.
 
 FPGA And System Blocks
@@ -85,25 +201,80 @@ FPGA And System Blocks
 
 .. list-table::
    :header-rows: 1
-   :widths: 28 72
+   :widths: 22 24 54
 
-   * - Class
+   * - Shape
+     - Class
      - Description
-   * - ``shell``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          shell: Shell { class: shell }
+
+     - ``shell``
      - Grouping shell for internal sub-blocks.
-   * - ``ip``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          ip: IP { class: ip }
+
+     - ``ip``
      - FPGA IP block such as JESD link, transport, or application logic.
-   * - ``phy``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          phy: PHY { class: phy }
+
+     - ``phy``
      - FPGA PHY block.
-   * - ``transceiver``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          trx: Transceiver { class: transceiver }
+
+     - ``transceiver``
      - FPGA transceiver block.
-   * - ``serdes``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          serdes: SERDES { class: serdes }
+
+     - ``serdes``
      - Serializer/deserializer block.
-   * - ``decoder``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          decoder: Decoder { class: decoder }
+
+     - ``decoder``
      - Link-layer decoder block.
-   * - ``cpll``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          cpll: CPLL { class: cpll }
+
+     - ``cpll``
      - Channel PLL block.
-   * - ``qpll``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          qpll: QPLL { class: qpll }
+
+     - ``qpll``
      - Quad PLL block.
-   * - ``trx-dividers``
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          dividers: TRX Dividers { class: trx-dividers }
+
+     - ``trx-dividers``
      - Transceiver divider and mux group.
