@@ -7,7 +7,7 @@ import os
 import platform
 import warnings
 
-__version__ = "0.1.1"
+__version__ = "0.1.3"
 
 loc = os.path.dirname(os.path.abspath(__file__))
 
