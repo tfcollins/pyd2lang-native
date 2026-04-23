@@ -40,7 +40,7 @@ def test_python_classifiers_match_wheel_builds():
 
 
 def test_package_version_matches_release():
-    assert d2.__version__ == "0.1.3"
+    assert d2.__version__ == "0.1.4"
 
 
 def test_release_workflow_validates_tag_matches_package_version():
@@ -49,4 +49,5 @@ def test_release_workflow_validates_tag_matches_package_version():
     assert "Validate tag version" in workflow
     assert "if: startsWith(github.ref, 'refs/tags/v')" in workflow
     assert "RELEASE_TAG: ${{ github.ref_name }}" in workflow
-    assert 'python -c "import d2; print(d2.__version__)"' in workflow
+    assert 'Path("d2/__init__.py").read_text' in workflow
+    assert 're.search(r\'^__version__\\s*=\\s*"([^"]+)"\'' in workflow
