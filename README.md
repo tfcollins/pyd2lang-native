@@ -5,7 +5,7 @@
 [![Build](https://github.com/tfcollins/pyd2lang-native/actions/workflows/build_wheels.yml/badge.svg)](https://github.com/tfcollins/pyd2lang-native/actions/workflows/build_wheels.yml)
 [![Docs](https://github.com/tfcollins/pyd2lang-native/actions/workflows/docs.yml/badge.svg)](https://github.com/tfcollins/pyd2lang-native/actions/workflows/docs.yml)
 [![PyPI](https://img.shields.io/pypi/v/pyd2lang-native)](https://pypi.org/project/pyd2lang-native/)
-[![Python](https://img.shields.io/pypi/pyversions/pyd2lang-native)](https://pypi.org/project/pyd2lang-native/)
+[![Python](https://img.shields.io/badge/python-%3E%3D3.10-blue)](https://pypi.org/project/pyd2lang-native/)
 [![License](https://img.shields.io/github/license/tfcollins/pyd2lang-native)](https://github.com/tfcollins/pyd2lang-native/blob/main/LICENSE)
 
 Native Python bindings for [d2lang](https://d2lang.com), the modern text-to-diagram language. Compile D2 diagram source code to SVG directly from Python — no CLI tools or subprocesses required.
