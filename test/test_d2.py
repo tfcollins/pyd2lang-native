@@ -190,6 +190,46 @@ a -> b: light { class: sw-flow-light }
     assert "<?xml" in graph
 
 
+def test_jif_basic_components():
+    """JIF component classes render correctly."""
+    code = """
+direction: right
+adc: ADC { class: adc }
+ddc: DDC { class: ddc }
+framer: JESD204 Framer { class: jesd204framer }
+
+adc -> ddc -> framer
+"""
+    graph = d2.compile(code, library="jif")
+    assert graph is not None
+    assert "<?xml" in graph
+
+
+def test_jif_all_components():
+    """All JIF component classes render without error."""
+    lines = []
+    for i, comp in enumerate(d2.JIF_COMPONENTS):
+        lines.append(f"c{i}: {comp} {{ class: {comp} }}")
+    code = "\n".join(lines)
+
+    graph = d2.compile(code, library="jif")
+    assert graph is not None
+    assert "<?xml" in graph
+
+
+def test_jif_dark_theme():
+    """Dark theme variant works for JIF blockset."""
+    code = """
+ref: REF_IN { class: input }
+pll: CPLL { class: cpll }
+out: OUT0 { class: out_clock_connected }
+ref -> pll -> out
+"""
+    graph = d2.compile(code, library="jif", theme="dark")
+    assert graph is not None
+    assert "<?xml" in graph
+
+
 def test_sw_petri_workflow():
     """Petri-style workflow diagram with step highlights."""
     code = """

@@ -13,7 +13,7 @@ import d2
 from d2.sphinx import cache
 from d2.sphinx.nodes import d2_svg, placeholder_svg
 
-_VALID_LIBRARIES = {"adi", "sw"}
+_VALID_LIBRARIES = {"adi", "sw", "jif"}
 _VALID_THEMES = {"light", "dark"}
 
 _XML_DECL_PREFIX = "<?xml"

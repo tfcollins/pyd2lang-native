@@ -194,7 +194,43 @@ SW_THEME_CLASSES = [
     "adi-note",
 ]
 
-_VALID_LIBRARIES = {"adi", "sw"}
+JIF_COMPONENTS = [
+    "adc",
+    "dac",
+    "ddc",
+    "duc",
+    "jesd204framer",
+    "jesd204deframer",
+    "framer",
+    "deframer",
+    "input",
+    "out_clock_connected",
+    "divider",
+    "crossbar",
+    "mux",
+    "shell",
+    "ip",
+    "phy",
+    "transceiver",
+    "serdes",
+    "decoder",
+    "cpll",
+    "qpll",
+    "trx-dividers",
+    "cdr",
+    "phase-frequency-detector",
+    "charge-pump",
+    "loop-filter",
+    "vco",
+    "voltage-controlled-oscillator",
+]
+
+JIF_THEME_CLASSES = [
+    "jif-container",
+    "jif-signal",
+]
+
+_VALID_LIBRARIES = {"adi", "sw", "jif"}
 
 
 def compile(
@@ -209,8 +245,8 @@ def compile(
         code: D2 diagram source code.
         library: Component library to include. Either ``"adi"`` for
             Analog Devices signal-chain components, ``"sw"`` for
-            software/AI architecture components, or ``None`` for
-            plain D2 compilation.
+            software/AI architecture components, ``"jif"`` for
+            pyadi-jif block diagrams, or ``None`` for plain D2 compilation.
         theme: Theme variant when a library is used.
             Either ``"light"`` or ``"dark"``.
         adi: Deprecated. Use ``library="adi"`` instead.

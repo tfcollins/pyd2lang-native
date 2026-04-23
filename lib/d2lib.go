@@ -36,6 +36,15 @@ var swThemeDark string
 //go:embed sw/sw-components.d2
 var swComponents string
 
+//go:embed jif/jif-theme.d2
+var jifThemeLight string
+
+//go:embed jif/jif-theme-dark.d2
+var jifThemeDark string
+
+//go:embed jif/jif-components.d2
+var jifComponents string
+
 //export runme
 func runme(namePtr *C.char) *C.char {
 
@@ -107,8 +116,15 @@ func runmeLib(codePtr *C.char, libraryPtr *C.char, themeModePtr *C.char) *C.char
 			theme = swThemeLight
 		}
 		components = swComponents
+	case "jif":
+		if themeMode == "dark" {
+			theme = jifThemeDark
+		} else {
+			theme = jifThemeLight
+		}
+		components = jifComponents
 	default:
-		return C.CString("Error: unknown library '" + library + "', expected 'adi' or 'sw'")
+		return C.CString("Error: unknown library '" + library + "', expected 'adi', 'sw', or 'jif'")
 	}
 
 	// Prepend library (components + theme) to user code so theme can

@@ -4,10 +4,11 @@ pyd2lang-native
 Native Python bindings for the `d2lang <https://d2lang.com>`_ diagram compiler.
 Compile D2 diagram code to SVG directly from Python without requiring the ``d2`` CLI.
 
-Includes two built-in component libraries with ADI brand themes:
+Includes three built-in component libraries with ADI brand themes:
 
 - **ADI** — 64 analog/mixed-signal shapes for signal chain diagrams
 - **SW** — 32 software/AI shapes for architecture and agent pipeline diagrams
+- **JIF** — pyadi-jif block diagram shapes for converters, clocks, JESD, and FPGA paths
 
 Installation
 ------------
@@ -62,6 +63,23 @@ With SW components:
 
    svg = d2.compile(code, library="sw")
 
+With JIF components:
+
+.. code-block:: python
+
+   import d2
+
+   code = """
+   direction: right
+   adc: ADC { class: adc }
+   ddc: DDC { class: ddc }
+   framer: JESD204 Framer { class: jesd204framer }
+
+   adc -> ddc -> framer
+   """
+
+   svg = d2.compile(code, library="jif")
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents
@@ -69,4 +87,5 @@ With SW components:
    api
    adi
    sw
+   jif
    examples
