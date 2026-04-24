@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
-  <!-- Amplifier triangle -->
-  <polygon points="10,12 10,68 90,40" fill="#FFFFFF" stroke="#231F20" stroke-width="2" stroke-linejoin="round"/>
-  <!-- NF indicator -->
-  <text x="30" y="36" font-family="Arial, sans-serif" font-size="10" fill="#0067B9">NF</text>
-  <!-- Label -->
-  <text x="36" y="50" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#231F20">LNA</text>
-</svg>

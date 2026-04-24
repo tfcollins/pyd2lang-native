@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
-  <!-- Amplifier triangle -->
-  <polygon points="12,14 12,66 88,40" fill="#FFFFFF" stroke="#231F20" stroke-width="2" stroke-linejoin="round"/>
-  <!-- Fixed gain label -->
-  <text x="34" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0067B9">+dB</text>
-</svg>
