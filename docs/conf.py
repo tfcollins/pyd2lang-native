@@ -51,7 +51,7 @@ html_theme_options = {
         "color-brand-content": "#A8D4F0",
     },
     "source_repository": "https://github.com/tfcollins/pyd2lang-native",
-    "source_branch": "dev",
+    "source_branch": "main",
     "source_directory": "docs/",
 }
 
