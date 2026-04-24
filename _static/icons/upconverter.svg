@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <!-- Mixer circle -->
+  <circle cx="40" cy="40" r="28" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- X symbol -->
+  <line x1="24" y1="28" x2="56" y2="52" stroke="#231F20" stroke-width="2"/>
+  <line x1="56" y1="28" x2="24" y2="52" stroke="#231F20" stroke-width="2"/>
+  <!-- Upward arrow -->
+  <line x1="40" y1="58" x2="40" y2="18" stroke="#0067B9" stroke-width="2"/>
+  <polygon points="36,24 40,16 44,24" fill="#0067B9"/>
+  <!-- LO label at bottom -->
+  <text x="40" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#58595B">LO</text>
+</svg>
