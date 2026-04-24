@@ -207,8 +207,8 @@ adc -> ddc -> framer
     assert "<?xml" in graph
 
 
-def test_jif_adc_dac_use_converter_outline_icons():
-    """JIF ADC/DAC classes render as balanced converter-outline icons."""
+def test_jif_adc_dac_use_top_level_converter_shapes():
+    """JIF ADC/DAC classes render as top-level image shapes without outer boxes."""
     code = """
 direction: right
 adc: ADC { class: adc }
@@ -218,13 +218,21 @@ adc -> dac
     graph = d2.compile(code, library="jif")
     assert graph is not None
     assert "<?xml" in graph
-    assert "image" in graph.lower()
+    assert "<image" in graph.lower()
     encoded_icons = re.findall(r"data:image/svg\+xml;base64,([A-Za-z0-9+/=]+)", graph)
     assert len(encoded_icons) >= 2
 
     decoded_icons = [base64.b64decode(icon).decode("utf-8") for icon in encoded_icons[:2]]
-    assert 'points="2,2 82,2 118,40 82,78 2,78"' in decoded_icons[0]
-    assert 'points="58,2 138,2 138,78 58,78 22,40"' in decoded_icons[1]
+    assert 'points="2,2 90,2 126,40 90,78 2,78"' in decoded_icons[0]
+    assert ">ADC</text>" in decoded_icons[0]
+    assert 'points="50,2 138,2 138,78 50,78 14,40"' in decoded_icons[1]
+    assert ">DAC</text>" in decoded_icons[1]
+    assert ">ADC</text>" not in graph
+    assert ">DAC</text>" not in graph
+    assert '<g id="adc" class="adc"><g class="shape" ><image' in graph
+    assert '<g id="dac" class="dac"><g class="shape" ><image' in graph
+    assert '<g id="adc" class="adc"><g class="shape" ><rect' not in graph
+    assert '<g id="dac" class="dac"><g class="shape" ><rect' not in graph
 
 
 def test_jif_all_components():
