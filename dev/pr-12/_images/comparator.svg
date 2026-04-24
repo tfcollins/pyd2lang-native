@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
+  <!-- Triangle -->
+  <polygon points="15,10 85,40 15,70" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- + input (non-inverting, bottom) -->
+  <text x="24" y="56" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0067B9">+</text>
+  <!-- - input (inverting, top) -->
+  <text x="24" y="34" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0067B9">&#x2212;</text>
+  <!-- Output high/low indicator -->
+  <line x1="60" y1="32" x2="70" y2="32" stroke="#231F20" stroke-width="1.5"/>
+  <line x1="60" y1="48" x2="70" y2="48" stroke="#231F20" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80">
+  <rect x="2" y="2" width="116" height="76" rx="4" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- Square wave -->
+  <path d="M 15 55 L 15 30 L 30 30 L 30 55 L 45 55 L 45 30 L 60 30 L 60 55 L 75 55 L 75 30 L 90 30 L 90 55 L 105 55" fill="none" stroke="#0067B9" stroke-width="2"/>
+  <!-- Label -->
+  <text x="60" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#231F20">CLK</text>
+</svg>

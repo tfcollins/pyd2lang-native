@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
+<!-- Bottom file -->
+  <rect x="44" y="32" width="56" height="40" rx="2" fill="#8ABBE0" stroke="#231F20" stroke-width="1.5"/>
+  <!-- Middle file -->
+  <rect x="40" y="24" width="56" height="40" rx="2" fill="#5A9FD4" stroke="#231F20" stroke-width="1.5"/>
+  <!-- Top file -->
+  <rect x="36" y="16" width="56" height="40" rx="2" fill="#0067B9" stroke="#231F20" stroke-width="1.5"/>
+  <!-- Lines on top file -->
+  <line x1="44" y1="28" x2="80" y2="28" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+  <line x1="44" y1="34" x2="76" y2="34" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+  <line x1="44" y1="40" x2="72" y2="40" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+</svg>

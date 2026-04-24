@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
+<!-- Cylinder body -->
+  <rect x="40" y="22" width="60" height="36" fill="#0067B9" stroke="#231F20" stroke-width="1.5"/>
+  <!-- Bottom ellipse -->
+  <ellipse cx="70" cy="58" rx="30" ry="8" fill="#0067B9" stroke="#231F20" stroke-width="1.5"/>
+  <!-- Top ellipse -->
+  <ellipse cx="70" cy="22" rx="30" ry="8" fill="#5A9FD4" stroke="#231F20" stroke-width="1.5"/>
+  <!-- Side lines to connect -->
+  <line x1="40" y1="22" x2="40" y2="58" stroke="#231F20" stroke-width="1.5"/>
+  <line x1="100" y1="22" x2="100" y2="58" stroke="#231F20" stroke-width="1.5"/>
+</svg>

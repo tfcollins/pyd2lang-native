@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
+  <rect x="2" y="2" width="96" height="76" rx="4" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- 3-axis indicator -->
+  <!-- X axis -->
+  <line x1="30" y1="48" x2="58" y2="48" stroke="#C8102E" stroke-width="1.5"/>
+  <polygon points="54,45 60,48 54,51" fill="#C8102E"/>
+  <text x="62" y="52" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#C8102E">X</text>
+  <!-- Y axis -->
+  <line x1="30" y1="48" x2="30" y2="22" stroke="#007A33" stroke-width="1.5"/>
+  <polygon points="27,26 30,20 33,26" fill="#007A33"/>
+  <text x="24" y="20" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#007A33">Y</text>
+  <!-- Z axis -->
+  <line x1="30" y1="48" x2="16" y2="60" stroke="#0067B9" stroke-width="1.5"/>
+  <polygon points="20,58 14,62 18,56" fill="#0067B9"/>
+  <text x="10" y="68" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0067B9">Z</text>
+  <!-- Rotation arrow around Y -->
+  <path d="M 70 28 A 10 10 0 1 1 70 48" fill="none" stroke="#58595B" stroke-width="1"/>
+  <polygon points="67,46 70,50 73,46" fill="#58595B"/>
+  <!-- Label -->
+  <text x="50" y="16" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#231F20">IMU</text>
+</svg>
