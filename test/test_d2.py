@@ -235,6 +235,33 @@ adc -> dac
     assert '<g id="dac" class="dac"><g class="shape" ><rect' not in graph
 
 
+def test_jif_targeted_digital_shapes_use_embedded_icons():
+    """Targeted JIF digital classes render as recognizable image-backed shapes."""
+    expected_markers = {
+        "mux": "JIF-MUX-SYMBOL",
+        "crossbar": "JIF-XBAR-SYMBOL",
+        "decoder": "JIF-DECODER-SYMBOL",
+        "serdes": "JIF-SERDES-SYMBOL",
+        "cdr": "JIF-CDR-SYMBOL",
+        "divider": "JIF-DIVIDER-SYMBOL",
+    }
+    code = "\n".join(
+        f"{name}: {name.upper()} {{ class: {name} }}" for name in expected_markers
+    )
+
+    graph = d2.compile(code, library="jif")
+
+    assert graph is not None
+    assert "<?xml" in graph
+    encoded_icons = re.findall(r"data:image/svg\+xml;base64,([A-Za-z0-9+/=]+)", graph)
+    decoded_icons = [
+        base64.b64decode(icon).decode("utf-8")
+        for icon in encoded_icons
+    ]
+    for marker in expected_markers.values():
+        assert any(marker in icon for icon in decoded_icons)
+
+
 def test_jif_all_components():
     """All JIF component classes render without error."""
     lines = []
