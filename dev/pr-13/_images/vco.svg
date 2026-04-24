@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
+  <!-- Circle body -->
+  <circle cx="50" cy="40" r="36" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- Sine wave inside -->
+  <path d="M 24 40 Q 34 22, 44 40 Q 54 58, 64 40 Q 70 30, 76 40" fill="none" stroke="#0067B9" stroke-width="2"/>
+  <!-- Vtune input arrow (bottom) -->
+  <line x1="50" y1="76" x2="50" y2="64" stroke="#0067B9" stroke-width="1.5"/>
+  <polygon points="47,67 50,62 53,67" fill="#0067B9"/>
+  <text x="50" y="16" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#231F20">VCO</text>
+</svg>
