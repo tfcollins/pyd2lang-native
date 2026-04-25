@@ -235,6 +235,44 @@ adc -> dac
     assert '<g id="dac" class="dac"><g class="shape" ><rect' not in graph
 
 
+def test_jif_targeted_digital_shapes_use_embedded_icons():
+    """Targeted JIF digital classes render as recognizable image-backed shapes."""
+    expectations = {
+        "mux": ("JIF-MUX-PRO-SYMBOL", []),
+        "crossbar": ("JIF-XBAR-PRO-SYMBOL", []),
+        "decoder": ("JIF-DECODER-PRO-SYMBOL", []),
+        "serdes": ("JIF-SERDES-PRO-SYMBOL", ["P/S"]),
+        "cdr": ("JIF-CDR-PRO-SYMBOL", ["CDR"]),
+        "divider": ("JIF-DIVIDER-PRO-SYMBOL", ["/N"]),
+    }
+    code = "\n".join(
+        f"{name}: {name.upper()} {{ class: {name} }}" for name in expectations
+    )
+
+    graph = d2.compile(code, library="jif")
+
+    assert graph is not None
+    assert "<?xml" in graph
+    encoded_icons = re.findall(r"data:image/svg\+xml;base64,([A-Za-z0-9+/=]+)", graph)
+    decoded_icons = [
+        base64.b64decode(icon).decode("utf-8")
+        for icon in encoded_icons
+    ]
+    for marker, required_text in expectations.values():
+        matches = [icon for icon in decoded_icons if marker in icon]
+        assert matches, f"missing embedded icon marker {marker}"
+        icon = matches[0]
+        assert 'viewBox="0 0 140 80"' in icon
+        assert 'stroke-width="2"' in icon
+        assert "font-size=\"18\"" not in icon
+        assert "SERDES</text>" not in icon
+        assert "XBAR</text>" not in icon
+        assert "MUX</text>" not in icon
+        assert "DEC</text>" not in icon
+        for text in required_text:
+            assert f">{text}</text>" in icon
+
+
 def test_jif_all_components():
     """All JIF component classes render without error."""
     lines = []
