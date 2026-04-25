@@ -237,16 +237,16 @@ adc -> dac
 
 def test_jif_targeted_digital_shapes_use_embedded_icons():
     """Targeted JIF digital classes render as recognizable image-backed shapes."""
-    expected_markers = {
-        "mux": "JIF-MUX-SYMBOL",
-        "crossbar": "JIF-XBAR-SYMBOL",
-        "decoder": "JIF-DECODER-SYMBOL",
-        "serdes": "JIF-SERDES-SYMBOL",
-        "cdr": "JIF-CDR-SYMBOL",
-        "divider": "JIF-DIVIDER-SYMBOL",
+    expectations = {
+        "mux": ("JIF-MUX-PRO-SYMBOL", []),
+        "crossbar": ("JIF-XBAR-PRO-SYMBOL", []),
+        "decoder": ("JIF-DECODER-PRO-SYMBOL", []),
+        "serdes": ("JIF-SERDES-PRO-SYMBOL", ["P/S"]),
+        "cdr": ("JIF-CDR-PRO-SYMBOL", ["CDR"]),
+        "divider": ("JIF-DIVIDER-PRO-SYMBOL", ["/N"]),
     }
     code = "\n".join(
-        f"{name}: {name.upper()} {{ class: {name} }}" for name in expected_markers
+        f"{name}: {name.upper()} {{ class: {name} }}" for name in expectations
     )
 
     graph = d2.compile(code, library="jif")
@@ -258,8 +258,19 @@ def test_jif_targeted_digital_shapes_use_embedded_icons():
         base64.b64decode(icon).decode("utf-8")
         for icon in encoded_icons
     ]
-    for marker in expected_markers.values():
-        assert any(marker in icon for icon in decoded_icons)
+    for marker, required_text in expectations.values():
+        matches = [icon for icon in decoded_icons if marker in icon]
+        assert matches, f"missing embedded icon marker {marker}"
+        icon = matches[0]
+        assert 'viewBox="0 0 140 80"' in icon
+        assert 'stroke-width="2"' in icon
+        assert "font-size=\"18\"" not in icon
+        assert "SERDES</text>" not in icon
+        assert "XBAR</text>" not in icon
+        assert "MUX</text>" not in icon
+        assert "DEC</text>" not in icon
+        for text in required_text:
+            assert f">{text}</text>" in icon
 
 
 def test_jif_all_components():

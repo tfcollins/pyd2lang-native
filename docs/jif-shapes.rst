@@ -71,7 +71,7 @@ Converter And JESD Blocks
           crossbar: Crossbar { class: crossbar }
 
      - ``crossbar``
-     - Crossbar, router, or converter datapath mux shown as a switch matrix.
+     - Crossbar, router, or converter datapath mux shown as a schematic switch matrix.
    * - .. d2::
           :library: jif
           :theme: light
@@ -79,7 +79,7 @@ Converter And JESD Blocks
           mux: Mux { class: mux }
 
      - ``mux``
-     - Multiplexer or clock/data select block shown with a selector outline.
+     - Multiplexer or clock/data select block shown with a schematic selector outline.
    * - .. d2::
           :library: jif
           :theme: light
@@ -146,7 +146,7 @@ Clocking Blocks
           divider: Divider { class: divider }
 
      - ``divider``
-     - Clock, feedback, output, or transceiver divider shown with clock/divide notation.
+     - Clock, feedback, output, or transceiver divider shown as a functional ``/N`` block.
    * - .. d2::
           :library: jif
           :theme: light
@@ -194,7 +194,7 @@ Clocking Blocks
           cdr: CDR { class: cdr }
 
      - ``cdr``
-     - Clock-data recovery block shown with recovered clock and data motifs.
+     - Clock-data recovery block shown as a functional block with recovered clock/data motifs.
 
 FPGA And System Blocks
 ----------------------
@@ -245,7 +245,7 @@ FPGA And System Blocks
           serdes: SERDES { class: serdes }
 
      - ``serdes``
-     - Serializer/deserializer block shown as a parallel/serial converter.
+     - Serializer/deserializer block shown as a functional parallel/serial converter.
    * - .. d2::
           :library: jif
           :theme: light
@@ -253,7 +253,7 @@ FPGA And System Blocks
           decoder: Decoder { class: decoder }
 
      - ``decoder``
-     - Link-layer decoder block shown as a fan-out decode block.
+     - Link-layer decoder block shown as a functional fan-out decode block.
    * - .. d2::
           :library: jif
           :theme: light
