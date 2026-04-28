@@ -1,0 +1,4 @@
+interface:
+  display_name: "Soft Technical Flowgraphs"
+  short_description: "Create modern, soft technical flowgraphs and system diagrams."
+  default_prompt: "Create a modern soft technical flowgraph for the described system."
