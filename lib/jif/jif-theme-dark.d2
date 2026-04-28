@@ -1,153 +1,79 @@
-# JIF Dark Theme
+# JIF Dark Theme - soft technical flowgraph styles
+
+vars: {
+  jif-bg: "#151A1F"
+  jif-surface: "#202832"
+  jif-ink: "#F4F1E8"
+  jif-muted: "#AAB2BD"
+  jif-border: "#39424D"
+  jif-converter: "#7CCEDB"
+  jif-jesd: "#A7B3F2"
+  jif-clock: "#93C69B"
+  jif-route: "#E4B462"
+  jif-system: "#AAB2BD"
+}
 
 classes: {
-  adc: {
-    style.fill: "#152535"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  dac: {
-    style.fill: "#152535"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  ddc: {
-    style.fill: "#152535"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  duc: {
-    style.fill: "#152535"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  jesd204framer: {
-    style.fill: "#152535"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  jesd204deframer: {
-    style.fill: "#152535"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  framer: {
-    style.fill: "#152535"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  deframer: {
-    style.fill: "#152535"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  input: {
-    style.fill: "#20242C"
-    style.stroke: "#9AA0AA"
-    style.font-color: "#e5e5e5"
-  }
-  out_clock_connected: {
-    style.fill: "#20242C"
-    style.stroke: "#9AA0AA"
-    style.font-color: "#e5e5e5"
-  }
-  divider: {
-    style.fill: "#173323"
-    style.stroke: "#66BB6A"
-    style.font-color: "#e5e5e5"
-  }
-  crossbar: {
-    style.fill: "#3A2C13"
-    style.stroke: "#F5A623"
-    style.font-color: "#e5e5e5"
-  }
-  mux: {
-    style.fill: "#3A2C13"
-    style.stroke: "#F5A623"
-    style.font-color: "#e5e5e5"
-  }
-  shell: {
-    style.fill: "#20242C"
-    style.stroke: "#9AA0AA"
-    style.font-color: "#e5e5e5"
-  }
-  ip: {
-    style.fill: "#241E3A"
-    style.stroke: "#B39DDB"
-    style.font-color: "#e5e5e5"
-  }
-  phy: {
-    style.fill: "#241E3A"
-    style.stroke: "#B39DDB"
-    style.font-color: "#e5e5e5"
-  }
-  transceiver: {
-    style.fill: "#241E3A"
-    style.stroke: "#B39DDB"
-    style.font-color: "#e5e5e5"
-  }
-  serdes: {
-    style.fill: "#241E3A"
-    style.stroke: "#B39DDB"
-    style.font-color: "#e5e5e5"
-  }
-  decoder: {
-    style.fill: "#241E3A"
-    style.stroke: "#B39DDB"
-    style.font-color: "#e5e5e5"
-  }
-  cpll: {
-    style.fill: "#173323"
-    style.stroke: "#66BB6A"
-    style.font-color: "#e5e5e5"
-  }
-  qpll: {
-    style.fill: "#173323"
-    style.stroke: "#66BB6A"
-    style.font-color: "#e5e5e5"
-  }
-  trx-dividers: {
-    style.fill: "#20242C"
-    style.stroke: "#9AA0AA"
-    style.font-color: "#e5e5e5"
-  }
-  cdr: {
-    style.fill: "#241E3A"
-    style.stroke: "#B39DDB"
-    style.font-color: "#e5e5e5"
-  }
-  phase-frequency-detector: {
-    style.fill: "#173323"
-    style.stroke: "#66BB6A"
-    style.font-color: "#e5e5e5"
-  }
-  charge-pump: {
-    style.fill: "#173323"
-    style.stroke: "#66BB6A"
-    style.font-color: "#e5e5e5"
-  }
-  loop-filter: {
-    style.fill: "#173323"
-    style.stroke: "#66BB6A"
-    style.font-color: "#e5e5e5"
-  }
-  vco: {
-    style.fill: "#173323"
-    style.stroke: "#66BB6A"
-    style.font-color: "#e5e5e5"
-  }
-  voltage-controlled-oscillator: {
-    style.fill: "#173323"
-    style.stroke: "#66BB6A"
-    style.font-color: "#e5e5e5"
-  }
-  jif-container: {
-    style.fill: "#20242C"
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
-  jif-signal: {
-    style.stroke: "#92befc"
-    style.font-color: "#e5e5e5"
-  }
+  adc: { style.fill: "#1C3540"; style.stroke: "#7CCEDB"; style.font-color: "#F4F1E8" }
+  dac: { style.fill: "#1C3540"; style.stroke: "#7CCEDB"; style.font-color: "#F4F1E8" }
+  ddc: { style.fill: "#1C3540"; style.stroke: "#7CCEDB"; style.font-color: "#F4F1E8" }
+  duc: { style.fill: "#1C3540"; style.stroke: "#7CCEDB"; style.font-color: "#F4F1E8" }
+  converter-device: { style.fill: "#202832"; style.stroke: "#7CCEDB"; style.font-color: "#F4F1E8" }
+
+  jesd204framer: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  jesd204deframer: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  framer: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  deframer: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  jesd-link: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  jesd-lane: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  lane-aligner: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  elastic-buffer: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  scrambler: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  descrambler: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+
+  input: { style.fill: "#202832"; style.stroke: "#AAB2BD"; style.font-color: "#F4F1E8" }
+  out_clock_connected: { style.fill: "#202832"; style.stroke: "#AAB2BD"; style.font-color: "#F4F1E8" }
+  reference-clock: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  device-clock: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  sample-clock: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  sysref: { style.fill: "#3A2F1A"; style.stroke: "#E4B462"; style.font-color: "#F4F1E8" }
+  divider: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  cpll: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  qpll: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  cdr: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  phase-frequency-detector: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  charge-pump: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  loop-filter: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  vco: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  voltage-controlled-oscillator: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+  clock-chip: { style.fill: "#1D3628"; style.stroke: "#93C69B"; style.font-color: "#F4F1E8" }
+
+  crossbar: { style.fill: "#3A2F1A"; style.stroke: "#E4B462"; style.font-color: "#F4F1E8" }
+  mux: { style.fill: "#3A2F1A"; style.stroke: "#E4B462"; style.font-color: "#F4F1E8" }
+  trx-dividers: { style.fill: "#202832"; style.stroke: "#AAB2BD"; style.font-color: "#F4F1E8" }
+
+  shell: { style.fill: "#202832"; style.stroke: "#AAB2BD"; style.font-color: "#F4F1E8" }
+  ip: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  phy: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  transceiver: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  serdes: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  decoder: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  transport: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  dma: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  axi-stream: { style.fill: "#252B45"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  fabric: { style.fill: "#202832"; style.stroke: "#AAB2BD"; style.font-color: "#F4F1E8" }
+  processor: { style.fill: "#202832"; style.stroke: "#AAB2BD"; style.font-color: "#F4F1E8" }
+  fpga-device: { style.fill: "#202832"; style.stroke: "#A7B3F2"; style.font-color: "#F4F1E8" }
+  external-source: { style.fill: "#202832"; style.stroke: "#AAB2BD"; style.font-color: "#F4F1E8" }
+
+  jif-title: { style.font-color: "#F4F1E8" }
+  jif-note: { style.fill: "#202832"; style.stroke: "#39424D"; style.font-color: "#AAB2BD" }
+  jif-chip: { style.fill: "#202832"; style.stroke: "#39424D"; style.font-color: "#AAB2BD" }
+  jif-container: { style.fill: "#151A1F"; style.stroke: "#39424D"; style.font-color: "#F4F1E8" }
+  jif-signal: { style.stroke: "#7CCEDB"; style.font-color: "#F4F1E8" }
+  jif-flow-data: { style.stroke: "#7CCEDB"; style.font-color: "#7CCEDB" }
+  jif-flow-clock: { style.stroke: "#93C69B"; style.font-color: "#93C69B" }
+  jif-flow-sysref: { style.stroke: "#E4B462"; style.font-color: "#E4B462" }
+  jif-flow-lane: { style.stroke: "#A7B3F2"; style.font-color: "#A7B3F2" }
+  jif-flow-control: { style.stroke: "#AAB2BD"; style.font-color: "#AAB2BD" }
 }

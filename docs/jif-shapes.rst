@@ -278,3 +278,236 @@ FPGA And System Blocks
 
      - ``trx-dividers``
      - Transceiver divider and mux group.
+
+Expanded JIF Blocks
+-------------------
+
+These additive classes support softer, more expressive pyadi-jif and JESD system
+flowgraphs while preserving the existing class names.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 24 54
+
+   * - Shape
+     - Class
+     - Description
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          dev: Converter Device { class: converter-device }
+
+     - ``converter-device``
+     - Top-level converter IC or converter subsystem container.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          clk: Clock Chip { class: clock-chip }
+
+     - ``clock-chip``
+     - Top-level clock generator, jitter cleaner, or clock tree device.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          link: JESD Link { class: jesd-link }
+
+     - ``jesd-link``
+     - JESD204 serial link or link group.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          lane: Lane 0 { class: jesd-lane }
+
+     - ``jesd-lane``
+     - Individual JESD serial lane.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          align: Lane Aligner { class: lane-aligner }
+
+     - ``lane-aligner``
+     - Lane alignment or deterministic-latency stage.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          buf: Elastic Buffer { class: elastic-buffer }
+
+     - ``elastic-buffer``
+     - Elastic buffer, FIFO, or rate-matching storage.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          s: Scrambler { class: scrambler }
+
+     - ``scrambler``
+     - JESD scrambler block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          ds: Descrambler { class: descrambler }
+
+     - ``descrambler``
+     - JESD descrambler block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          transport: Transport { class: transport }
+
+     - ``transport``
+     - FPGA transport or JESD application-layer block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          dma: DMA { class: dma }
+
+     - ``dma``
+     - DMA engine or memory-facing data mover.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          axi: AXI Stream { class: axi-stream }
+
+     - ``axi-stream``
+     - AXI-stream or streaming fabric interface.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          fabric: Fabric { class: fabric }
+
+     - ``fabric``
+     - FPGA fabric or grouped programmable-logic region.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          cpu: Processor { class: processor }
+
+     - ``processor``
+     - Embedded processor or software-control block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          fpga: FPGA { class: fpga-device }
+
+     - ``fpga-device``
+     - Top-level FPGA or SoC device container.
+
+Timing And Annotation Blocks
+----------------------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 24 54
+
+   * - Shape
+     - Class
+     - Description
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          ref: REF_IN { class: reference-clock }
+
+     - ``reference-clock``
+     - External clock reference input.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          clk: Device Clock { class: device-clock }
+
+     - ``device-clock``
+     - Converter or FPGA device clock.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          sample: Sample Clock { class: sample-clock }
+
+     - ``sample-clock``
+     - Converter sample clock.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          sysref: SYSREF { class: sysref }
+
+     - ``sysref``
+     - JESD204 subclass timing reference.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          src: External Source { class: external-source }
+
+     - ``external-source``
+     - Signal, clock, or data source outside the modeled system.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          title: Capture Path { class: jif-title }
+
+     - ``jif-title``
+     - Diagram title text.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          note: Subclass 1 deterministic latency { class: jif-note }
+
+     - ``jif-note``
+     - Small explanatory note.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          chip: LMFS 4421 { class: jif-chip }
+
+     - ``jif-chip``
+     - Compact metadata label for rates, LMFS, lane counts, or subclass.
+
+Flow Classes
+------------
+
+Apply these classes to edges to make connection semantics visible without
+cluttering the diagram.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 24 26 50
+
+   * - Class
+     - Visual Role
+     - Use For
+   * - ``jif-signal``
+     - Default teal connection
+     - Generic JIF connections.
+   * - ``jif-flow-data``
+     - Thicker teal connection
+     - Converter sample streams and internal datapaths.
+   * - ``jif-flow-clock``
+     - Green dashed connection
+     - Device clocks, reference clocks, and PLL outputs.
+   * - ``jif-flow-sysref``
+     - Amber dashed connection
+     - SYSREF and deterministic-latency timing markers.
+   * - ``jif-flow-lane``
+     - Indigo connection
+     - JESD serial lanes or lane bundles.
+   * - ``jif-flow-control``
+     - Muted dotted connection
+     - AXI-lite, SPI, software control, and configuration paths.

@@ -260,6 +260,27 @@ ref -> pll -> out
     assert "<?xml" in graph
 
 
+def test_jif_flow_types():
+    """All JIF flow classes render without error."""
+    code = """
+adc: ADC { class: adc }
+framer: Framer { class: jesd204framer }
+phy: PHY { class: phy }
+clk: Clock { class: device-clock }
+sysref: SYSREF { class: sysref }
+cpu: CPU { class: processor }
+
+adc -> framer: data { class: jif-flow-data }
+framer -> phy: lane { class: jif-flow-lane }
+clk -> adc: clock { class: jif-flow-clock }
+sysref -> adc: sysref { class: jif-flow-sysref }
+cpu -> phy: control { class: jif-flow-control }
+"""
+    graph = d2.compile(code, library="jif")
+    assert graph is not None
+    assert "<?xml" in graph
+
+
 def test_sw_petri_workflow():
     """Petri-style workflow diagram with step highlights."""
     code = """

@@ -1,19 +1,79 @@
-# JIF Light Theme
+# JIF Light Theme - soft technical flowgraph styles
+
+vars: {
+  jif-bg: "#F7F3EA"
+  jif-surface: "#FFFCF5"
+  jif-ink: "#1F1E1A"
+  jif-muted: "#5D6675"
+  jif-border: "#DED8CC"
+  jif-converter: "#4FAFC2"
+  jif-jesd: "#7B8BD6"
+  jif-clock: "#6FAE7A"
+  jif-route: "#D99A3D"
+  jif-system: "#9B9488"
+}
 
 classes: {
   jif-container: {
-    style.fill: "#F7F8FE"
-    style.stroke: "#0067B9"
-    style.stroke-width: 2
-    style.border-radius: 8
-    style.shadow: true
-    style.font-color: "#212836"
-    style.font-size: 16
+    style: {
+      fill: "#F7F3EA"
+      stroke: "#DED8CC"
+      stroke-width: 1
+      border-radius: 14
+      shadow: true
+      font-color: "#1F1E1A"
+      font-size: 16
+    }
   }
   jif-signal: {
-    style.stroke: "#0067B9"
-    style.stroke-width: 2
-    style.font-color: "#212836"
-    style.font-size: 13
+    style: {
+      stroke: "#4FAFC2"
+      stroke-width: 2
+      font-color: "#1F1E1A"
+      font-size: 13
+    }
+  }
+  jif-flow-data: {
+    style: {
+      stroke: "#4FAFC2"
+      stroke-width: 3
+      font-color: "#4FAFC2"
+      font-size: 13
+    }
+  }
+  jif-flow-clock: {
+    style: {
+      stroke: "#6FAE7A"
+      stroke-width: 2
+      stroke-dash: 4
+      font-color: "#6FAE7A"
+      font-size: 12
+    }
+  }
+  jif-flow-sysref: {
+    style: {
+      stroke: "#D99A3D"
+      stroke-width: 2
+      stroke-dash: 3
+      font-color: "#D99A3D"
+      font-size: 12
+    }
+  }
+  jif-flow-lane: {
+    style: {
+      stroke: "#7B8BD6"
+      stroke-width: 2
+      font-color: "#7B8BD6"
+      font-size: 12
+    }
+  }
+  jif-flow-control: {
+    style: {
+      stroke: "#5D6675"
+      stroke-width: 2
+      stroke-dash: 2
+      font-color: "#5D6675"
+      font-size: 12
+    }
   }
 }

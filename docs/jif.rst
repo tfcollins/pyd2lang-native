@@ -45,6 +45,51 @@ Use the JIF library to create:
 
    ref -> pll -> div -> adc -> ddc -> framer -> phy
 
+Soft Technical Flowgraph
+------------------------
+
+Use the expanded JIF classes to separate devices, clocking, JESD lanes, and FPGA
+transport blocks while keeping the diagram calm and easy to scan.
+
+.. d2::
+   :library: jif
+   :alt: Soft technical JIF converter flowgraph
+   :align: center
+
+   direction: right
+
+   title: Converter Capture Path { class: jif-title }
+
+   clocking: Clock Tree {
+     class: jif-container
+     clk: Clock Chip { class: clock-chip }
+     ref: REF_IN { class: reference-clock }
+     sysref: SYSREF { class: sysref }
+     ref -> clk: ref { class: jif-flow-clock }
+   }
+
+   converter: Converter Device {
+     class: converter-device
+     adc: ADC { class: adc }
+     ddc: DDC { class: ddc }
+     framer: JESD204 Framer { class: jesd204framer }
+     lmfs: LMFS 4421 { class: jif-chip }
+     adc -> ddc -> framer { class: jif-flow-data }
+   }
+
+   fpga: FPGA {
+     class: fpga-device
+     phy: PHY { class: phy }
+     transport: Transport { class: transport }
+     dma: DMA { class: dma }
+     phy -> transport -> dma { class: jif-flow-data }
+   }
+
+   clocking.clk -> converter.adc: device clock { class: jif-flow-clock }
+   clocking.sysref -> converter.framer: sysref { class: jif-flow-sysref }
+   converter.framer -> fpga.phy: lanes x4 { class: jif-flow-lane }
+   note: 245.76 MSPS, subclass 1 { class: jif-note }
+
 .. toctree::
    :maxdepth: 2
 

@@ -1,196 +1,357 @@
-# JIF component classes — style-based blocks for pyadi-jif diagrams
+# JIF component classes - style-based blocks for pyadi-jif diagrams
 
 classes: {
+  # Converter and datapath blocks
   adc: {
     shape: image
-    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgODAiPjxwb2x5Z29uIHBvaW50cz0iMiwyIDkwLDIgMTI2LDQwIDkwLDc4IDIsNzgiIGZpbGw9IiNFOEY0RkQiIHN0cm9rZT0iIzAwNjdCOSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHRleHQgeD0iNTYiIHk9IjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyMTI4MzYiPkFEQzwvdGV4dD48L3N2Zz4="
+    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgODAiPjxwb2x5Z29uIHBvaW50cz0iMiwyIDkwLDIgMTI2LDQwIDkwLDc4IDIsNzgiIGZpbGw9IiNFQUY2RjgiIHN0cm9rZT0iIzRGQUZDMiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHRleHQgeD0iNTYiIHk9IjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxRjFFMUEiPkFEQzwvdGV4dD48L3N2Zz4="
     label: ""
-    style.fill: "#E8F4FD"
-    style.stroke: "#0067B9"
+    style.fill: "#EAF6F8"
+    style.stroke: "#4FAFC2"
     style.stroke-width: 2
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   dac: {
     shape: image
-    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgODAiPjxwb2x5Z29uIHBvaW50cz0iNTAsMiAxMzgsMiAxMzgsNzggNTAsNzggMTQsNDAiIGZpbGw9IiNFOEY0RkQiIHN0cm9rZT0iIzAwNjdCOSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHRleHQgeD0iODQiIHk9IjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyMTI4MzYiPkRBQzwvdGV4dD48L3N2Zz4="
+    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgODAiPjxwb2x5Z29uIHBvaW50cz0iNTAsMiAxMzgsMiAxMzgsNzggNTAsNzggMTQsNDAiIGZpbGw9IiNFQUY2RjgiIHN0cm9rZT0iIzRGQUZDMiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHRleHQgeD0iODQiIHk9IjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxRjFFMUEiPkRBQzwvdGV4dD48L3N2Zz4="
     label: ""
-    style.fill: "#E8F4FD"
-    style.stroke: "#0067B9"
+    style.fill: "#EAF6F8"
+    style.stroke: "#4FAFC2"
     style.stroke-width: 2
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   ddc: {
-    style.fill: "#D6EAF8"
-    style.stroke: "#0067B9"
-    style.border-radius: 6
+    style.fill: "#EAF6F8"
+    style.stroke: "#4FAFC2"
+    style.border-radius: 10
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   duc: {
-    style.fill: "#D6EAF8"
-    style.stroke: "#0067B9"
-    style.border-radius: 6
+    style.fill: "#EAF6F8"
+    style.stroke: "#4FAFC2"
+    style.border-radius: 10
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
-  jesd204framer: {
-    style.fill: "#E3F2FD"
-    style.stroke: "#004A87"
-    style.border-radius: 6
+  converter-device: {
+    style.fill: "#FFFCF5"
+    style.stroke: "#4FAFC2"
+    style.stroke-width: 2
+    style.border-radius: 14
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
+  }
+
+  # JESD and link-layer blocks
+  jesd204framer: {
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
   }
   jesd204deframer: {
-    style.fill: "#E3F2FD"
-    style.stroke: "#004A87"
-    style.border-radius: 6
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   framer: {
-    style.fill: "#E3F2FD"
-    style.stroke: "#004A87"
-    style.border-radius: 6
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   deframer: {
-    style.fill: "#E3F2FD"
-    style.stroke: "#004A87"
-    style.border-radius: 6
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
+  jesd-link: {
+    shape: hexagon
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.font-color: "#1F1E1A"
+  }
+  jesd-lane: {
+    style.fill: "#F4F6FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 8
+    style.font-color: "#1F1E1A"
+  }
+  lane-aligner: {
+    style.fill: "#F4F6FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  elastic-buffer: {
+    shape: cylinder
+    style.fill: "#F4F6FF"
+    style.stroke: "#7B8BD6"
+    style.font-color: "#1F1E1A"
+  }
+  scrambler: {
+    style.fill: "#F4F6FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  descrambler: {
+    style.fill: "#F4F6FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+
+  # Clocking blocks
   input: {
     shape: page
-    style.fill: "#F5F5F5"
-    style.stroke: "#58595B"
-    style.font-color: "#212836"
+    style.fill: "#FFFCF5"
+    style.stroke: "#9B9488"
+    style.font-color: "#1F1E1A"
   }
   out_clock_connected: {
     shape: page
-    style.fill: "#F5F5F5"
-    style.stroke: "#58595B"
-    style.font-color: "#212836"
+    style.fill: "#FFFCF5"
+    style.stroke: "#9B9488"
+    style.font-color: "#1F1E1A"
+  }
+  reference-clock: {
+    shape: page
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.font-color: "#1F1E1A"
+  }
+  device-clock: {
+    shape: page
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.font-color: "#1F1E1A"
+  }
+  sample-clock: {
+    shape: page
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.font-color: "#1F1E1A"
+  }
+  sysref: {
+    shape: page
+    style.fill: "#FFF3DF"
+    style.stroke: "#D99A3D"
+    style.font-color: "#1F1E1A"
   }
   divider: {
     shape: hexagon
-    style.fill: "#E8F5E9"
-    style.stroke: "#007A33"
-    style.font-color: "#212836"
-  }
-  crossbar: {
-    shape: diamond
-    style.fill: "#FFF3E0"
-    style.stroke: "#F5A623"
-    style.font-color: "#212836"
-  }
-  mux: {
-    shape: diamond
-    style.fill: "#FFF3E0"
-    style.stroke: "#F5A623"
-    style.font-color: "#212836"
-  }
-  shell: {
-    style.fill: "#F7F8FE"
-    style.stroke: "#676C7E"
-    style.border-radius: 8
-    style.shadow: true
-    style.font-color: "#212836"
-  }
-  ip: {
-    style.fill: "#E8EAF6"
-    style.stroke: "#5E35B1"
-    style.border-radius: 6
-    style.shadow: true
-    style.font-color: "#212836"
-  }
-  phy: {
-    style.fill: "#E8EAF6"
-    style.stroke: "#5E35B1"
-    style.border-radius: 8
-    style.shadow: true
-    style.font-color: "#212836"
-  }
-  transceiver: {
-    style.fill: "#E8EAF6"
-    style.stroke: "#5E35B1"
-    style.border-radius: 6
-    style.shadow: true
-    style.font-color: "#212836"
-  }
-  serdes: {
-    style.fill: "#E8EAF6"
-    style.stroke: "#5E35B1"
-    style.border-radius: 6
-    style.shadow: true
-    style.font-color: "#212836"
-  }
-  decoder: {
-    style.fill: "#E8EAF6"
-    style.stroke: "#5E35B1"
-    style.border-radius: 6
-    style.shadow: true
-    style.font-color: "#212836"
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.font-color: "#1F1E1A"
   }
   cpll: {
-    style.fill: "#E8F5E9"
-    style.stroke: "#007A33"
-    style.border-radius: 8
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.border-radius: 10
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   qpll: {
-    style.fill: "#E8F5E9"
-    style.stroke: "#007A33"
-    style.border-radius: 8
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.border-radius: 10
     style.shadow: true
-    style.font-color: "#212836"
-  }
-  trx-dividers: {
-    style.fill: "#F7F8FE"
-    style.stroke: "#676C7E"
-    style.border-radius: 8
-    style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   cdr: {
-    style.fill: "#E8EAF6"
-    style.stroke: "#5E35B1"
-    style.border-radius: 6
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.border-radius: 10
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   phase-frequency-detector: {
     shape: circle
-    style.fill: "#E8F5E9"
-    style.stroke: "#007A33"
-    style.font-color: "#212836"
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.font-color: "#1F1E1A"
   }
   charge-pump: {
-    style.fill: "#E8F5E9"
-    style.stroke: "#007A33"
-    style.border-radius: 6
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.border-radius: 8
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   loop-filter: {
-    style.fill: "#E8F5E9"
-    style.stroke: "#007A33"
-    style.border-radius: 6
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.border-radius: 8
     style.shadow: true
-    style.font-color: "#212836"
+    style.font-color: "#1F1E1A"
   }
   vco: {
     shape: circle
-    style.fill: "#E8F5E9"
-    style.stroke: "#007A33"
-    style.font-color: "#212836"
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.font-color: "#1F1E1A"
   }
   voltage-controlled-oscillator: {
     shape: circle
-    style.fill: "#E8F5E9"
-    style.stroke: "#007A33"
-    style.font-color: "#212836"
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.font-color: "#1F1E1A"
+  }
+  clock-chip: {
+    style.fill: "#EDF7EF"
+    style.stroke: "#6FAE7A"
+    style.stroke-width: 2
+    style.border-radius: 14
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+
+  # Routing blocks
+  crossbar: {
+    shape: diamond
+    style.fill: "#FFF3DF"
+    style.stroke: "#D99A3D"
+    style.font-color: "#1F1E1A"
+  }
+  mux: {
+    shape: diamond
+    style.fill: "#FFF3DF"
+    style.stroke: "#D99A3D"
+    style.font-color: "#1F1E1A"
+  }
+  trx-dividers: {
+    style.fill: "#F3F1EA"
+    style.stroke: "#9B9488"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+
+  # FPGA and system blocks
+  shell: {
+    style.fill: "#F3F1EA"
+    style.stroke: "#9B9488"
+    style.border-radius: 14
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  ip: {
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  phy: {
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  transceiver: {
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  serdes: {
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  decoder: {
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  transport: {
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  dma: {
+    shape: cylinder
+    style.fill: "#EEF2FF"
+    style.stroke: "#7B8BD6"
+    style.font-color: "#1F1E1A"
+  }
+  axi-stream: {
+    style.fill: "#F4F6FF"
+    style.stroke: "#7B8BD6"
+    style.border-radius: 8
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  fabric: {
+    style.fill: "#F3F1EA"
+    style.stroke: "#9B9488"
+    style.border-radius: 14
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  processor: {
+    style.fill: "#F3F1EA"
+    style.stroke: "#9B9488"
+    style.border-radius: 10
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  fpga-device: {
+    style.fill: "#FFFCF5"
+    style.stroke: "#7B8BD6"
+    style.stroke-width: 2
+    style.border-radius: 14
+    style.shadow: true
+    style.font-color: "#1F1E1A"
+  }
+  external-source: {
+    shape: page
+    style.fill: "#FFFCF5"
+    style.stroke: "#9B9488"
+    style.font-color: "#1F1E1A"
+  }
+
+  # Diagram annotations
+  jif-title: {
+    shape: text
+    style.font-size: 22
+    style.font-color: "#1F1E1A"
+    style.bold: true
+  }
+  jif-note: {
+    shape: page
+    style.fill: "#FFFCF5"
+    style.stroke: "#DED8CC"
+    style.stroke-width: 1
+    style.font-size: 11
+    style.font-color: "#5D6675"
+    style.italic: true
+  }
+  jif-chip: {
+    style.fill: "#F3F1EA"
+    style.stroke: "#DED8CC"
+    style.stroke-width: 1
+    style.border-radius: 20
+    style.font-size: 11
+    style.font-color: "#5D6675"
   }
 }
