@@ -89,3 +89,4 @@ With JIF components:
    sw
    jif
    examples
+   skills

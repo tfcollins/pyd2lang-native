@@ -2,11 +2,13 @@
 <html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="prev" title="Examples" href="examples.html">
         <link rel="prefetch" href="_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 --><title>Python Module Index - pyd2lang-native</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Agent Skills - pyd2lang-native</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -178,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -200,7 +202,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="adi.html">ADI Component Library</a><input aria-label="Toggle navigation of ADI Component Library" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="shapes.html">ADI Shapes</a></li>
@@ -217,7 +219,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skills.html">Agent Skills</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Agent Skills</a></li>
 </ul>
 
 </div>
@@ -237,7 +239,17 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/tfcollins/pyd2lang-native/blob/main/docs/skills.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/tfcollins/pyd2lang-native/edit/main/docs/skills.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
@@ -245,30 +257,59 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          
-<section class="domainindex-section">
-  <h1>Python Module Index</h1>
-  <div class="domainindex-jumpbox"><a href="#cap-d"><strong>d</strong></a></div>
+          <section id="agent-skills">
+<h1>Agent Skills<a class="headerlink" href="#agent-skills" title="Link to this heading">¶</a></h1>
+<p>This repository includes Codex skills under <code class="docutils literal notranslate"><span class="pre">.agents/skills/</span></code>. Skills are
+small, repo-local instruction bundles that help agents produce consistent work
+without re-discovering project preferences each time.</p>
+<p>Use these skills when creating diagrams, UI, examples, or documentation assets
+for this project. Keep skill guidance concise and focused; if a workflow needs
+large examples or reusable assets, add them as skill resources instead of
+expanding <code class="docutils literal notranslate"><span class="pre">SKILL.md</span></code>.</p>
+<section id="available-skills">
+<h2>Available Skills<a class="headerlink" href="#available-skills" title="Link to this heading">¶</a></h2>
+<section id="soft-technical-flowgraphs">
+<h3><code class="docutils literal notranslate"><span class="pre">soft-technical-flowgraphs</span></code><a class="headerlink" href="#soft-technical-flowgraphs" title="Link to this heading">¶</a></h3>
+<p>Use this skill for modern technical flowgraphs, architecture diagrams, system
+maps, workflow visuals, D2/SVG flowcharts, and AI-product-style explainer
+graphics. It defines a calm visual direction with off-white surfaces, muted
+borders, charcoal text, soft accent colors, rounded nodes, subtle shadows, and
+clear directional flow.</p>
+<p>This skill is best for:</p>
+<ul class="simple">
+<li><p>AI agent pipelines and model/tool workflows</p></li>
+<li><p>Software architecture and data-flow diagrams</p></li>
+<li><p>Technical explainers that need a polished, soft visual style</p></li>
+<li><p>D2, SVG, HTML, or CSS diagram outputs</p></li>
+</ul>
+<p>It treats Anthropic/OpenAI-style graphics as broad inspiration only. Do not copy
+brand assets, logos, exact palettes, or proprietary visual identity.</p>
 </section>
-<table class="domainindex-table">
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-d">
-    <td></td><td><strong>d</strong></td><td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-        <a href="api.html#module-d2"><code class="xref">d2</code></a></td><td>
-    <em></em></td>
-  </tr>
-</table>
+<section id="professional-ui-design">
+<h3><code class="docutils literal notranslate"><span class="pre">professional-ui-design</span></code><a class="headerlink" href="#professional-ui-design" title="Link to this heading">¶</a></h3>
+<p>Use this skill for frontend UI design and implementation work. It emphasizes
+production-ready interfaces, deliberate whitespace, strong hierarchy,
+accessible semantic HTML, responsive layouts, and clear interaction states.</p>
+</section>
+</section>
+<section id="maintaining-skills">
+<h2>Maintaining Skills<a class="headerlink" href="#maintaining-skills" title="Link to this heading">¶</a></h2>
+<p>Each skill must include a <code class="docutils literal notranslate"><span class="pre">SKILL.md</span></code> file with YAML frontmatter containing a
+<code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code>. The description is the trigger text, so include the
+main use cases there rather than only in the body.</p>
+<p>Validate changed skills before opening a PR:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>/home/tcollins/.codex/skills/.system/skill-creator/scripts/quick_validate.py<span class="w"> </span>.agents/skills/&lt;skill-name&gt;
+</pre></div>
+</div>
+<p>When adding or changing a skill, also update this page so contributors know when
+and how to use it.</p>
+</section>
+</section>
 
         </article>
       </div>
@@ -276,7 +317,17 @@
         
         <div class="related-pages">
           
-          
+          <a class="prev-page" href="examples.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Examples</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -295,8 +346,32 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Agent Skills</a><ul>
+<li><a class="reference internal" href="#available-skills">Available Skills</a><ul>
+<li><a class="reference internal" href="#soft-technical-flowgraphs"><code class="docutils literal notranslate"><span class="pre">soft-technical-flowgraphs</span></code></a></li>
+<li><a class="reference internal" href="#professional-ui-design"><code class="docutils literal notranslate"><span class="pre">professional-ui-design</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#maintaining-skills">Maintaining Skills</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -307,6 +382,5 @@
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    
-    <script>DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true</script></body>
+    </body>
 </html>
