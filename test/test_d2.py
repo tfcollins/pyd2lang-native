@@ -247,6 +247,53 @@ def test_jif_all_components():
     assert "<?xml" in graph
 
 
+def test_jif_pyadi_focused_additional_components():
+    """Additional pyadi-jif component aliases are public and render."""
+    expected = {
+        "pll",
+        "clock",
+        "ref",
+        "sysref",
+        "device-clock",
+        "clock-output",
+        "converter",
+        "fpga",
+        "link",
+        "lane",
+        "transport",
+        "rx",
+        "tx",
+        "jesd204b",
+        "jesd204c",
+    }
+    assert expected.issubset(set(d2.JIF_COMPONENTS))
+
+    lines = ["direction: right"]
+    for i, comp in enumerate(sorted(expected)):
+        lines.append(f"c{i}: {comp} {{ class: {comp} }}")
+
+    graph = d2.compile("\n".join(lines), library="jif")
+    assert graph is not None
+    assert "<?xml" in graph
+
+
+def test_jif_components_use_soft_technical_palette():
+    """Representative JIF classes render with the soft technical palette."""
+    code = """
+direction: right
+ddc: DDC { class: ddc }
+divider: Divider { class: divider }
+fpga: FPGA { class: fpga }
+ddc -> divider -> fpga
+"""
+    graph = d2.compile(code, library="jif")
+    assert graph is not None
+    assert "#FFFCF5" in graph
+    assert "#DED8CC" in graph
+    assert "#8FD7E6" in graph
+    assert "#5E35B1" not in graph
+
+
 def test_jif_dark_theme():
     """Dark theme variant works for JIF blockset."""
     code = """

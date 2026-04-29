@@ -37,6 +37,23 @@ def test_make_key_changes_with_version():
     assert k1 != k2
 
 
+def test_make_key_changes_with_runtime_fingerprint():
+    k1 = cache.make_key("x", "jif", "light", "0.1.1", "runtime-a")
+    k2 = cache.make_key("x", "jif", "light", "0.1.1", "runtime-b")
+    assert k1 != k2
+
+
+def test_runtime_fingerprint_changes_with_file_content(tmp_path: Path):
+    runtime = tmp_path / "d2lib.so"
+    runtime.write_bytes(b"old embedded jif components")
+    old = cache.runtime_fingerprint(runtime)
+
+    runtime.write_bytes(b"new embedded jif components")
+    new = cache.runtime_fingerprint(runtime)
+
+    assert old != new
+
+
 def test_make_key_handles_none_library():
     k = cache.make_key("x", None, "light", "0.1.1")
     assert isinstance(k, str) and len(k) == 64  # sha256 hex

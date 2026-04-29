@@ -85,10 +85,11 @@ class D2Directive(SphinxDirective):
             variants = [theme_opt or "light"]
 
         cache_dir = Path(self.config.d2_cache_dir)
+        runtime = cache.runtime_fingerprint(Path(d2.lib_path))
 
         svgs: list[tuple[str, str, str]] = []  # (variant, inline-safe, raw)
         for variant in variants:
-            key = cache.make_key(source, library, variant, d2.__version__)
+            key = cache.make_key(source, library, variant, d2.__version__, runtime)
             raw = cache.get(cache_dir, key)
             if raw is None:
                 try:
@@ -150,8 +151,9 @@ class D2Directive(SphinxDirective):
         alt_attr = html.escape(alt, quote=True)
 
         img_nodes: list[dnodes.Node] = []
+        runtime = cache.runtime_fingerprint(Path(d2.lib_path))
         for variant, _inline, raw in svgs:
-            key = cache.make_key(source, library, variant, d2.__version__)
+            key = cache.make_key(source, library, variant, d2.__version__, runtime)
             suffix = "" if variant == "light" else "-dark"
             filename = f"d2-{key[:12]}{suffix}.svg"
             (imagedir / filename).write_text(raw, encoding="utf-8")
