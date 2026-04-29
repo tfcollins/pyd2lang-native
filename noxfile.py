@@ -1,11 +1,23 @@
 """Nox sessions for pyd2lang-native."""
 
+import shutil
+from pathlib import Path
+
 import nox
 
 nox.options.default_venv_backend = "uv"
 nox.options.reuse_existing_virtualenvs = True
 
 PYTHON_VERSIONS = ["3.10", "3.11", "3.12"]
+DOCS_OUTDIR = Path("docs/_build/html")
+D2_DOCS_CACHE = DOCS_OUTDIR / ".d2_cache"
+
+
+def clear_d2_docs_cache(session: nox.Session) -> None:
+    """Remove cached D2 SVGs so embedded library changes render in docs."""
+    if D2_DOCS_CACHE.exists():
+        shutil.rmtree(D2_DOCS_CACHE)
+        session.log(f"Removed {D2_DOCS_CACHE}")
 
 
 @nox.session(python=PYTHON_VERSIONS)
@@ -64,17 +76,19 @@ def typecheck(session: nox.Session) -> None:
 def docs(session: nox.Session) -> None:
     """Build Sphinx documentation."""
     session.install("-e", ".[docs]")
-    session.run("sphinx-build", "-b", "html", "docs", "docs/_build/html")
+    clear_d2_docs_cache(session)
+    session.run("sphinx-build", "-E", "-b", "html", "docs", str(DOCS_OUTDIR))
 
 
 @nox.session
 def docs_serve(session: nox.Session) -> None:
     """Build and serve docs with live reload."""
     session.install("-e", ".[docs]", "sphinx-autobuild")
+    clear_d2_docs_cache(session)
     session.run(
         "sphinx-autobuild",
         "docs",
-        "docs/_build/html",
+        str(DOCS_OUTDIR),
         "--port",
         "8080",
         "--open-browser",
