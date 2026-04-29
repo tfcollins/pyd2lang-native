@@ -235,6 +235,72 @@ adc -> dac
     assert '<g id="dac" class="dac"><g class="shape" ><rect' not in graph
 
 
+def test_jif_divider_renders_as_square():
+    """JIF divider class renders as a square instead of the old hexagon."""
+    code = """
+div: Divider { class: divider }
+"""
+    graph = d2.compile(code, library="jif")
+    assert graph is not None
+    assert "<?xml" in graph
+
+    divider = re.search(r'<g id="div" class="divider">.*?</g>', graph, re.S)
+    assert divider is not None
+    divider_svg = divider.group(0)
+
+    rect = re.search(
+        r'<rect [^>]*width="(?P<width>[0-9.]+)" [^>]*height="(?P<height>[0-9.]+)"',
+        divider_svg,
+    )
+    assert rect is not None
+    assert rect.group("width") == rect.group("height")
+    assert '<path d="M ' not in divider_svg
+
+
+def test_jif_mux_uses_trapezoid_icon_with_internal_label():
+    """JIF mux class renders a mux-body icon with the label inside it."""
+    code = """
+mux: Mux { class: mux }
+"""
+    graph = d2.compile(code, library="jif")
+    assert graph is not None
+    assert "<?xml" in graph
+    assert '<g id="mux" class="mux"><g class="shape" ><image' in graph
+
+    encoded_icons = re.findall(r"data:image/svg\+xml;base64,([A-Za-z0-9+/=]+)", graph)
+    assert encoded_icons
+    decoded_icon = base64.b64decode(encoded_icons[0]).decode("utf-8")
+
+    assert 'points="15,10 85,35 85,85 15,110"' in decoded_icon
+    assert '<text x="50" y="66"' in decoded_icon
+    assert ">Mux</text>" in decoded_icon
+    assert "<line" not in decoded_icon
+    assert "<path" not in decoded_icon
+    assert ">Mux</text>" not in graph
+
+
+def test_jif_crossbar_uses_trapezoid_icon_with_internal_label():
+    """JIF crossbar class renders a mux-like body icon with the label inside it."""
+    code = """
+crossbar: Crossbar { class: crossbar }
+"""
+    graph = d2.compile(code, library="jif")
+    assert graph is not None
+    assert "<?xml" in graph
+    assert '<g id="crossbar" class="crossbar"><g class="shape" ><image' in graph
+
+    encoded_icons = re.findall(r"data:image/svg\+xml;base64,([A-Za-z0-9+/=]+)", graph)
+    assert encoded_icons
+    decoded_icon = base64.b64decode(encoded_icons[0]).decode("utf-8")
+
+    assert 'points="20,10 120,35 120,85 20,110"' in decoded_icon
+    assert '<text x="70" y="66"' in decoded_icon
+    assert ">Crossbar</text>" in decoded_icon
+    assert "<line" not in decoded_icon
+    assert "<path" not in decoded_icon
+    assert ">Crossbar</text>" not in graph
+
+
 def test_jif_all_components():
     """All JIF component classes render without error."""
     lines = []
