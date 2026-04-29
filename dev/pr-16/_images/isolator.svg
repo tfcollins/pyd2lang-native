@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80">
+  <rect x="2" y="2" width="116" height="76" rx="4" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- Isolation barrier (dashed vertical line in middle) -->
+  <line x1="60" y1="8" x2="60" y2="72" stroke="#231F20" stroke-width="2" stroke-dasharray="4,3"/>
+  <!-- Left side label -->
+  <text x="30" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#231F20">IN</text>
+  <!-- Right side label -->
+  <text x="90" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#231F20">OUT</text>
+  <!-- Signal arrows through barrier -->
+  <line x1="20" y1="50" x2="50" y2="50" stroke="#0067B9" stroke-width="1.5"/>
+  <polygon points="48,47 53,50 48,53" fill="#0067B9"/>
+  <line x1="68" y1="50" x2="100" y2="50" stroke="#0067B9" stroke-width="1.5"/>
+  <polygon points="95,47 100,50 95,53" fill="#0067B9"/>
+  <!-- Label -->
+  <text x="60" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#231F20">ISOLATOR</text>
+</svg>
