@@ -1,7 +1,7 @@
 JIF Shapes
 ==========
 
-The library provides style-based classes for pyadi-jif block diagrams.
+The library provides soft, style-based classes for pyadi-jif block diagrams.
 Each shape is a D2 class applied with ``class: <name>``. The public class names
 intentionally match pyadi-jif ``Node.ntype`` values.
 
@@ -48,6 +48,14 @@ Converter And JESD Blocks
 
      - ``dac``
      - Digital-to-analog converter block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          converter: Converter { class: converter }
+
+     - ``converter``
+     - Generic converter block when the direction is defined by context.
    * - .. d2::
           :library: jif
           :theme: light
@@ -100,6 +108,46 @@ Converter And JESD Blocks
           :library: jif
           :theme: light
 
+          link: JESD Link { class: link }
+
+     - ``link``
+     - JESD link grouping block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          lane: Lane { class: lane }
+
+     - ``lane``
+     - JESD lane or lane group.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          transport: Transport { class: transport }
+
+     - ``transport``
+     - Converter or FPGA transport-layer block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          jesd204b: JESD204B { class: jesd204b }
+
+     - ``jesd204b``
+     - JESD204B link or protocol block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          jesd204c: JESD204C { class: jesd204c }
+
+     - ``jesd204c``
+     - JESD204C link or protocol block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
           framer: Framer { class: framer }
 
      - ``framer``
@@ -135,6 +183,30 @@ Clocking Blocks
           :library: jif
           :theme: light
 
+          ref: REF_IN { class: ref }
+
+     - ``ref``
+     - Reference-clock input.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          sysref: SYSREF { class: sysref }
+
+     - ``sysref``
+     - SYSREF timing signal.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          devclk: Device Clock { class: device-clock }
+
+     - ``device-clock``
+     - Device clock input or distribution point.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
           output: Output { class: out_clock_connected }
 
      - ``out_clock_connected``
@@ -143,10 +215,34 @@ Clocking Blocks
           :library: jif
           :theme: light
 
+          output: Clock Output { class: clock-output }
+
+     - ``clock-output``
+     - Output clock alias for pyadi-jif clock drawings.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
           divider: Divider { class: divider }
 
      - ``divider``
      - Clock, feedback, output, or transceiver divider.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          clock: Clock { class: clock }
+
+     - ``clock``
+     - Generic clock source or node.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          pll: PLL { class: pll }
+
+     - ``pll``
+     - Generic PLL block.
    * - .. d2::
           :library: jif
           :theme: light
@@ -226,6 +322,14 @@ FPGA And System Blocks
           :library: jif
           :theme: light
 
+          fpga: FPGA { class: fpga }
+
+     - ``fpga``
+     - FPGA device or top-level programmable-logic region.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
           phy: PHY { class: phy }
 
      - ``phy``
@@ -246,6 +350,22 @@ FPGA And System Blocks
 
      - ``serdes``
      - Serializer/deserializer block.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          rx: RX { class: rx }
+
+     - ``rx``
+     - Receive datapath or transceiver side.
+   * - .. d2::
+          :library: jif
+          :theme: light
+
+          tx: TX { class: tx }
+
+     - ``tx``
+     - Transmit datapath or transceiver side.
    * - .. d2::
           :library: jif
           :theme: light
