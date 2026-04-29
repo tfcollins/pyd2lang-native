@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80">
+  <rect x="2" y="2" width="116" height="76" rx="4" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- PLL label -->
+  <text x="60" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#231F20">PLL</text>
+  <!-- Feedback loop symbol -->
+  <path d="M 35 50 L 85 50 L 85 60 L 35 60 Z" fill="none" stroke="#0067B9" stroke-width="1.5"/>
+  <path d="M 60 60 L 60 68 L 35 68 L 35 50" fill="none" stroke="#0067B9" stroke-width="1.5"/>
+  <!-- Arrow on feedback -->
+  <polygon points="35,53 31,50 35,47" fill="#0067B9"/>
+</svg>
