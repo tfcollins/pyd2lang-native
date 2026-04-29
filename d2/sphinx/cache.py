@@ -11,10 +11,20 @@ import hashlib
 from pathlib import Path
 
 
-def make_key(source: str, library: str | None, theme: str, version: str) -> str:
-    parts = [source, str(library), theme, version]
+def make_key(
+    source: str,
+    library: str | None,
+    theme: str,
+    version: str,
+    runtime: str = "",
+) -> str:
+    parts = [source, str(library), theme, version, runtime]
     data = "\x00".join(parts).encode("utf-8")
     return hashlib.sha256(data).hexdigest()
+
+
+def runtime_fingerprint(runtime_path: Path) -> str:
+    return hashlib.sha256(runtime_path.read_bytes()).hexdigest()
 
 
 def cache_path(cache_dir: Path, key: str) -> Path:
