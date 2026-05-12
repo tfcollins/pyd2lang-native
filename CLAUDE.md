@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-pyd2lang-native provides Python bindings to the d2lang diagram compiler via a Go shared library loaded through ctypes. It compiles D2 source code to SVG natively without requiring the d2 CLI. Includes two component libraries: an ADI (Analog Devices) signal-chain library (64 shapes) and an SW (software/AI) architecture library (32 shapes), each with light/dark themes.
+pyd2lang-native provides Python bindings to the d2lang diagram compiler via a Go shared library loaded through ctypes. It compiles D2 source code to SVG natively without requiring the d2 CLI. Includes ADI signal-chain, SW software/AI, JIF, and DataX overview libraries with light/dark themes.
 
 ## Commands
 
@@ -38,7 +38,7 @@ Nox uses `uv` as its venv backend.
 ## Architecture
 
 ```
-d2/__init__.py          Python API: compile(code, library="adi"|"sw"|None, theme="light") -> SVG
+d2/__init__.py          Python API: compile(code, library="adi"|"sw"|"jif"|"datax"|None, theme="light") -> SVG
     ↓ ctypes
 d2/resources/*.so       Pre-built Go shared library (built from lib/)
     ↓
@@ -48,6 +48,8 @@ lib/d2lib.go            C-exported functions:
                           runmeLib() - generic dispatch: selects library by name
 lib/adi/                ADI assets: adi-components.d2 (64 icons), adi-theme.d2, adi-theme-dark.d2
 lib/sw/                 SW assets: sw-components.d2 (32 icons), sw-theme.d2, sw-theme-dark.d2
+lib/jif/                JIF assets: jif-components.d2, jif-theme.d2, jif-theme-dark.d2
+lib/datax/              DataX overview assets: datax-components.d2, datax-theme.d2, datax-theme-dark.d2
 ```
 
 The Go library embeds library assets at compile time via `//go:embed`. The Python side loads the shared library, calls the appropriate C function, and returns the SVG string or raises `RuntimeError`. The `library` parameter selects which component library to prepend (or `None` for plain D2).
@@ -59,4 +61,5 @@ The Go library embeds library assets at compile time via `//go:embed`. The Pytho
 - **Tests**: live in `test/` — `test_d2.py` (compilation smoke tests) and a Sphinx directive suite covering the directive (`test_sphinx_directive.py`), cache (`test_sphinx_cache.py`), and nodes (`test_sphinx_nodes.py`). `test_check_svg_backgrounds.py` keeps SVG-canvas-background unit tests. Compilation tests assert `"<?xml"` appears in output; directive tests drive end-to-end Sphinx builds.
 - **ADI components**: source SVGs in `lib/adi/icons/`; embedded into `lib/adi/adi-components.d2` and the `d2.ADI_COMPONENTS` list by `python scripts/embed_icons.py --library adi`. Adding a component = drop an SVG in the icons dir, append its class name to `_ADI_ORDER` in `scripts/embed_icons.py`, and regenerate. `nox -s embed_check` verifies drift.
 - **SW components**: defined as hand-styled D2 classes in `lib/sw/sw-components.d2`, exposed as `d2.SW_COMPONENTS` list. Unlike ADI, SW does not use base64-embedded icons — classes are rendered via `style.fill` / `style.stroke` / `shape:` properties. Edit the file directly and keep `SW_COMPONENTS` in `d2/__init__.py` in sync by hand.
+- **DataX components**: defined as hand-styled D2 classes in `lib/datax/`, exposed as `d2.DATAX_COMPONENTS` and `d2.DATAX_THEME_CLASSES`. Edit the D2 files directly and keep the Python constants in sync by hand.
 - **CI**: cibuildwheel builds wheels on 5 OS matrix entries; docs auto-deploy to GitHub Pages on main

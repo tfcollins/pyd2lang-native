@@ -10,7 +10,7 @@
 
 Native Python bindings for [d2lang](https://d2lang.com), the modern text-to-diagram language. Compile D2 diagram source code to SVG directly from Python — no CLI tools or subprocesses required.
 
-Includes a built-in **Analog Devices (ADI) component library** with 64 signal chain shapes (ADCs, DACs, amplifiers, filters, PLLs, power management, RF, interfaces, and more) plus light and dark ADI-branded themes.
+Includes built-in **Analog Devices (ADI)** libraries for signal-chain shapes, software/AI architecture diagrams, pyadi-jif block diagrams, and ADI DataX overview diagrams, plus light and dark ADI-branded themes.
 
 ## Quick Start
 
@@ -32,6 +32,18 @@ svg = d2.compile("""
 
 # Dark theme variant
 svg = d2.compile(code, adi=True, theme="dark")
+
+# ADI DataX overview-style stack diagram
+svg = d2.compile("""
+  direction: down
+  stack: ADI DataX Stack { class: datax-panel
+    apps: Applications { class: datax-application }
+    lib: libiio / pyadi-iio { class: datax-info }
+    drivers: Linux IIO Drivers { class: datax-driver }
+    hardware: ADI Hardware { class: datax-hardware }
+    apps -> lib -> drivers -> hardware { class: datax-flow }
+  }
+""", library="datax")
 ```
 
 ## Installation

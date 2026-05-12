@@ -183,6 +183,21 @@ def test_jif_library_option_builds(tmp_path: Path):
     assert "d2-svg" in html
 
 
+def test_datax_library_option_builds(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :library: datax\n\n"
+        "   panel: Stack { class: datax-panel }\n"
+        "   hw: Hardware { class: datax-hardware }\n"
+        "   panel -> hw { class: datax-flow }\n"
+    )
+    html, warnings = build_docs(tmp_path, rst)
+
+    assert warnings == ""
+    assert "d2-svg" in html
+
+
 def test_second_build_is_a_cache_hit(tmp_path: Path):
     rst = "Title\n=====\n\n.. d2::\n   :theme: light\n\n   a -> b\n"
     # First build populates the cache

@@ -194,6 +194,43 @@ SW_THEME_CLASSES = [
     "adi-note",
 ]
 
+DATAX_COMPONENTS = [
+    "datax-box",
+    "datax-hardware",
+    "datax-hardware-alt",
+    "datax-processor",
+    "datax-hdl",
+    "datax-driver",
+    "datax-application",
+    "datax-application-alt",
+    "datax-info",
+    "datax-note-box",
+    "datax-note-warm",
+    "datax-good",
+    "datax-warn",
+    "datax-muted",
+    "datax-blank",
+]
+
+DATAX_THEME_CLASSES = [
+    "datax-panel",
+    "datax-band",
+    "datax-title",
+    "datax-subtitle",
+    "datax-panel-label",
+    "datax-panel-sublabel",
+    "datax-section-label",
+    "datax-layer-label",
+    "datax-label",
+    "datax-note",
+    "datax-flow",
+    "datax-flow-accent",
+    "datax-flow-muted",
+    "datax-flow-dashed",
+    "datax-flow-good",
+    "datax-flow-warn",
+]
+
 JIF_COMPONENTS = [
     "adc",
     "dac",
@@ -230,7 +267,7 @@ JIF_THEME_CLASSES = [
     "jif-signal",
 ]
 
-_VALID_LIBRARIES = {"adi", "sw", "jif"}
+_VALID_LIBRARIES = {"adi", "sw", "jif", "datax"}
 
 
 def compile(
@@ -246,7 +283,8 @@ def compile(
         library: Component library to include. Either ``"adi"`` for
             Analog Devices signal-chain components, ``"sw"`` for
             software/AI architecture components, ``"jif"`` for
-            pyadi-jif block diagrams, or ``None`` for plain D2 compilation.
+            pyadi-jif block diagrams, ``"datax"`` for ADI DataX overview
+            diagrams, or ``None`` for plain D2 compilation.
         theme: Theme variant when a library is used.
             Either ``"light"`` or ``"dark"``.
         adi: Deprecated. Use ``library="adi"`` instead.

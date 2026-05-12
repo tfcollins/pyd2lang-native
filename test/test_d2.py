@@ -382,6 +382,69 @@ loop -> scoring { class: sw-flow-data }
     assert "<?xml" in graph
 
 
+def test_datax_overview_stack():
+    """DataX library renders overview-style stack diagrams."""
+    code = """
+direction: down
+
+title: ADI DataX Technology Stack { class: datax-title }
+
+stack: Layered architecture {
+  class: datax-panel
+
+  datax: ADI DataX {
+    class: datax-band
+    hdl: Layer 3: HDL / Firmware { class: datax-hdl }
+    drivers: Layer 4: Drivers { class: datax-driver }
+    libs: Layer 5: Libraries { class: datax-info }
+    bindings: Layer 6: Ecosystem Bindings { class: datax-application }
+  }
+
+  apps: Layer 7: Applications { class: datax-application-alt }
+  hwif: Layer 2: Hardware Interface { class: datax-processor }
+  hw: Layer 1: Hardware { class: datax-hardware }
+
+  apps -> datax.bindings -> datax.libs -> datax.drivers -> datax.hdl -> hwif -> hw {
+    class: datax-flow
+  }
+}
+"""
+    graph = d2.compile(code, library="datax")
+    assert graph is not None
+    assert "<?xml" in graph
+    assert "#F7F1E6" in graph
+    assert "#E4ECF6" in graph
+    assert "ADI DataX Technology Stack" in graph
+
+
+def test_datax_all_components():
+    """All DataX component classes render without error."""
+    lines = []
+    for i, comp in enumerate(d2.DATAX_COMPONENTS):
+        lines.append(f"c{i}: {comp} {{ class: {comp} }}")
+    code = "\n".join(lines)
+
+    graph = d2.compile(code, library="datax")
+    assert graph is not None
+    assert "<?xml" in graph
+
+
+def test_datax_dark_theme():
+    """Dark theme variant works for DataX overview diagrams."""
+    code = """
+panel: Dark panel { class: datax-panel
+  hw: Hardware { class: datax-hardware }
+  app: Application { class: datax-application }
+  hw -> app { class: datax-flow-accent }
+}
+"""
+    graph = d2.compile(code, library="datax", theme="dark")
+    assert graph is not None
+    assert "<?xml" in graph
+    assert "#1A2028" in graph
+    assert "#4A3328" in graph
+
+
 def test_library_param_adi():
     """library='adi' works identically to adi=True."""
     code = """

@@ -74,6 +74,20 @@ JIF Library
 
       ["jif-container", "jif-signal"]
 
+DataX Library
+~~~~~~~~~~~~~
+
+.. py:data:: DATAX_COMPONENTS
+   :type: list[str]
+
+   List of DataX semantic box class names (see :doc:`datax`).
+
+.. py:data:: DATAX_THEME_CLASSES
+   :type: list[str]
+
+   List of DataX typography, panel, band, and flow class names (see
+   :doc:`datax`).
+
 General
 ~~~~~~~
 

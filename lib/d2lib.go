@@ -45,6 +45,15 @@ var jifThemeDark string
 //go:embed jif/jif-components.d2
 var jifComponents string
 
+//go:embed datax/datax-theme.d2
+var dataxThemeLight string
+
+//go:embed datax/datax-theme-dark.d2
+var dataxThemeDark string
+
+//go:embed datax/datax-components.d2
+var dataxComponents string
+
 //export runme
 func runme(namePtr *C.char) *C.char {
 
@@ -123,8 +132,15 @@ func runmeLib(codePtr *C.char, libraryPtr *C.char, themeModePtr *C.char) *C.char
 			theme = jifThemeLight
 		}
 		components = jifComponents
+	case "datax":
+		if themeMode == "dark" {
+			theme = dataxThemeDark
+		} else {
+			theme = dataxThemeLight
+		}
+		components = dataxComponents
 	default:
-		return C.CString("Error: unknown library '" + library + "', expected 'adi', 'sw', or 'jif'")
+		return C.CString("Error: unknown library '" + library + "', expected 'adi', 'sw', 'jif', or 'datax'")
 	}
 
 	// Prepend library (components + theme) to user code so theme can
