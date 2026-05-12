@@ -218,6 +218,7 @@
 <li class="toctree-l2"><a class="reference internal" href="jif-shapes.html">JIF Shapes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="datax.html">ADI DataX Overview Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skills.html">Agent Skills</a></li>
 </ul>
@@ -266,11 +267,12 @@
 <h1>pyd2lang-native<a class="headerlink" href="#pyd2lang-native" title="Link to this heading">¶</a></h1>
 <p>Native Python bindings for the <a class="reference external" href="https://d2lang.com">d2lang</a> diagram compiler.
 Compile D2 diagram code to SVG directly from Python without requiring the <code class="docutils literal notranslate"><span class="pre">d2</span></code> CLI.</p>
-<p>Includes three built-in component libraries with ADI brand themes:</p>
+<p>Includes four built-in component libraries with ADI brand themes:</p>
 <ul class="simple">
 <li><p><strong>ADI</strong> — 64 analog/mixed-signal shapes for signal chain diagrams</p></li>
 <li><p><strong>SW</strong> — 32 software/AI shapes for architecture and agent pipeline diagrams</p></li>
 <li><p><strong>JIF</strong> — pyadi-jif block diagram shapes for converters, clocks, JESD, and FPGA paths</p></li>
+<li><p><strong>DataX</strong> — overview styles matching the SVG diagrams in ADI DataX docs</p></li>
 </ul>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
@@ -333,6 +335,24 @@ Compile D2 diagram code to SVG directly from Python without requiring the <code 
 <span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;jif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>With DataX overview styles:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
+
+<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">direction: down</span>
+<span class="s2">title: ADI DataX Stack { class: datax-title }</span>
+<span class="s2">panel: Layers { class: datax-panel</span>
+<span class="s2">  app: Applications { class: datax-application }</span>
+<span class="s2">  lib: libiio / pyadi-iio { class: datax-info }</span>
+<span class="s2">  drv: Linux IIO Drivers { class: datax-driver }</span>
+<span class="s2">  hw: Hardware { class: datax-hardware }</span>
+<span class="s2">  app -&gt; lib -&gt; drv -&gt; hw { class: datax-flow }</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;datax&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
@@ -353,6 +373,13 @@ Compile D2 diagram code to SVG directly from Python without requiring the <code 
 </li>
 <li class="toctree-l1"><a class="reference internal" href="jif.html">JIF Component Library</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="jif-shapes.html">JIF Shapes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datax.html">ADI DataX Overview Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datax.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datax.html#semantic-box-classes">Semantic Box Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datax.html#typography-and-flow-classes">Typography and Flow Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datax.html#dark-theme">Dark Theme</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
