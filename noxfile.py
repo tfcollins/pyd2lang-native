@@ -8,7 +8,7 @@ import nox
 nox.options.default_venv_backend = "uv"
 nox.options.reuse_existing_virtualenvs = True
 
-PYTHON_VERSIONS = ["3.10", "3.11", "3.12"]
+PYTHON_VERSIONS = ["3.10", "3.11", "3.12", "3.13"]
 DOCS_OUTDIR = Path("docs/_build/html")
 D2_DOCS_CACHE = DOCS_OUTDIR / ".d2_cache"
 

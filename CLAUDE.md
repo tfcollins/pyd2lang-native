@@ -10,7 +10,7 @@ pyd2lang-native provides Python bindings to the d2lang diagram compiler via a Go
 
 ```bash
 # Testing
-nox -s tests                    # Run pytest across Python 3.10/3.11/3.12
+nox -s tests                    # Run pytest across Python 3.10/3.11/3.12/3.13
 pytest test/test_d2.py -v       # Run tests directly (current Python only)
 pytest test/test_d2.py::test_d2 -v  # Run a single test
 
