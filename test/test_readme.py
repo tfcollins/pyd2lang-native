@@ -34,8 +34,9 @@ def test_python_classifiers_match_wheel_builds():
     assert "Programming Language :: Python :: 3.11" in _classifiers()
     assert "Programming Language :: Python :: 3.12" in _classifiers()
     assert "Programming Language :: Python :: 3.13" in _classifiers()
+    assert "Programming Language :: Python :: 3.14" in _classifiers()
     assert re.search(
-        r"CIBW_BUILD:\s*cp310-\* cp311-\* cp312-\* cp313-\*",
+        r"CIBW_BUILD:\s*cp310-\* cp311-\* cp312-\* cp313-\* cp314-\*",
         (ROOT / ".github/workflows/build_wheels.yml").read_text(encoding="utf-8"),
     )
 
