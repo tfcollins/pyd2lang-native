@@ -116,8 +116,18 @@ if [[ "$NEW_VERSION" != "$NEXT_VERSION" ]]; then
     exit 1
 fi
 
+# Keep the hardcoded release-version assertion in test/test_readme.py in sync,
+# otherwise the cibuildwheel test phase fails and PyPI publish is skipped.
+TEST_FILE="test/test_readme.py"
+sed -i "s/assert d2.__version__ == \"${CURRENT_VERSION}\"/assert d2.__version__ == \"${NEXT_VERSION}\"/" "$TEST_FILE"
+if ! grep -q "assert d2.__version__ == \"${NEXT_VERSION}\"" "$TEST_FILE"; then
+    echo "Error: failed to update release-version assertion in $TEST_FILE"
+    git checkout -- "$INIT_FILE" "$TEST_FILE"
+    exit 1
+fi
+
 # Commit version bump
-git add "$INIT_FILE"
+git add "$INIT_FILE" "$TEST_FILE"
 git commit -m "Release $TAG"
 
 # Create tag
