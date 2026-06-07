@@ -54,6 +54,15 @@ var dataxThemeDark string
 //go:embed datax/datax-components.d2
 var dataxComponents string
 
+//go:embed clean/clean-theme.d2
+var cleanThemeLight string
+
+//go:embed clean/clean-theme-dark.d2
+var cleanThemeDark string
+
+//go:embed clean/clean-components.d2
+var cleanComponents string
+
 //export runme
 func runme(namePtr *C.char) *C.char {
 
@@ -139,8 +148,15 @@ func runmeLib(codePtr *C.char, libraryPtr *C.char, themeModePtr *C.char) *C.char
 			theme = dataxThemeLight
 		}
 		components = dataxComponents
+	case "clean":
+		if themeMode == "dark" {
+			theme = cleanThemeDark
+		} else {
+			theme = cleanThemeLight
+		}
+		components = cleanComponents
 	default:
-		return C.CString("Error: unknown library '" + library + "', expected 'adi', 'sw', 'jif', or 'datax'")
+		return C.CString("Error: unknown library '" + library + "', expected 'adi', 'sw', 'jif', 'datax', or 'clean'")
 	}
 
 	// Prepend library (components + theme) to user code so theme can
