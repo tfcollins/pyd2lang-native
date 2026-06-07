@@ -13,7 +13,9 @@ import d2
 from d2.sphinx import cache
 from d2.sphinx.nodes import d2_svg, placeholder_svg
 
-_VALID_LIBRARIES = {"adi", "sw", "jif", "datax"}
+# Source the accepted library names from the canonical set in ``d2`` so the
+# directive can never drift out of sync with what ``d2.compile`` supports.
+_VALID_LIBRARIES = d2._VALID_LIBRARIES
 _VALID_THEMES = {"light", "dark"}
 
 _XML_DECL_PREFIX = "<?xml"
