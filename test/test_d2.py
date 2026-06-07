@@ -495,3 +495,82 @@ def test_sw_error_handling():
     code = "{{{{ invalid d2 code"
     with pytest.raises(RuntimeError, match="Error"):
         d2.compile(code, library="sw")
+
+
+# ── clean library tests ──
+
+
+def test_clean_basic_components():
+    """clean component classes render correctly."""
+    code = """
+direction: right
+api: API { class: clean-api }
+svc: Service { class: clean-primary }
+db: Postgres { class: clean-database }
+user: User { class: clean-user }
+
+user -> api { class: clean-flow }
+api -> svc { class: clean-flow-primary }
+svc -> db { class: clean-flow }
+"""
+    graph = d2.compile(code, library="clean")
+    assert graph is not None
+    assert "<?xml" in graph
+    # clay accent fill of clean-primary appears in light output
+    assert "#F7EAE2" in graph
+
+
+def test_clean_all_components():
+    """All clean component classes render without error."""
+    lines = []
+    for i, comp in enumerate(d2.CLEAN_COMPONENTS):
+        lines.append(f"c{i}: {comp} {{ class: {comp} }}")
+    code = "\n".join(lines)
+
+    graph = d2.compile(code, library="clean")
+    assert graph is not None
+    assert "<?xml" in graph
+
+
+def test_clean_theme_and_flows():
+    """clean theme/panel and all flow edge classes render without error."""
+    code = """
+panel: System { class: clean-panel
+  band: Data Plane { class: clean-band
+    cache: Cache { class: clean-cache }
+    q: Queue { class: clean-queue }
+  }
+  a: A { class: clean-service }
+  b: B { class: clean-service }
+  a -> b: default { class: clean-flow }
+  a -> b: primary { class: clean-flow-primary }
+  a -> b: muted { class: clean-flow-muted }
+  a -> b: dashed { class: clean-flow-dashed }
+}
+"""
+    graph = d2.compile(code, library="clean")
+    assert graph is not None
+    assert "<?xml" in graph
+    # slate band tint appears in light output
+    assert "#EEF1F4" in graph
+
+
+def test_clean_dark_theme():
+    """Dark theme variant works for the clean library."""
+    code = """
+api: API { class: clean-api }
+svc: Service { class: clean-primary }
+api -> svc { class: clean-flow-primary }
+"""
+    graph = d2.compile(code, library="clean", theme="dark")
+    assert graph is not None
+    assert "<?xml" in graph
+    # clay accent fill of clean-primary in dark output
+    assert "#3A2A22" in graph
+
+
+def test_clean_error_handling():
+    """Invalid D2 code with library='clean' raises RuntimeError."""
+    code = "{{{{ invalid d2 code"
+    with pytest.raises(RuntimeError, match="Error"):
+        d2.compile(code, library="clean")
