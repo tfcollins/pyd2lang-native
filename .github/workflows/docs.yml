@@ -24,8 +24,15 @@ on:
 permissions:
   contents: read
 
+# Production (push / workflow_dispatch) and PR preview/cleanup runs use
+# SEPARATE concurrency groups so a PR's closed-cleanup run can never cancel the
+# pending production deploy (they previously shared one `pages` group, and the
+# cleanup queued last on merge would cancel the still-pending main deploy).
+# Each group still serializes within itself; cancel-in-progress stays false so a
+# queued production deploy is never dropped. Because the two groups can now
+# mutate gh-pages concurrently, the push steps below rebase-and-retry.
 concurrency:
-  group: pages
+  group: pages-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'production' }}
   cancel-in-progress: false
 
 jobs:
@@ -144,7 +151,21 @@ jobs:
               message="Publish docs site"
             fi
             git -C site commit -m "$message"
-            git -C site push origin "${GH_PAGES_BRANCH}"
+            # Production and PR preview/cleanup runs can mutate gh-pages
+            # concurrently (separate concurrency groups). They touch different
+            # paths (root vs dev/pr-N), so reconcile with rebase instead of
+            # failing on a non-fast-forward push.
+            for attempt in 1 2 3 4 5; do
+              if git -C site push origin "${GH_PAGES_BRANCH}"; then
+                break
+              fi
+              if [ "$attempt" -eq 5 ]; then
+                echo "::error::failed to push ${GH_PAGES_BRANCH} after 5 attempts"
+                exit 1
+              fi
+              git -C site fetch origin "${GH_PAGES_BRANCH}"
+              git -C site rebase "origin/${GH_PAGES_BRANCH}"
+            done
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -236,7 +257,19 @@ jobs:
             rm -rf "site/${PREVIEW_PATH}"
             git -C site add -A
             git -C site commit -m "Remove docs preview for PR #${{ github.event.pull_request.number }}"
-            git -C site push origin "${GH_PAGES_BRANCH}"
+            # See note on the publish job: reconcile with rebase since a
+            # concurrent production deploy may have advanced gh-pages.
+            for attempt in 1 2 3 4 5; do
+              if git -C site push origin "${GH_PAGES_BRANCH}"; then
+                break
+              fi
+              if [ "$attempt" -eq 5 ]; then
+                echo "::error::failed to push ${GH_PAGES_BRANCH} after 5 attempts"
+                exit 1
+              fi
+              git -C site fetch origin "${GH_PAGES_BRANCH}"
+              git -C site rebase "origin/${GH_PAGES_BRANCH}"
+            done
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
