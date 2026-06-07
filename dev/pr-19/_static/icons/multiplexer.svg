@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
-  <!-- Trapezoid: wide on left (inputs), narrow on right (output) -->
-  <polygon points="10,5 90,20 90,60 10,75" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-  <!-- Label -->
-  <text x="50" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#231F20">MUX</text>
-</svg>
