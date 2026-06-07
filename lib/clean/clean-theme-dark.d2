@@ -1,0 +1,226 @@
+# clean dark theme — theme classes plus every component class redefined for
+# dark mode. The Go contract prepends components(light) + theme + userCode, so
+# dark relies on these overrides taking precedence.
+
+classes: {
+  # ── Theme classes ──
+  clean-panel: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 14
+    style.font-color: "#ECEAE3"
+  }
+  clean-band: {
+    style.fill: "#232A30"
+    style.stroke: "#3A4650"
+    style.stroke-width: 1
+    style.border-radius: 12
+    style.font-color: "#AEB9C4"
+  }
+  clean-title: {
+    shape: text
+    style.font-size: 22
+    style.font-color: "#ECEAE3"
+    style.bold: true
+  }
+  clean-subtitle: {
+    shape: text
+    style.font-size: 14
+    style.font-color: "#9A958B"
+  }
+  clean-label: {
+    shape: text
+    style.font-size: 13
+    style.font-color: "#ECEAE3"
+    style.bold: true
+  }
+  clean-section-label: {
+    shape: text
+    style.font-size: 12
+    style.font-color: "#9A958B"
+    style.bold: true
+  }
+  clean-note: {
+    shape: text
+    style.font-size: 12
+    style.font-color: "#9A958B"
+    style.italic: true
+  }
+  clean-flow: {
+    style.stroke: "#6E6A60"
+    style.stroke-width: 2
+    style.font-color: "#9A958B"
+    style.font-size: 12
+  }
+  clean-flow-primary: {
+    style.stroke: "#D98263"
+    style.stroke-width: 2
+    style.font-color: "#E8A487"
+    style.font-size: 12
+  }
+  clean-flow-muted: {
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.font-color: "#9A958B"
+    style.font-size: 12
+  }
+  clean-flow-dashed: {
+    style.stroke: "#6E6A60"
+    style.stroke-width: 2
+    style.stroke-dash: 5
+    style.font-color: "#9A958B"
+    style.font-size: 12
+  }
+
+  # ── Components (dark) ──
+  clean-service: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-primary: {
+    style.fill: "#3A2A22"
+    style.stroke: "#D98263"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#E8A487"
+    style.bold: true
+  }
+  clean-api: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-gateway: {
+    shape: hexagon
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.font-color: "#ECEAE3"
+  }
+  clean-function: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-cloud: {
+    shape: cloud
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.font-color: "#ECEAE3"
+  }
+  clean-database: {
+    shape: cylinder
+    style.fill: "#232A30"
+    style.stroke: "#3A4650"
+    style.stroke-width: 1
+    style.font-color: "#ECEAE3"
+  }
+  clean-cache: {
+    style.fill: "#232A30"
+    style.stroke: "#3A4650"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-storage: {
+    shape: cylinder
+    style.fill: "#232A30"
+    style.stroke: "#3A4650"
+    style.stroke-width: 1
+    style.font-color: "#ECEAE3"
+  }
+  clean-queue: {
+    style.fill: "#232A30"
+    style.stroke: "#3A4650"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-client: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-browser: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-mobile: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-user: {
+    shape: person
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.font-color: "#ECEAE3"
+  }
+  clean-external: {
+    style.fill: "#2A2826"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.stroke-dash: 4
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-model: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-agent: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-document: {
+    shape: page
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.font-color: "#ECEAE3"
+  }
+  clean-decision: {
+    shape: diamond
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.font-color: "#ECEAE3"
+  }
+  clean-process: {
+    style.fill: "#242320"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#ECEAE3"
+  }
+  clean-group: {
+    style.fill: "transparent"
+    style.stroke: "#3A3833"
+    style.stroke-width: 1
+    style.border-radius: 12
+    style.font-color: "#9A958B"
+  }
+}
