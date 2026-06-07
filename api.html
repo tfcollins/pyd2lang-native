@@ -219,6 +219,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datax.html">ADI DataX Overview Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clean.html">clean Technical Diagramming Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skills.html">Agent Skills</a></li>
 </ul>
@@ -279,7 +280,8 @@
 Analog Devices signal-chain components, <code class="docutils literal notranslate"><span class="pre">&quot;sw&quot;</span></code> for
 software/AI architecture components, <code class="docutils literal notranslate"><span class="pre">&quot;jif&quot;</span></code> for
 pyadi-jif block diagrams, <code class="docutils literal notranslate"><span class="pre">&quot;datax&quot;</span></code> for ADI DataX overview
-diagrams, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for plain D2 compilation.</p></li>
+diagrams, <code class="docutils literal notranslate"><span class="pre">&quot;clean&quot;</span></code> for the flat neutral/clay technical
+diagramming components, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for plain D2 compilation.</p></li>
 <li><p><strong>theme</strong> – Theme variant when a library is used.
 Either <code class="docutils literal notranslate"><span class="pre">&quot;light&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;dark&quot;</span></code>.</p></li>
 <li><p><strong>adi</strong> – Deprecated. Use <code class="docutils literal notranslate"><span class="pre">library=&quot;adi&quot;</span></code> instead.</p></li>
@@ -383,6 +385,22 @@ Either <code class="docutils literal notranslate"><span class="pre">&quot;light&
 </dd></dl>
 
 </section>
+<section id="clean-library">
+<h3>clean Library<a class="headerlink" href="#clean-library" title="Link to this heading">¶</a></h3>
+<dl class="py data">
+<dt class="sig sig-object py" id="d2.CLEAN_COMPONENTS">
+<span class="sig-prename descclassname"><span class="pre">d2.</span></span><span class="sig-name descname"><span class="pre">CLEAN_COMPONENTS</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#d2.CLEAN_COMPONENTS" title="Link to this definition">¶</a></dt>
+<dd><p>List of the 21 clean component class names (flat, neutral-tint + clay-accent
+technical diagramming shapes).</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="d2.CLEAN_THEME_CLASSES">
+<span class="sig-prename descclassname"><span class="pre">d2.</span></span><span class="sig-name descname"><span class="pre">CLEAN_THEME_CLASSES</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#d2.CLEAN_THEME_CLASSES" title="Link to this definition">¶</a></dt>
+<dd><p>List of clean typography, panel, band, and flow class names.</p>
+</dd></dl>
+
+</section>
 <section id="general">
 <h3>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h3>
 <dl class="py data">
@@ -474,6 +492,11 @@ Either <code class="docutils literal notranslate"><span class="pre">&quot;light&
 <li><a class="reference internal" href="#datax-library">DataX Library</a><ul>
 <li><a class="reference internal" href="#d2.DATAX_COMPONENTS"><code class="docutils literal notranslate"><span class="pre">DATAX_COMPONENTS</span></code></a></li>
 <li><a class="reference internal" href="#d2.DATAX_THEME_CLASSES"><code class="docutils literal notranslate"><span class="pre">DATAX_THEME_CLASSES</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clean-library">clean Library</a><ul>
+<li><a class="reference internal" href="#d2.CLEAN_COMPONENTS"><code class="docutils literal notranslate"><span class="pre">CLEAN_COMPONENTS</span></code></a></li>
+<li><a class="reference internal" href="#d2.CLEAN_THEME_CLASSES"><code class="docutils literal notranslate"><span class="pre">CLEAN_THEME_CLASSES</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#general">General</a><ul>

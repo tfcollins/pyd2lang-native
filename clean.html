@@ -2,11 +2,13 @@
 <html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Examples" href="examples.html"><link rel="prev" title="ADI DataX Overview Library" href="datax.html">
         <link rel="prefetch" href="_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 --><title>Python Module Index - pyd2lang-native</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>clean Technical Diagramming Library - pyd2lang-native</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -178,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -200,7 +202,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="adi.html">ADI Component Library</a><input aria-label="Toggle navigation of ADI Component Library" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="shapes.html">ADI Shapes</a></li>
@@ -217,7 +219,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datax.html">ADI DataX Overview Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clean.html">clean Technical Diagramming Library</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">clean Technical Diagramming Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skills.html">Agent Skills</a></li>
 </ul>
@@ -239,7 +241,17 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/tfcollins/pyd2lang-native/blob/main/docs/clean.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/tfcollins/pyd2lang-native/edit/main/docs/clean.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
@@ -247,38 +259,191 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          
-<section class="domainindex-section">
-  <h1>Python Module Index</h1>
-  <div class="domainindex-jumpbox"><a href="#cap-d"><strong>d</strong></a></div>
+          <section id="clean-technical-diagramming-library">
+<h1>clean Technical Diagramming Library<a class="headerlink" href="#clean-technical-diagramming-library" title="Link to this heading">¶</a></h1>
+<p>The built-in <code class="docutils literal notranslate"><span class="pre">clean</span></code> library provides a cohesive, flat diagramming aesthetic
+inspired by the Anthropic and OpenAI design languages: a restrained
+cool-neutral tint scale that groups components by tint and shape, a single clay
+accent reserved for emphasis, hairline borders, and no drop shadows. Enable it
+by passing <code class="docutils literal notranslate"><span class="pre">library=&quot;clean&quot;</span></code> to <a class="reference internal" href="api.html#d2.compile" title="d2.compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">d2.compile()</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
+
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;clean&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use the clean library for:</p>
+<ul class="simple">
+<li><p><strong>System and architecture diagrams</strong> - services, gateways, APIs, and clients</p></li>
+<li><p><strong>Data planes</strong> - databases, caches, queues, and object storage</p></li>
+<li><p><strong>AI/agent flows</strong> - models, agents, and document artifacts</p></li>
+<li><p><strong>Control flow</strong> - decisions, processes, and grouped boundaries</p></li>
+</ul>
+<p>Differentiation is carried by tint (paper for compute/actors/AI/logic, slate for
+data, muted-dashed for external systems) and shape, with the clay accent applied
+only to emphasis nodes (<code class="docutils literal notranslate"><span class="pre">clean-primary</span></code>) and primary paths
+(<code class="docutils literal notranslate"><span class="pre">clean-flow-primary</span></code>).</p>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>direction: right
+
+title: Request Flow { class: clean-title }
+
+system: Platform {
+  class: clean-panel
+
+  user: User { class: clean-user }
+  web: Web App { class: clean-browser }
+  gw: API Gateway { class: clean-gateway }
+
+  data: Data Plane {
+    class: clean-band
+    api: Orders API { class: clean-primary }
+    cache: Redis { class: clean-cache }
+    db: Postgres { class: clean-database }
+  }
+
+  ext: Payments { class: clean-external }
+
+  user -&gt; web { class: clean-flow }
+  web -&gt; gw { class: clean-flow }
+  gw -&gt; data.api { class: clean-flow-primary }
+  data.api -&gt; data.cache { class: clean-flow-muted }
+  data.api -&gt; data.db { class: clean-flow }
+  data.api -&gt; ext: webhook { class: clean-flow-dashed }
+}
+</pre></div>
+</div>
 </section>
-<table class="domainindex-table">
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-d">
-    <td></td><td><strong>d</strong></td><td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-        <a href="api.html#module-d2"><code class="xref">d2</code></a></td><td>
-    <em></em></td>
-  </tr>
+<section id="component-classes">
+<h2>Component Classes<a class="headerlink" href="#component-classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Use</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-service</span></code></p></td>
+<td><p>Generic service or component box (paper).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-primary</span></code></p></td>
+<td><p>Emphasized or primary node, carrying the clay accent.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-api</span></code></p></td>
+<td><p>API or endpoint.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-gateway</span></code></p></td>
+<td><p>Gateway or ingress (hexagon).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-function</span></code></p></td>
+<td><p>Function, lambda, or handler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-cloud</span></code></p></td>
+<td><p>Cloud or managed service (cloud shape).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-database</span></code></p></td>
+<td><p>Relational or primary datastore (cylinder, slate tint).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-cache</span></code></p></td>
+<td><p>Cache layer (slate tint).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-storage</span></code></p></td>
+<td><p>Object or blob storage (cylinder, slate tint).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-queue</span></code></p></td>
+<td><p>Message queue or stream (slate tint).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-client</span></code></p></td>
+<td><p>Generic client.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-browser</span></code></p></td>
+<td><p>Web client.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-mobile</span></code></p></td>
+<td><p>Mobile client.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-user</span></code></p></td>
+<td><p>End user (person shape).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-external</span></code></p></td>
+<td><p>Third-party or external system (muted fill, dashed border).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-model</span></code></p></td>
+<td><p>Model or inference endpoint.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-agent</span></code></p></td>
+<td><p>Agent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-document</span></code></p></td>
+<td><p>Document or artifact (page shape).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-decision</span></code></p></td>
+<td><p>Branch or decision point (diamond).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clean-process</span></code></p></td>
+<td><p>Process or step.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clean-group</span></code></p></td>
+<td><p>Transparent grouping container with a hairline boundary.</p></td>
+</tr>
+</tbody>
 </table>
+</div>
+</section>
+<section id="panel-typography-and-flow-classes">
+<h2>Panel, Typography, and Flow Classes<a class="headerlink" href="#panel-typography-and-flow-classes" title="Link to this heading">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">clean-panel</span></code> for the outer grouped surface and <code class="docutils literal notranslate"><span class="pre">clean-band</span></code> for a
+slate-tinted sub-grouping (for example a data plane or subsystem).</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">clean-title</span></code>, <code class="docutils literal notranslate"><span class="pre">clean-subtitle</span></code>, <code class="docutils literal notranslate"><span class="pre">clean-label</span></code>,
+<code class="docutils literal notranslate"><span class="pre">clean-section-label</span></code>, and <code class="docutils literal notranslate"><span class="pre">clean-note</span></code> for text-only labels.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">clean-flow</span></code> for standard arrows, <code class="docutils literal notranslate"><span class="pre">clean-flow-primary</span></code> for the
+clay-accented primary path, <code class="docutils literal notranslate"><span class="pre">clean-flow-muted</span></code> for low-emphasis links, and
+<code class="docutils literal notranslate"><span class="pre">clean-flow-dashed</span></code> for optional, asynchronous, or external links.</p>
+</section>
+<section id="dark-theme">
+<h2>Dark Theme<a class="headerlink" href="#dark-theme" title="Link to this heading">¶</a></h2>
+<p>The clean library supports the same dark theme mode as the other libraries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;clean&quot;</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s2">&quot;dark&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="examples.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Examples</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="datax.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ADI DataX Overview Library</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -297,8 +462,30 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">clean Technical Diagramming Library</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#component-classes">Component Classes</a></li>
+<li><a class="reference internal" href="#panel-typography-and-flow-classes">Panel, Typography, and Flow Classes</a></li>
+<li><a class="reference internal" href="#dark-theme">Dark Theme</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -309,6 +496,5 @@
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    
-    <script>DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true</script></body>
+    </body>
 </html>

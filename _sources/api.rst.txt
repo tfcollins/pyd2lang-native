@@ -88,6 +88,20 @@ DataX Library
    List of DataX typography, panel, band, and flow class names (see
    :doc:`datax`).
 
+clean Library
+~~~~~~~~~~~~~
+
+.. py:data:: CLEAN_COMPONENTS
+   :type: list[str]
+
+   List of the 21 clean component class names (flat, neutral-tint + clay-accent
+   technical diagramming shapes).
+
+.. py:data:: CLEAN_THEME_CLASSES
+   :type: list[str]
+
+   List of clean typography, panel, band, and flow class names.
+
 General
 ~~~~~~~
 
