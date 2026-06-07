@@ -95,7 +95,7 @@ clean Library
    :type: list[str]
 
    List of the 21 clean component class names (flat, neutral-tint + clay-accent
-   technical diagramming shapes).
+   technical diagramming shapes; see :doc:`clean-shapes`).
 
 .. py:data:: CLEAN_THEME_CLASSES
    :type: list[str]

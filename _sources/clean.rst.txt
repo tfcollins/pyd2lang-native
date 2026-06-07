@@ -25,6 +25,11 @@ data, muted-dashed for external systems) and shape, with the clay accent applied
 only to emphasis nodes (``clean-primary``) and primary paths
 (``clean-flow-primary``).
 
+.. toctree::
+   :maxdepth: 2
+
+   clean-shapes
+
 Example
 -------
 
