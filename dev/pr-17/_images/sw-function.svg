@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
-<!-- Lambda symbol λ -->
-  <path d="M45,60 L65,20 L75,20 L60,48 L85,60" fill="none" stroke="#0067B9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Parentheses -->
-  <path d="M35,25 Q28,40 35,55" fill="none" stroke="#231F20" stroke-width="3" stroke-linecap="round"/>
-  <path d="M105,25 Q112,40 105,55" fill="none" stroke="#231F20" stroke-width="3" stroke-linecap="round"/>
-</svg>
