@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
+  <!-- 5-sided shape: triangle pointing left + rectangle -->
+  <polygon points="45,2 138,2 138,78 45,78 2,40" fill="#FFFFFF" stroke="#231F20" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Digital staircase input (left side) -->
+  <path d="M 32 58 L 38 58 L 38 50 L 44 50 L 44 42 L 50 42 L 50 46 L 56 46 L 56 54 L 62 54 L 62 42 L 68 42" fill="none" stroke="#0067B9" stroke-width="1.5"/>
+  <!-- Arrow -->
+  <path d="M 71 50 L 81 50" fill="none" stroke="#231F20" stroke-width="1.5"/>
+  <polygon points="79,47 84,50 79,53" fill="#231F20"/>
+  <!-- Analog sine wave output (right side) -->
+  <path d="M 86 50 Q 96 30, 106 50 Q 116 70, 126 50" fill="none" stroke="#0067B9" stroke-width="1.5"/>
+  <!-- Label -->
+  <text x="85" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#231F20">DAC</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
+  <!-- Buffer/driver triangle -->
+  <polygon points="15,10 85,40 15,70" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- Output emphasis (double line at tip) -->
+  <line x1="85" y1="33" x2="85" y2="47" stroke="#0067B9" stroke-width="3"/>
+</svg>
