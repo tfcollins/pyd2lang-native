@@ -111,5 +111,6 @@ With DataX overview styles:
    sw
    jif
    datax
+   clean
    examples
    skills
