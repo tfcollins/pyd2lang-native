@@ -267,7 +267,45 @@ JIF_THEME_CLASSES = [
     "jif-signal",
 ]
 
-_VALID_LIBRARIES = {"adi", "sw", "jif", "datax"}
+CLEAN_COMPONENTS = [
+    "clean-service",
+    "clean-primary",
+    "clean-api",
+    "clean-gateway",
+    "clean-function",
+    "clean-cloud",
+    "clean-database",
+    "clean-cache",
+    "clean-storage",
+    "clean-queue",
+    "clean-client",
+    "clean-browser",
+    "clean-mobile",
+    "clean-user",
+    "clean-external",
+    "clean-model",
+    "clean-agent",
+    "clean-document",
+    "clean-decision",
+    "clean-process",
+    "clean-group",
+]
+
+CLEAN_THEME_CLASSES = [
+    "clean-panel",
+    "clean-band",
+    "clean-title",
+    "clean-subtitle",
+    "clean-label",
+    "clean-section-label",
+    "clean-note",
+    "clean-flow",
+    "clean-flow-primary",
+    "clean-flow-muted",
+    "clean-flow-dashed",
+]
+
+_VALID_LIBRARIES = {"adi", "sw", "jif", "datax", "clean"}
 
 
 def compile(
@@ -284,7 +322,8 @@ def compile(
             Analog Devices signal-chain components, ``"sw"`` for
             software/AI architecture components, ``"jif"`` for
             pyadi-jif block diagrams, ``"datax"`` for ADI DataX overview
-            diagrams, or ``None`` for plain D2 compilation.
+            diagrams, ``"clean"`` for the flat neutral/clay technical
+            diagramming components, or ``None`` for plain D2 compilation.
         theme: Theme variant when a library is used.
             Either ``"light"`` or ``"dark"``.
         adi: Deprecated. Use ``library="adi"`` instead.
