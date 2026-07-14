@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
+  <rect x="2" y="2" width="96" height="76" rx="4" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
+  <!-- Division symbol ÷ -->
+  <circle cx="50" cy="30" r="3" fill="#0067B9"/>
+  <line x1="34" y1="40" x2="66" y2="40" stroke="#0067B9" stroke-width="2.5"/>
+  <circle cx="50" cy="50" r="3" fill="#0067B9"/>
+  <!-- N label -->
+  <text x="50" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#231F20">÷N</text>
+</svg>
