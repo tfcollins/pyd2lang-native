@@ -31,6 +31,47 @@ Use the JIF library to create:
 - **Clock trees** — dividers, PLLs, charge pumps, loop filters, and VCOs
 - **FPGA paths** — PHY, transceiver, CPLL/QPLL, decoder, and transport blocks
 
+System Overview Styling
+-----------------------
+
+The dark JIF theme provides semantic containers and signal styles for readable
+system-level diagrams. The palette uses amber for clocks, magenta dashed lines
+for SYSREF, cyan for JESD data, violet for references, green for converters,
+and cyan-blue FPGA containers. Color is paired with line width or dash style so
+signal types remain distinguishable without relying on color alone.
+
+.. code-block:: python
+
+   code = """
+   direction: right
+   ref: 125 MHz reference { class: input }
+   clock: Clock tree { class: jif-container-clock }
+   converter: AD9084 RX { class: jif-container-converter }
+   fpga: Xilinx VCU118 { class: jif-container-fpga }
+
+   ref -> clock: 125 MHz { class: jif-signal-reference }
+   clock -> converter: Device clock · 20 GHz { class: jif-signal-clock }
+   clock -> fpga: SYSREF · 25 MHz { class: jif-signal-sysref }
+   converter -> fpga: JESD204C · 8 lanes × 20.625 Gb/s { class: jif-signal-data }
+   """
+
+   svg = d2.compile(code, library="jif", theme="dark")
+
+.. d2::
+   :library: jif
+   :theme: dark
+
+   direction: right
+   ref: 125 MHz reference { class: input }
+   clock: Clock tree { class: jif-container-clock }
+   converter: AD9084 RX { class: jif-container-converter }
+   fpga: Xilinx VCU118 { class: jif-container-fpga }
+
+   ref -> clock: 125 MHz { class: jif-signal-reference }
+   clock -> converter: Device clock · 20 GHz { class: jif-signal-clock }
+   clock -> fpga: SYSREF · 25 MHz { class: jif-signal-sysref }
+   converter -> fpga: JESD204C · 8 lanes × 20.625 Gb/s { class: jif-signal-data }
+
 .. d2::
    :library: jif
 

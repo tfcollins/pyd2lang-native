@@ -95,6 +95,8 @@ class D2Directive(SphinxDirective):
             if raw is None:
                 try:
                     raw = d2.compile(source, library=library, theme=variant)
+                    if raw is None:
+                        raise RuntimeError("D2 compilation returned no output")
                 except RuntimeError as exc:
                     self.state.document.reporter.warning(
                         f"D2 compile error ({variant}): {exc}", line=self.lineno

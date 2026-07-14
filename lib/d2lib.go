@@ -172,7 +172,13 @@ func runmeLib(codePtr *C.char, libraryPtr *C.char, themeModePtr *C.char) *C.char
 		ThemeID: &d2themescatalog.NeutralDefault.ID,
 	}
 	if themeMode == "dark" {
-		renderOpts.DarkThemeID = &d2themescatalog.DarkMauve.ID
+		if library == "jif" {
+			// Render JIF dark mode as the primary palette so exported SVG/PNG/PDF
+			// assets are dark even when the viewer has no prefers-color-scheme.
+			renderOpts.ThemeID = &d2themescatalog.DarkFlagshipTerrastruct.ID
+		} else {
+			renderOpts.DarkThemeID = &d2themescatalog.DarkMauve.ID
+		}
 	}
 	compileOpts := &d2lib.CompileOptions{
 		LayoutResolver: layoutResolver,
