@@ -264,7 +264,19 @@ JIF_COMPONENTS = [
 
 JIF_THEME_CLASSES = [
     "jif-container",
+    "jif-container-clock",
+    "jif-container-converter",
+    "jif-container-fpga",
+    "jif-title",
+    "jif-subtitle",
+    "jif-label",
+    "jif-badge",
     "jif-signal",
+    "jif-signal-reference",
+    "jif-signal-clock",
+    "jif-signal-sysref",
+    "jif-signal-data",
+    "jif-signal-feedback",
 ]
 
 CLEAN_COMPONENTS = [

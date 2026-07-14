@@ -326,6 +326,46 @@ ref -> pll -> out
     assert "<?xml" in graph
 
 
+def test_jif_system_theme_exposes_semantic_hardware_styles():
+    """JIF exports the overview containers and signal classes used by system diagrams."""
+    expected = {
+        "jif-container",
+        "jif-container-clock",
+        "jif-container-converter",
+        "jif-container-fpga",
+        "jif-title",
+        "jif-subtitle",
+        "jif-badge",
+        "jif-signal-reference",
+        "jif-signal-clock",
+        "jif-signal-sysref",
+        "jif-signal-data",
+        "jif-signal-feedback",
+    }
+    assert expected <= set(d2.JIF_THEME_CLASSES)
+
+
+def test_jif_dark_system_palette_and_signal_styles():
+    """Dark JIF diagrams use the navy hardware palette and semantic signal colors."""
+    code = """
+direction: right
+system: System { class: jif-container }
+clock: Clock tree { class: jif-container-clock }
+converter: Converter { class: jif-container-converter }
+fpga: FPGA { class: jif-container-fpga }
+clock -> converter: 20 GHz { class: jif-signal-clock }
+clock -> fpga: 25 MHz { class: jif-signal-sysref }
+converter -> fpga: 8 lanes { class: jif-signal-data }
+"""
+    graph = d2.compile(code, library="jif", theme="dark")
+    assert graph is not None
+    for color in ("#07111F", "#F5B942", "#E879F9", "#38BDF8", "#34D399"):
+        assert color.lower() in graph.lower()
+
+    assert ".fill-N7{fill:#000410;}" in graph
+    assert "stroke-dasharray" in graph
+
+
 def test_sw_petri_workflow():
     """Petri-style workflow diagram with step highlights."""
     code = """
