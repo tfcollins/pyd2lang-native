@@ -42,7 +42,7 @@ def test_python_classifiers_match_wheel_builds():
 
 
 def test_package_version_matches_release():
-    assert d2.__version__ == "0.1.6"
+    assert d2.__version__ == "0.1.7"
 
 
 def test_release_workflow_validates_tag_matches_package_version():
