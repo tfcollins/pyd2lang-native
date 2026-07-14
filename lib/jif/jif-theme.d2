@@ -1,19 +1,20 @@
-# JIF Light Theme — readable hardware topology and clocking diagrams
-# Semantic palette mirrors the dark theme with accessible light surfaces.
+# JIF Light Theme — system clocking and JESD hardware diagrams
+# Pale technical canvas mirroring the dark semantic hardware palette.
 
 classes: {
+  # ── System-level containers and typography ──
   jif-container: {
     style.fill: "#F8FAFC"
     style.stroke: "#CBD5E1"
     style.stroke-width: 1
-    style.border-radius: 12
+    style.border-radius: 14
     style.shadow: true
     style.font-color: "#0F172A"
     style.font-size: 16
   }
   jif-container-clock: {
-    style.fill: "#FFFBEB"
-    style.stroke: "#D97706"
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
     style.stroke-width: 2
     style.border-radius: 12
     style.shadow: true
@@ -21,8 +22,8 @@ classes: {
     style.font-size: 16
   }
   jif-container-converter: {
-    style.fill: "#ECFDF5"
-    style.stroke: "#059669"
+    style.fill: "#E9F8F1"
+    style.stroke: "#07855B"
     style.stroke-width: 2
     style.border-radius: 12
     style.shadow: true
@@ -30,8 +31,8 @@ classes: {
     style.font-size: 16
   }
   jif-container-fpga: {
-    style.fill: "#ECFEFF"
-    style.stroke: "#0891B2"
+    style.fill: "#EAF6FB"
+    style.stroke: "#087EA4"
     style.stroke-width: 2
     style.border-radius: 12
     style.shadow: true
@@ -56,13 +57,15 @@ classes: {
     style.bold: true
   }
   jif-badge: {
-    style.fill: "#F1F5F9"
+    style.fill: "#EEF2F7"
     style.stroke: "#94A3B8"
     style.stroke-width: 1
     style.border-radius: 20
     style.font-color: "#0F172A"
     style.font-size: 11
   }
+
+  # ── Semantic connection styles ──
   jif-signal: {
     style.stroke: "#64748B"
     style.stroke-width: 2
@@ -70,28 +73,28 @@ classes: {
     style.font-size: 12
   }
   jif-signal-reference: {
-    style.stroke: "#7C3AED"
+    style.stroke: "#6D4CC2"
     style.stroke-width: 2
-    style.font-color: "#6D28D9"
+    style.font-color: "#5B3FA5"
     style.font-size: 12
   }
   jif-signal-clock: {
-    style.stroke: "#D97706"
+    style.stroke: "#C47A00"
     style.stroke-width: 2
-    style.font-color: "#B45309"
+    style.font-color: "#9A5A00"
     style.font-size: 12
   }
   jif-signal-sysref: {
-    style.stroke: "#C026D3"
+    style.stroke: "#B423C8"
     style.stroke-width: 2
     style.stroke-dash: 6
-    style.font-color: "#A21CAF"
+    style.font-color: "#8F1DA1"
     style.font-size: 12
   }
   jif-signal-data: {
-    style.stroke: "#0284C7"
+    style.stroke: "#087EA4"
     style.stroke-width: 4
-    style.font-color: "#0369A1"
+    style.font-color: "#036A91"
     style.font-size: 12
   }
   jif-signal-feedback: {
@@ -100,5 +103,175 @@ classes: {
     style.stroke-dash: 4
     style.font-color: "#64748B"
     style.font-size: 11
+  }
+
+  # ── Converter and JESD datapath ──
+  adc: {
+    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgODAiPjxwb2x5Z29uIHBvaW50cz0iMiwyIDkwLDIgMTI2LDQwIDkwLDc4IDIsNzgiIGZpbGw9IiNFOUY4RjEiIHN0cm9rZT0iIzA3ODU1QiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHRleHQgeD0iNTYiIHk9IjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwRjE3MkEiPkFEQzwvdGV4dD48L3N2Zz4="
+    style.fill: "#E9F8F1"
+    style.stroke: "#07855B"
+    style.font-color: "#0F172A"
+  }
+  dac: {
+    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgODAiPjxwb2x5Z29uIHBvaW50cz0iNTAsMiAxMzgsMiAxMzgsNzggNTAsNzggMTQsNDAiIGZpbGw9IiNFOUY4RjEiIHN0cm9rZT0iIzA3ODU1QiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHRleHQgeD0iODQiIHk9IjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwRjE3MkEiPkRBQzwvdGV4dD48L3N2Zz4="
+    style.fill: "#E9F8F1"
+    style.stroke: "#07855B"
+    style.font-color: "#0F172A"
+  }
+  ddc: {
+    style.fill: "#E9F8F1"
+    style.stroke: "#07855B"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  duc: {
+    style.fill: "#E9F8F1"
+    style.stroke: "#07855B"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  jesd204framer: {
+    style.fill: "#DFF3FA"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  jesd204deframer: {
+    style.fill: "#DFF3FA"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  framer: {
+    style.fill: "#DFF3FA"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  deframer: {
+    style.fill: "#DFF3FA"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  crossbar: {
+    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgMTIwIj48cG9seWdvbiBwb2ludHM9IjIwLDEwIDEyMCwzNSAxMjAsODUgMjAsMTEwIiBmaWxsPSIjRkZGN0U2IiBzdHJva2U9IiNDNDdBMDAiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjx0ZXh0IHg9IjcwIiB5PSI2NiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMEYxNzJBIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Dcm9zc2JhcjwvdGV4dD48L3N2Zz4="
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+  }
+  mux: {
+    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTIwIj48cG9seWdvbiBwb2ludHM9IjE1LDEwIDg1LDM1IDg1LDg1IDE1LDExMCIgZmlsbD0iI0ZGRjdFNiIgc3Ryb2tlPSIjQzQ3QTAwIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48dGV4dCB4PSI1MCIgeT0iNjYiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBGMTcyQSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TXV4PC90ZXh0Pjwvc3ZnPg=="
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+  }
+
+  # ── Reference and generic structural blocks ──
+  input: {
+    style.fill: "#F2EDFF"
+    style.stroke: "#6D4CC2"
+    style.font-color: "#0F172A"
+  }
+  out_clock_connected: {
+    style.fill: "#F2EDFF"
+    style.stroke: "#6D4CC2"
+    style.font-color: "#0F172A"
+  }
+  shell: {
+    style.fill: "#F3F6FA"
+    style.stroke: "#94A3B8"
+    style.font-color: "#0F172A"
+    style.border-radius: 10
+  }
+
+  # ── Clock and PLL blocks ──
+  divider: {
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+  }
+  cpll: {
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+    style.border-radius: 10
+  }
+  qpll: {
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+    style.border-radius: 10
+  }
+  phase-frequency-detector: {
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+  }
+  charge-pump: {
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  loop-filter: {
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  vco: {
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+  }
+  voltage-controlled-oscillator: {
+    style.fill: "#FFF7E6"
+    style.stroke: "#C47A00"
+    style.font-color: "#0F172A"
+  }
+
+  # ── FPGA and transceiver blocks ──
+  ip: {
+    style.fill: "#EAF6FB"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  phy: {
+    style.fill: "#EAF6FB"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 10
+  }
+  transceiver: {
+    style.fill: "#EAF6FB"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  serdes: {
+    style.fill: "#EAF6FB"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  decoder: {
+    style.fill: "#EAF6FB"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
+  }
+  trx-dividers: {
+    style.fill: "#F3F6FA"
+    style.stroke: "#94A3B8"
+    style.font-color: "#0F172A"
+    style.border-radius: 10
+  }
+  cdr: {
+    style.fill: "#EAF6FB"
+    style.stroke: "#087EA4"
+    style.font-color: "#0F172A"
+    style.border-radius: 8
   }
 }

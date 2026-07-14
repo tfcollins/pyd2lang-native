@@ -366,6 +366,45 @@ converter -> fpga: 8 lanes { class: jif-signal-data }
     assert "stroke-dasharray" in graph
 
 
+def test_jif_light_system_palette_and_component_styles():
+    """Light JIF diagrams mirror the semantic hardware palette on pale surfaces."""
+    code = """
+direction: right
+reference: Reference { class: input }
+clock: Clock tree { class: jif-container-clock
+  pll: PLL { class: qpll }
+}
+converter: Converter { class: jif-container-converter
+  adc: ADC { class: adc }
+  framer: JESD204 Framer { class: jesd204framer }
+}
+fpga: FPGA { class: jif-container-fpga
+  phy: PHY { class: phy }
+}
+reference -> clock: 125 MHz { class: jif-signal-reference }
+clock -> converter: 20 GHz { class: jif-signal-clock }
+clock -> fpga: 25 MHz { class: jif-signal-sysref }
+converter -> fpga: 8 lanes { class: jif-signal-data }
+"""
+    graph = d2.compile(code, library="jif", theme="light")
+    assert graph is not None
+    for color in (
+        "#FFF7E6",
+        "#C47A00",
+        "#E9F8F1",
+        "#07855B",
+        "#EAF6FB",
+        "#087EA4",
+        "#F2EDFF",
+        "#6D4CC2",
+        "#B423C8",
+    ):
+        assert color.lower() in graph.lower()
+
+    assert ".fill-N7{fill:#FFFFFF;}" in graph
+    assert "stroke-dasharray" in graph
+
+
 def test_sw_petri_workflow():
     """Petri-style workflow diagram with step highlights."""
     code = """
