@@ -289,13 +289,13 @@ Compile D2 diagram code to SVG directly from Python without requiring the <code 
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;x -&gt; y&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">"x -&gt; y"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>With ADI components:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">direction: right</span>
 <span class="s2">adc1: AD7606 { class: adc }</span>
 <span class="s2">filt1: LTC1560 { class: filter-lp }</span>
@@ -303,15 +303,15 @@ Compile D2 diagram code to SVG directly from Python without requiring the <code 
 
 <span class="s2">amp1 -&gt; filt1: Analog { class: adi-signal-analog }</span>
 <span class="s2">filt1 -&gt; adc1: Filtered { class: adi-signal-analog }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;adi&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"adi"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>With SW components:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">agent: Auditor { class: sw-agent }</span>
 <span class="s2">model: Claude { class: sw-model }</span>
 <span class="s2">tool: Search { class: sw-tool }</span>
@@ -320,30 +320,30 @@ Compile D2 diagram code to SVG directly from Python without requiring the <code 
 <span class="s2">doc -&gt; agent { class: sw-flow-data }</span>
 <span class="s2">agent -&gt; tool -&gt; model { class: sw-flow }</span>
 <span class="s2">model -&gt; agent { class: sw-flow-feedback }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;sw&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"sw"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>With JIF components:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">direction: right</span>
 <span class="s2">adc: ADC { class: adc }</span>
 <span class="s2">ddc: DDC { class: ddc }</span>
 <span class="s2">framer: JESD204 Framer { class: jesd204framer }</span>
 
 <span class="s2">adc -&gt; ddc -&gt; framer</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;jif&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"jif"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>With DataX overview styles:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">direction: down</span>
 <span class="s2">title: ADI DataX Stack { class: datax-title }</span>
 <span class="s2">panel: Layers { class: datax-panel</span>
@@ -353,9 +353,9 @@ Compile D2 diagram code to SVG directly from Python without requiring the <code 
 <span class="s2">  hw: Hardware { class: datax-hardware }</span>
 <span class="s2">  app -&gt; lib -&gt; drv -&gt; hw { class: datax-flow }</span>
 <span class="s2">}</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;datax&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"datax"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
@@ -478,7 +478,7 @@ Compile D2 diagram code to SVG directly from Python without requiring the <code 
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=ca7ad2ea"></script>
+</div><script src="_static/documentation_options.js?v=22607128"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

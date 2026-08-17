@@ -274,10 +274,10 @@
 <p>Compile a simple D2 diagram to SVG:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;x -&gt; y -&gt; z&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">"x -&gt; y -&gt; z"</span><span class="p">)</span>
 
 <span class="c1"># Write to file</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"output.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -629,7 +629,7 @@
 <p>A typical ADI signal chain with sensor, conditioning, and digitization:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">direction: right</span>
 
 <span class="s2">sensor: ADXL345 { class: sensor }</span>
@@ -645,11 +645,11 @@
 
 <span class="s2">clk: AD9520 { class: clock }</span>
 <span class="s2">clk -&gt; adc: MCLK { class: adi-signal-clock }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;adi&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"adi"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;signal-chain.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"signal-chain.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -959,7 +959,7 @@
 <p>Group components into named subsystem containers:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">analog-frontend: Analog Front End {</span>
 <span class="s2">  class: adi-container</span>
 
@@ -981,11 +981,11 @@
 <span class="s2">}</span>
 
 <span class="s2">analog-frontend -&gt; digital-backend: SPI { class: adi-signal-digital }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;adi&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"adi"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;nested.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"nested.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1319,7 +1319,7 @@
 <p>An RF receiver front end with LO generation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">direction: right</span>
 
 <span class="s2">rf-frontend: RF Front End {</span>
@@ -1345,11 +1345,11 @@
 
 <span class="s2">adc: AD9680 { class: adc }</span>
 <span class="s2">rf-frontend -&gt; adc: IF { class: adi-signal-analog }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;adi&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"adi"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;rf-receiver.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"rf-receiver.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1687,15 +1687,15 @@
 <p>Use the dark variant for dark-background contexts:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">adc: AD7606 { class: adc }</span>
 <span class="s2">dac: AD5686 { class: dac }</span>
 <span class="s2">adc -&gt; dac: SPI { class: adi-signal-digital }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;adi&quot;</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s2">&quot;dark&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"adi"</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s2">"dark"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dark-adi.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"dark-adi.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1883,9 +1883,9 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;invalid {{ code&quot;</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;adi&quot;</span><span class="p">)</span>
+    <span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">"invalid {{ code"</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"adi"</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compilation failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Compilation failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1894,13 +1894,13 @@
 <p>Iterate over available components:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ADI components:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"ADI components:"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">d2</span><span class="o">.</span><span class="n">ADI_COMPONENTS</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">comp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  - </span><span class="si">{</span><span class="n">comp</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SW components:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"SW components:"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">d2</span><span class="o">.</span><span class="n">SW_COMPONENTS</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">comp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  - </span><span class="si">{</span><span class="n">comp</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1909,7 +1909,7 @@
 <p>An AI agent pipeline with seed instructions, auditing, and scoring:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">seeds: Seed Instructions { class: sw-container-white</span>
 <span class="s2">  a: Instruction A { class: sw-document }</span>
 <span class="s2">  b: Instruction B { class: sw-document }</span>
@@ -1937,11 +1937,11 @@
 
 <span class="s2">seeds -&gt; loop { class: sw-flow-data }</span>
 <span class="s2">loop -&gt; scoring { class: sw-flow-data }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;sw&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"sw"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;agent-pipeline.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"agent-pipeline.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2271,7 +2271,7 @@
 <p>Side-by-side workflow comparison with color-coded steps:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">manual: Manual Process { class: sw-container-cream</span>
 <span class="s2">  s1: Formulate hypothesis { class: sw-step-white }</span>
 <span class="s2">  s2: Design scenarios { class: sw-step-blue }</span>
@@ -2290,11 +2290,11 @@
 <span class="s2">}</span>
 
 <span class="s2">manual.s3 -&gt; automated.system { class: sw-flow }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;sw&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"sw"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;workflow.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"workflow.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2620,7 +2620,7 @@
 <p>A typical backend architecture:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">direction: right</span>
 
 <span class="s2">client: Web App { class: sw-browser }</span>
@@ -2640,11 +2640,11 @@
 <span class="s2">api -&gt; queue { class: sw-flow-async }</span>
 <span class="s2">queue -&gt; worker { class: sw-flow-async }</span>
 <span class="s2">worker -&gt; db { class: sw-flow-data }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;sw&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"sw"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;microservice.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"microservice.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2950,16 +2950,16 @@
 <p>Use the dark variant for dark-background contexts:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">d2</span>
 
-<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">agent: Agent { class: sw-agent }</span>
 <span class="s2">model: LLM { class: sw-model }</span>
 <span class="s2">agent -&gt; model { class: sw-flow }</span>
 <span class="s2">model -&gt; agent { class: sw-flow-feedback }</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">&quot;sw&quot;</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s2">&quot;dark&quot;</span><span class="p">)</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="s2">"sw"</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s2">"dark"</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dark.svg&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"dark.svg"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3221,7 +3221,7 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=ca7ad2ea"></script>
+</div><script src="_static/documentation_options.js?v=22607128"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
