@@ -63,6 +63,15 @@ var cleanThemeDark string
 //go:embed clean/clean-components.d2
 var cleanComponents string
 
+//go:embed editorial/editorial-theme.d2
+var editorialThemeLight string
+
+//go:embed editorial/editorial-theme-dark.d2
+var editorialThemeDark string
+
+//go:embed editorial/editorial-components.d2
+var editorialComponents string
+
 //export runme
 func runme(namePtr *C.char) *C.char {
 
@@ -155,8 +164,15 @@ func runmeLib(codePtr *C.char, libraryPtr *C.char, themeModePtr *C.char) *C.char
 			theme = cleanThemeLight
 		}
 		components = cleanComponents
+	case "editorial":
+		if themeMode == "dark" {
+			theme = editorialThemeDark
+		} else {
+			theme = editorialThemeLight
+		}
+		components = editorialComponents
 	default:
-		return C.CString("Error: unknown library '" + library + "', expected 'adi', 'sw', 'jif', 'datax', or 'clean'")
+		return C.CString("Error: unknown library '" + library + "', expected 'adi', 'sw', 'jif', 'datax', 'clean', or 'editorial'")
 	}
 
 	// Prepend library (components + theme) to user code so theme can

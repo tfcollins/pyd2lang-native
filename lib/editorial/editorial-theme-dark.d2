@@ -1,0 +1,436 @@
+# Editorial dark theme — theme classes and component class overrides for dark mode.
+# Follows the dark token palette: #2D3142 dark paper, #F5F5F5 ink, #F08A59 accent,
+# #BFC0C0 muted, and dark semantic tints.
+
+classes: {
+  # ── Containers & Structure (Dark) ──
+  editorial-container: {
+    style.fill: "#393E53"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.border-radius: 12
+    style.font-color: "#F5F5F5"
+  }
+  editorial-panel: {
+    style.fill: "#232735"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.border-radius: 12
+    style.font-color: "#F5F5F5"
+  }
+  editorial-swimlane: {
+    style.fill: "#2D3142"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#BFC0C0"
+  }
+  editorial-boundary: {
+    style.fill: "transparent"
+    style.stroke: "#8E98AC"
+    style.stroke-width: 1
+    style.stroke-dash: 4
+    style.border-radius: 12
+    style.font-color: "#BFC0C0"
+  }
+  editorial-card: {
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.border-radius: 10
+    style.font-color: "#F5F5F5"
+  }
+
+  # ── Typography & Labels (Dark) ──
+  editorial-title: {
+    shape: text
+    style.font-size: 22
+    style.font-color: "#F5F5F5"
+    style.bold: true
+  }
+  editorial-subtitle: {
+    shape: text
+    style.font-size: 14
+    style.font-color: "#BFC0C0"
+  }
+  editorial-label: {
+    shape: text
+    style.font-size: 13
+    style.font-color: "#F5F5F5"
+    style.bold: true
+  }
+  editorial-section-label: {
+    shape: text
+    style.font-size: 12
+    style.font-color: "#BFC0C0"
+    style.bold: true
+  }
+  editorial-eyebrow: {
+    shape: text
+    style.font-size: 10
+    style.font-color: "#8E98AC"
+    style.bold: true
+  }
+  editorial-callout: {
+    shape: text
+    style.font-size: 13
+    style.font-color: "#BFC0C0"
+    style.italic: true
+  }
+  editorial-note: {
+    shape: text
+    style.font-size: 11
+    style.font-color: "#8E98AC"
+    style.italic: true
+  }
+  editorial-sublabel: {
+    shape: text
+    style.font-size: 11
+    style.font-color: "#8E98AC"
+  }
+
+  # ── Flow Connectors (Dark) ──
+  editorial-flow: {
+    style.stroke: "#BFC0C0"
+    style.stroke-width: 2
+    style.font-color: "#BFC0C0"
+    style.font-size: 11
+  }
+  editorial-flow-primary: {
+    style.stroke: "#F08A59"
+    style.stroke-width: 2
+    style.font-color: "#F5A882"
+    style.font-size: 11
+    style.bold: true
+  }
+  editorial-flow-accent: {
+    style.stroke: "#F08A59"
+    style.stroke-width: 2
+    style.font-color: "#F5A882"
+    style.font-size: 11
+    style.bold: true
+  }
+  editorial-flow-muted: {
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#8E98AC"
+    style.font-size: 11
+  }
+  editorial-flow-dashed: {
+    style.stroke: "#BFC0C0"
+    style.stroke-width: 2
+    style.stroke-dash: 4
+    style.font-color: "#BFC0C0"
+    style.font-size: 11
+  }
+  editorial-flow-link: {
+    style.stroke: "#6A95D8"
+    style.stroke-width: 2
+    style.font-color: "#8EB2EC"
+    style.font-size: 11
+  }
+  editorial-flow-success: {
+    style.stroke: "#5BB87B"
+    style.stroke-width: 2
+    style.font-color: "#7ED19A"
+    style.font-size: 11
+  }
+  editorial-flow-danger: {
+    style.stroke: "#E66868"
+    style.stroke-width: 2
+    style.font-color: "#F08E8E"
+    style.font-size: 11
+  }
+
+  # ── Component Overrides (Dark) ──
+  editorial-start: {
+    shape: oval
+    style.fill: "#232735"
+    style.stroke: "#F5F5F5"
+    style.stroke-width: 2
+    style.font-color: "#F5F5F5"
+    style.bold: true
+  }
+  editorial-terminal: {
+    shape: oval
+    style.fill: "#232735"
+    style.stroke: "#F5F5F5"
+    style.stroke-width: 2
+    style.font-color: "#F5F5F5"
+    style.bold: true
+  }
+  editorial-end: {
+    shape: oval
+    style.fill: "#232735"
+    style.stroke: "#F5F5F5"
+    style.stroke-width: 2
+    style.font-color: "#F5F5F5"
+    style.bold: true
+  }
+  editorial-step: {
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#F5F5F5"
+  }
+  editorial-action: {
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#F5F5F5"
+  }
+  editorial-process: {
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#F5F5F5"
+  }
+  editorial-decision: {
+    shape: diamond
+    style.fill: "#232735"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-condition: {
+    shape: diamond
+    style.fill: "#232735"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-merge: {
+    shape: circle
+    style.fill: "#232735"
+    style.stroke: "#F5F5F5"
+    style.stroke-width: 2
+    style.font-color: "#F5F5F5"
+  }
+  editorial-join: {
+    shape: circle
+    style.fill: "#232735"
+    style.stroke: "#F5F5F5"
+    style.stroke-width: 2
+    style.font-color: "#F5F5F5"
+  }
+  editorial-io: {
+    shape: parallelogram
+    style.fill: "#393E53"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-data: {
+    shape: parallelogram
+    style.fill: "#393E53"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-document: {
+    shape: page
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-artifact: {
+    shape: page
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-database: {
+    shape: cylinder
+    style.fill: "#393E53"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-store: {
+    shape: cylinder
+    style.fill: "#393E53"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-queue: {
+    shape: queue
+    style.fill: "#393E53"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-cloud: {
+    shape: cloud
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-actor: {
+    shape: person
+    style.fill: "#232735"
+    style.stroke: "#F5F5F5"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-user: {
+    shape: person
+    style.fill: "#232735"
+    style.stroke: "#F5F5F5"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-service: {
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#F5F5F5"
+  }
+  editorial-api: {
+    style.fill: "#232735"
+    style.stroke: "#43485D"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#F5F5F5"
+  }
+  editorial-gateway: {
+    shape: hexagon
+    style.fill: "#232735"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.font-color: "#F5F5F5"
+  }
+  editorial-external: {
+    style.fill: "#393E53"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.stroke-dash: 4
+    style.border-radius: 8
+    style.font-color: "#F5F5F5"
+  }
+
+  # ── Semantic Emphasis / Focal / Status (Dark) ──
+  editorial-primary: {
+    style.fill: "#3D2C26"
+    style.stroke: "#F08A59"
+    style.stroke-width: 2
+    style.border-radius: 8
+    style.font-color: "#F5A882"
+    style.bold: true
+  }
+  editorial-accent: {
+    style.fill: "#3D2C26"
+    style.stroke: "#F08A59"
+    style.stroke-width: 2
+    style.border-radius: 8
+    style.font-color: "#F5A882"
+    style.bold: true
+  }
+  editorial-focal: {
+    style.fill: "#3D2C26"
+    style.stroke: "#F08A59"
+    style.stroke-width: 2
+    style.border-radius: 8
+    style.font-color: "#F5A882"
+    style.bold: true
+  }
+  editorial-decision-accent: {
+    shape: diamond
+    style.fill: "#3D2C26"
+    style.stroke: "#F08A59"
+    style.stroke-width: 2
+    style.font-color: "#F5A882"
+    style.bold: true
+  }
+  editorial-success: {
+    style.fill: "#22382B"
+    style.stroke: "#5BB87B"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#7ED19A"
+    style.bold: true
+  }
+  editorial-pass: {
+    style.fill: "#22382B"
+    style.stroke: "#5BB87B"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#7ED19A"
+    style.bold: true
+  }
+  editorial-warning: {
+    style.fill: "#3D3120"
+    style.stroke: "#E8A355"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#F2BD7E"
+    style.bold: true
+  }
+  editorial-danger: {
+    style.fill: "#3E2323"
+    style.stroke: "#E66868"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#F08E8E"
+    style.bold: true
+  }
+  editorial-fail: {
+    style.fill: "#3E2323"
+    style.stroke: "#E66868"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#F08E8E"
+    style.bold: true
+  }
+  editorial-muted: {
+    style.fill: "#393E53"
+    style.stroke: "#596078"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#8E98AC"
+  }
+
+  # ── Series Palette Tints (Dark) ──
+  editorial-series-sage: {
+    style.fill: "#2D382B"
+    style.stroke: "#9CAF8F"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#ECEAE3"
+  }
+  editorial-series-blue: {
+    style.fill: "#273445"
+    style.stroke: "#82A0C0"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#ECEAE3"
+  }
+  editorial-series-mustard: {
+    style.fill: "#3E3424"
+    style.stroke: "#D3AD7A"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#ECEAE3"
+  }
+  editorial-series-rust: {
+    style.fill: "#3B2B24"
+    style.stroke: "#B88670"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#ECEAE3"
+  }
+  editorial-series-slate: {
+    style.fill: "#332D3B"
+    style.stroke: "#8D8298"
+    style.stroke-width: 1
+    style.border-radius: 8
+    style.font-color: "#ECEAE3"
+  }
+}

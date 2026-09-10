@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-pyd2lang-native provides Python bindings to the d2lang diagram compiler via a Go shared library loaded through ctypes. It compiles D2 source code to SVG natively without requiring the d2 CLI. Includes ADI signal-chain, SW software/AI, JIF, DataX overview, and clean (flat neutral/clay technical) libraries with light/dark themes.
+pyd2lang-native provides Python bindings to the d2lang diagram compiler via a Go shared library loaded through ctypes. It compiles D2 source code to SVG natively without requiring the d2 CLI. Includes ADI signal-chain, SW software/AI, JIF, DataX overview, clean (flat neutral/clay technical), and editorial (publication-quality flowchart/diagram) libraries with light/dark themes.
 
 ## Commands
 
@@ -38,7 +38,7 @@ Nox uses `uv` as its venv backend.
 ## Architecture
 
 ```
-d2/__init__.py          Python API: compile(code, library="adi"|"sw"|"jif"|"datax"|"clean"|None, theme="light") -> SVG
+d2/__init__.py          Python API: compile(code, library="adi"|"sw"|"jif"|"datax"|"clean"|"editorial"|None, theme="light") -> SVG
     ↓ ctypes
 d2/resources/*.so       Pre-built Go shared library (built from lib/)
     ↓
@@ -51,6 +51,7 @@ lib/sw/                 SW assets: sw-components.d2 (32 icons), sw-theme.d2, sw-
 lib/jif/                JIF assets: jif-components.d2, jif-theme.d2, jif-theme-dark.d2
 lib/datax/              DataX overview assets: datax-components.d2, datax-theme.d2, datax-theme-dark.d2
 lib/clean/              clean assets: clean-components.d2 (21 classes), clean-theme.d2, clean-theme-dark.d2
+lib/editorial/          editorial assets: editorial-components.d2, editorial-theme.d2, editorial-theme-dark.d2
 ```
 
 The Go library embeds library assets at compile time via `//go:embed`. The Python side loads the shared library, calls the appropriate C function, and returns the SVG string or raises `RuntimeError`. The `library` parameter selects which component library to prepend (or `None` for plain D2).

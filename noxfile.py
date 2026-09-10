@@ -68,7 +68,7 @@ def fmt_check(session: nox.Session) -> None:
 def typecheck(session: nox.Session) -> None:
     """Run ty type checker."""
     session.install("ty")
-    session.install("-e", ".")
+    session.install("-e", ".[sphinx]")
     session.run("ty", "check", "d2/", *session.posargs)
 
 

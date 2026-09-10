@@ -653,3 +653,83 @@ def test_clean_error_handling():
     code = "{{{{ invalid d2 code"
     with pytest.raises(RuntimeError, match="Error"):
         d2.compile(code, library="clean")
+
+
+def test_editorial_basic_flowchart():
+    """Editorial flowchart components render with correct styling and atomic-tangerine focal accent."""
+    code = """
+start: Start { class: editorial-start }
+decision: Valid? { class: editorial-decision }
+process: Execute { class: editorial-focal }
+end: Done { class: editorial-end }
+
+start -> decision: { class: editorial-flow }
+decision -> process: Yes { class: editorial-flow-success }
+decision -> end: No { class: editorial-flow-danger }
+process -> end: { class: editorial-flow-primary }
+"""
+    graph = d2.compile(code, library="editorial")
+    assert graph is not None
+    assert "<?xml" in graph
+    # atomic-tangerine accent fill appears in light output
+    assert "#FDEEE7" in graph
+    # atomic-tangerine stroke appears
+    assert "#EB6C36" in graph
+
+
+def test_editorial_all_components():
+    """All editorial component classes render without error."""
+    lines = []
+    for i, comp in enumerate(d2.EDITORIAL_COMPONENTS):
+        lines.append(f"c{i}: {comp} {{ class: {comp} }}")
+    code = "\n".join(lines)
+
+    graph = d2.compile(code, library="editorial")
+    assert graph is not None
+    assert "<?xml" in graph
+
+
+def test_editorial_theme_and_flows():
+    """Editorial containers, typography, and flow connectors render without error."""
+    code = """
+container: System { class: editorial-container
+  panel: Workflow { class: editorial-panel
+    swimlane: Step Lane { class: editorial-swimlane
+      step: Action { class: editorial-step }
+      focal: Key Action { class: editorial-primary }
+      step -> focal: default { class: editorial-flow }
+      step -> focal: primary { class: editorial-flow-primary }
+      step -> focal: muted { class: editorial-flow-muted }
+      step -> focal: dashed { class: editorial-flow-dashed }
+      step -> focal: link { class: editorial-flow-link }
+    }
+  }
+}
+"""
+    graph = d2.compile(code, library="editorial")
+    assert graph is not None
+    assert "<?xml" in graph
+    # container background tint appears in light output
+    assert "#ECECEC" in graph
+
+
+def test_editorial_dark_theme():
+    """Dark theme variant works for the editorial library."""
+    code = """
+start: Start { class: editorial-start }
+process: Key Action { class: editorial-focal }
+end: Done { class: editorial-end }
+start -> process -> end: { class: editorial-flow-primary }
+"""
+    graph = d2.compile(code, library="editorial", theme="dark")
+    assert graph is not None
+    assert "<?xml" in graph
+    # dark accent fill of editorial-focal in dark output
+    assert "#3D2C26" in graph
+
+
+def test_editorial_error_handling():
+    """Invalid D2 code with library='editorial' raises RuntimeError."""
+    code = "{{{{ invalid d2 code"
+    with pytest.raises(RuntimeError, match="Error"):
+        d2.compile(code, library="editorial")
