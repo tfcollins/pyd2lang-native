@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
-  <!-- Op-amp triangle -->
-  <polygon points="15,10 85,40 15,70" fill="#FFFFFF" stroke="#231F20" stroke-width="2"/>
-  <!-- + input -->
-  <text x="24" y="56" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#231F20">+</text>
-  <!-- - input -->
-  <text x="24" y="34" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#231F20">&#x2212;</text>
-</svg>

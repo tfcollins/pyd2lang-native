@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
-<!-- 3 connected chevrons -->
-  <!-- Chevron 1 -->
-  <polygon points="24,20 44,40 24,60 40,60 60,40 40,20" fill="#0067B9" stroke="#231F20" stroke-width="1.5" stroke-linejoin="round"/>
-  <!-- Chevron 2 -->
-  <polygon points="50,20 70,40 50,60 66,60 86,40 66,20" fill="#0067B9" stroke="#231F20" stroke-width="1.5" stroke-linejoin="round"/>
-  <!-- Chevron 3 -->
-  <polygon points="76,20 96,40 76,60 92,60 112,40 92,20" fill="#0067B9" stroke="#231F20" stroke-width="1.5" stroke-linejoin="round"/>
-</svg>
