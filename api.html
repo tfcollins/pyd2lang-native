@@ -223,6 +223,10 @@
 <li class="toctree-l2"><a class="reference internal" href="clean-shapes.html">clean Shapes</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="editorial.html">editorial Diagramming &amp; Flowchart Library</a><input aria-label="Toggle navigation of editorial Diagramming &amp; Flowchart Library" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="editorial-shapes.html">editorial Shapes</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skills.html">Agent Skills</a></li>
 </ul>
@@ -284,7 +288,9 @@ Analog Devices signal-chain components, <code class="docutils literal notranslat
 software/AI architecture components, <code class="docutils literal notranslate"><span class="pre">&quot;jif&quot;</span></code> for
 pyadi-jif block diagrams, <code class="docutils literal notranslate"><span class="pre">&quot;datax&quot;</span></code> for ADI DataX overview
 diagrams, <code class="docutils literal notranslate"><span class="pre">&quot;clean&quot;</span></code> for the flat neutral/clay technical
-diagramming components, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for plain D2 compilation.</p></li>
+diagramming components, <code class="docutils literal notranslate"><span class="pre">&quot;editorial&quot;</span></code> for publication-quality
+flowchart and editorial diagram components, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for plain
+D2 compilation.</p></li>
 <li><p><strong>theme</strong> – Theme variant when a library is used.
 Either <code class="docutils literal notranslate"><span class="pre">&quot;light&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;dark&quot;</span></code>.</p></li>
 <li><p><strong>adi</strong> – Deprecated. Use <code class="docutils literal notranslate"><span class="pre">library=&quot;adi&quot;</span></code> instead.</p></li>
@@ -410,6 +416,21 @@ technical diagramming shapes; see <a class="reference internal" href="clean-shap
 </dd></dl>
 
 </section>
+<section id="editorial-library">
+<h3>editorial Library<a class="headerlink" href="#editorial-library" title="Link to this heading">¶</a></h3>
+<dl class="py data">
+<dt class="sig sig-object py" id="d2.EDITORIAL_COMPONENTS">
+<span class="sig-prename descclassname"><span class="pre">d2.</span></span><span class="sig-name descname"><span class="pre">EDITORIAL_COMPONENTS</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#d2.EDITORIAL_COMPONENTS" title="Link to this definition">¶</a></dt>
+<dd><p>List of the editorial flowchart and diagram component class names (see <a class="reference internal" href="editorial-shapes.html"><span class="doc">editorial Shapes</span></a>).</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="d2.EDITORIAL_THEME_CLASSES">
+<span class="sig-prename descclassname"><span class="pre">d2.</span></span><span class="sig-name descname"><span class="pre">EDITORIAL_THEME_CLASSES</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#d2.EDITORIAL_THEME_CLASSES" title="Link to this definition">¶</a></dt>
+<dd><p>List of editorial typography, container, panel, swimlane, boundary, and flow class names.</p>
+</dd></dl>
+
+</section>
 <section id="general">
 <h3>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h3>
 <dl class="py data">
@@ -506,6 +527,11 @@ technical diagramming shapes; see <a class="reference internal" href="clean-shap
 <li><a class="reference internal" href="#clean-library">clean Library</a><ul>
 <li><a class="reference internal" href="#d2.CLEAN_COMPONENTS"><code class="docutils literal notranslate"><span class="pre">CLEAN_COMPONENTS</span></code></a></li>
 <li><a class="reference internal" href="#d2.CLEAN_THEME_CLASSES"><code class="docutils literal notranslate"><span class="pre">CLEAN_THEME_CLASSES</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#editorial-library">editorial Library</a><ul>
+<li><a class="reference internal" href="#d2.EDITORIAL_COMPONENTS"><code class="docutils literal notranslate"><span class="pre">EDITORIAL_COMPONENTS</span></code></a></li>
+<li><a class="reference internal" href="#d2.EDITORIAL_THEME_CLASSES"><code class="docutils literal notranslate"><span class="pre">EDITORIAL_THEME_CLASSES</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#general">General</a><ul>
