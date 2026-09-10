@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80">
+  <!-- Larger amplifier triangle -->
+  <polygon points="8,8 8,72 92,40" fill="#FFFFFF" stroke="#231F20" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Power indicator -->
+  <text x="26" y="36" font-family="Arial, sans-serif" font-size="9" fill="#C8102E">Pout</text>
+  <!-- Label -->
+  <text x="32" y="50" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#231F20">PA</text>
+</svg>

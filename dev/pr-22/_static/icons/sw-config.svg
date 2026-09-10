@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 80">
+<!-- Gear/cog shape -->
+  <path d="M70,18 l4,0 l2,5 l5,2 l5,-2 l3,3 l-2,5 l2,5 l5,2 l0,4 l-5,2 l-2,5 l2,5 l-3,3 l-5,-2 l-5,2 l-2,5 l-4,0 l-2,-5 l-5,-2 l-5,2 l-3,-3 l2,-5 l-2,-5 l-5,-2 l0,-4 l5,-2 l2,-5 l-2,-5 l3,-3 l5,2 l5,-2 Z"
+        fill="#0067B9" stroke="#231F20" stroke-width="1.5"/>
+  <!-- Center circle -->
+  <circle cx="70" cy="40" r="8" fill="#FFFFFF" stroke="#231F20" stroke-width="1.5"/>
+</svg>
