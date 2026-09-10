@@ -213,6 +213,21 @@ def test_clean_library_option_builds(tmp_path: Path):
     assert "d2-svg" in html
 
 
+def test_editorial_library_option_builds(tmp_path: Path):
+    rst = (
+        "Title\n=====\n\n"
+        ".. d2::\n"
+        "   :library: editorial\n\n"
+        "   start: Start { class: editorial-start }\n"
+        "   step: Step { class: editorial-focal }\n"
+        "   start -> step { class: editorial-flow-primary }\n"
+    )
+    html, warnings = build_docs(tmp_path, rst)
+
+    assert warnings == ""
+    assert "d2-svg" in html
+
+
 def test_second_build_is_a_cache_hit(tmp_path: Path):
     rst = "Title\n=====\n\n.. d2::\n   :theme: light\n\n   a -> b\n"
     # First build populates the cache

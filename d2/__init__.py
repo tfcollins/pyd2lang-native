@@ -317,7 +317,73 @@ CLEAN_THEME_CLASSES = [
     "clean-flow-dashed",
 ]
 
-_VALID_LIBRARIES = {"adi", "sw", "jif", "datax", "clean"}
+EDITORIAL_COMPONENTS = [
+    "editorial-start",
+    "editorial-terminal",
+    "editorial-end",
+    "editorial-step",
+    "editorial-action",
+    "editorial-process",
+    "editorial-decision",
+    "editorial-condition",
+    "editorial-merge",
+    "editorial-join",
+    "editorial-io",
+    "editorial-data",
+    "editorial-document",
+    "editorial-artifact",
+    "editorial-database",
+    "editorial-store",
+    "editorial-queue",
+    "editorial-cloud",
+    "editorial-actor",
+    "editorial-user",
+    "editorial-service",
+    "editorial-api",
+    "editorial-gateway",
+    "editorial-external",
+    "editorial-primary",
+    "editorial-accent",
+    "editorial-focal",
+    "editorial-decision-accent",
+    "editorial-success",
+    "editorial-pass",
+    "editorial-warning",
+    "editorial-danger",
+    "editorial-fail",
+    "editorial-muted",
+    "editorial-series-sage",
+    "editorial-series-blue",
+    "editorial-series-mustard",
+    "editorial-series-rust",
+    "editorial-series-slate",
+]
+
+EDITORIAL_THEME_CLASSES = [
+    "editorial-container",
+    "editorial-panel",
+    "editorial-swimlane",
+    "editorial-boundary",
+    "editorial-card",
+    "editorial-title",
+    "editorial-subtitle",
+    "editorial-label",
+    "editorial-section-label",
+    "editorial-eyebrow",
+    "editorial-callout",
+    "editorial-note",
+    "editorial-sublabel",
+    "editorial-flow",
+    "editorial-flow-primary",
+    "editorial-flow-accent",
+    "editorial-flow-muted",
+    "editorial-flow-dashed",
+    "editorial-flow-link",
+    "editorial-flow-success",
+    "editorial-flow-danger",
+]
+
+_VALID_LIBRARIES = {"adi", "sw", "jif", "datax", "clean", "editorial"}
 
 
 def compile(
@@ -335,7 +401,9 @@ def compile(
             software/AI architecture components, ``"jif"`` for
             pyadi-jif block diagrams, ``"datax"`` for ADI DataX overview
             diagrams, ``"clean"`` for the flat neutral/clay technical
-            diagramming components, or ``None`` for plain D2 compilation.
+            diagramming components, ``"editorial"`` for publication-quality
+            flowchart and editorial diagram components, or ``None`` for plain
+            D2 compilation.
         theme: Theme variant when a library is used.
             Either ``"light"`` or ``"dark"``.
         adi: Deprecated. Use ``library="adi"`` instead.

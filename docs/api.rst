@@ -108,6 +108,19 @@ clean Library
 
    List of clean typography, panel, band, and flow class names.
 
+editorial Library
+~~~~~~~~~~~~~~~~~
+
+.. py:data:: EDITORIAL_COMPONENTS
+   :type: list[str]
+
+   List of the editorial flowchart and diagram component class names (see :doc:`editorial-shapes`).
+
+.. py:data:: EDITORIAL_THEME_CLASSES
+   :type: list[str]
+
+   List of editorial typography, container, panel, swimlane, boundary, and flow class names.
+
 General
 ~~~~~~~
 
